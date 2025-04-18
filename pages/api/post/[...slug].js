@@ -1,6 +1,4 @@
 import checkAuth from "../middleware/checkAuth";
-import axios from "axios";
-import { backendUrl } from "@/utils";
 import connectMongoDB from "@/lib/mongodb";
 import Post from "@/models/post";
 import User from "@/models/user";
@@ -8,8 +6,6 @@ import Tag from "@/models/tag";
 import LikeDislike from "@/models/likeDislike";
 import Vote from "@/models/vote";
 import Comment from "@/models/comment";
-import Bounty from "@/models/bounty";
-import Wallet from "@/models/wallet";
 
 export default async function handler(req, res) {
   await checkAuth(req, res);
@@ -150,28 +146,6 @@ export default async function handler(req, res) {
       res
         .status(201)
         .json({ message: "Topic Created", topic: newTopic, status: 201 });
-
-      // const access_codes = tags.map((tag) => tag.code);
-      // const processSpark = await axios.post(`${backendUrl}/text/process_text`, {
-      //   user_id: userId,
-      //   post_id: newTopic._id.toString(),
-      //   text: {
-      //     Title: title,
-      //     Category: category || "",
-      //     Image_URL: image,
-      //     Description: description.replace(/<[^>]*>/g, " "),
-      //   },
-      //   access_codes,
-      // });
-      // console.log("processSpark ====> ", processSpark.status);
-      // if (processSpark.status === 200) {
-      //   await Post.findOneAndUpdate(
-      //     { _id: newTopic._id.toString() },
-      //     {
-      //       isProcessed: true,
-      //     }
-      //   );
-      // }
     } catch (error) {
       // Handle errors
       console.error("Error creating topic:", error);
@@ -200,19 +174,6 @@ export default async function handler(req, res) {
         .json({ message: "Topic Created", topic: newTopic, status: 201 });
 
       const access_codes = tags.map((tag) => tag.code);
-
-      const updateSpark = await axios.put(`${backendUrl}/update/update_chunk`, {
-        user_id: userId,
-        post_id: id,
-        text: {
-          Title: title,
-          Category: category || "",
-          Image_URL: image,
-          Description: description.replace(/<[^>]*>/g, " "),
-        },
-        access_codes,
-      });
-      console.log("updateSpark ====> ", updateSpark.status);
     } catch (error) {
       console.error("Error creating topic:", error);
       res
@@ -328,20 +289,6 @@ export default async function handler(req, res) {
         message: "Post deleted successfully",
         postDelete: true,
       });
-
-      const delResponse = await axios.delete(
-        `${backendUrl}/delete/delete_chunks`,
-        {
-          data: {
-            user_id: userId,
-            post_id: spark_id,
-          },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("External delete response:", delResponse.data);
     } catch (error) {
       console.error("Error deleting post:", error);
       res
@@ -377,16 +324,6 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: "User not authenticated" });
       }
       const { search_query } = req.body;
-
-      const searchSpark = await axios.post(
-        `${backendUrl}/search/semantic_search`,
-        {
-          query: search_query,
-          user_id: req.user.id,
-          access_codes: ["103", "102"],
-        }
-      );
-      console.log("searchSpark ======>", searchSpark.data);
 
       res.status(200).json({
         status: 200,

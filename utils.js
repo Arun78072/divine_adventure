@@ -2,7 +2,6 @@ import { toast } from "react-toastify";
 
 export const baseUrl = "http://localhost:3000";
 // export const baseUrl = "https://spark.sdnaprod.com";
-export const backendUrl = "https://neo.sdnaprod.com/spark-backend";
 
 export const formateDate = (dates) => {
   const date = new Date(dates);
