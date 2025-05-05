@@ -1,3 +1,4 @@
+import BannerSection from "@/components/Banner";
 import Loader from "@/components/Loader";
 import { baseUrl, formateDate } from "@/utils";
 import axios from "axios";
@@ -52,7 +53,9 @@ export default function Home() {
         <Loader loading={loading} />
       ) : (
         <>
+        <BannerSection/>
           <section className="w-full">
+          
             <div className="max-w-screen-lg flex-1 flex justify-center h-[470px] mx-auto lg:h-[700px] lg:items-center">
               {/* Heading & Button */}
               <div className="flex flex-col justify-center items-center w-[570px] p-6 lg:block  xl:w-[700px]">

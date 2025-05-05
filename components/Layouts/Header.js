@@ -16,6 +16,7 @@ export default function Header() {
     <>
       <Loader loading={loading} />
       <header className="fixed top-0 w-full h-[76px] border-b bg-white z-50">
+      <div className="bg-blue-500 text-center">{`Up to 15% off September Deals >> | Or save up to 15% on Last Minute Deals >>`}</div>
         {/* Mobile menu */}
         <div
           id="navMenu"
@@ -100,7 +101,7 @@ export default function Header() {
                 About
               </Link>
             </div>
-            {!session && (
+            {/* {!session && (
               <div className="p-8">
                 <button
                   onClick={() => {
@@ -112,41 +113,21 @@ export default function Header() {
                   Sign In
                 </button>
               </div>
-            )}
+            )} */}
           </div>
         </div>
         {/* Navigation */}
         <nav className="max-w-screen-lg h-full p-2.5 flex justify-between items-center mx-auto">
           {/* Logo */}
           <Link className="flex items-center gap-2" href="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="37"
-              height="37"
-              viewBox="0 0 36 37"
-              fill="none"
-            >
-              <circle
-                cx="18"
-                cy="18.5"
-                r="18"
-                fill="url(#paint0_linear_2_18)"
-              />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_2_18"
-                  x1="2.69877e-07"
-                  y1="13"
-                  x2="31"
-                  y2="31.5"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#FF2B2B" />
-                  <stop offset="1" stopColor="#1A92AC" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <div className="text-lg font-medium">Spark</div>
+          <Image
+              src="/assets/site_logo.png"
+              alt={'Logo'}
+              width={100}
+              height={100}
+              className="rounded-full w-[100px] h-[100px]"
+            />
+            <div className="text-sm"> Divine Adventure Holidays</div>
           </Link>
           {/* Links */}
           <div className="flex-1 flex justify-center items-center gap-2.5 hidden text-base lg:flex">
@@ -170,7 +151,7 @@ export default function Header() {
             </Link>
           </div>
 
-          {session ? (
+          {/* {session ? (
             <div className="relative ml-auto mr-3">
               <button
                 onClick={() => {
@@ -253,7 +234,7 @@ export default function Header() {
                 Sign In
               </button>
             </>
-          )}
+          )} */}
           {/* Mobile nav button */}
           <div
             id="navBtn"
