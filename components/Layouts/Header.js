@@ -73,25 +73,10 @@ export default function Header() {
               </Link>
               <Link
                 className="p-8 border-b"
-                href="/posts/sparks"
+                href="/destination"
                 onClick={() => setMenuBox(false)}
               >
-                Sparks
-              </Link>
-
-              <Link
-                className="p-8 border-b"
-                href="/bounties"
-                onClick={() => setMenuBox(false)}
-              >
-                Bounties
-              </Link>
-              <Link
-                className="p-8 border-b"
-                href="/ask"
-                onClick={() => setMenuBox(false)}
-              >
-                Ask
+               Destination
               </Link>
               <Link
                 className="p-8 border-b"
@@ -131,20 +116,11 @@ export default function Header() {
           </Link>
           {/* Links */}
           <div className="flex-1 flex justify-center items-center gap-2.5 hidden text-base lg:flex">
-            <Link className="hover:text-gray-600 duration-200" href="/chat">
-              Chat
-            </Link>
             <Link
               className="hover:text-gray-600 duration-200"
-              href="/posts/sparks"
+              href="/destination"
             >
-              Sparks
-            </Link>
-            <Link className="hover:text-gray-600 duration-200" href="/bounties">
-              Bounties
-            </Link>
-            <Link className="hover:text-gray-600 duration-200" href="/ask">
-              Ask
+              Destination
             </Link>
             <Link className="hover:text-gray-600 duration-200" href="/about">
               About

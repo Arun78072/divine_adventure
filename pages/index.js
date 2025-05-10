@@ -4,12 +4,8 @@ import { baseUrl, formateDate } from "@/utils";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import {
-  AiOutlineDislike,
-  AiOutlineDollarCircle,
-  AiOutlineLike,
-} from "react-icons/ai";
+import { useState } from "react";
+
 import { CiCalendarDate } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
