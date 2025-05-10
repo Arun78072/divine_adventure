@@ -151,7 +151,7 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* {session ? (
+          {session ? (
             <div className="relative ml-auto mr-3">
               <button
                 onClick={() => {
@@ -234,7 +234,7 @@ export default function Header() {
                 Sign In
               </button>
             </>
-          )} */}
+          )}
           {/* Mobile nav button */}
           <div
             id="navBtn"

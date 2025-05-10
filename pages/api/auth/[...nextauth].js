@@ -15,29 +15,17 @@ export const authOptions = {
     CredentialsProvider({
       async authorize(credentials, req) {
         await connectMongoDB();
+        
         let existingUser = await User.findOne({
           email: credentials.email,
           password: credentials.password,
         });
-
+console.log('existingUser =====>',existingUser)
         if (!existingUser && credentials.type === "CreateUser") {
           if (!credentials.referralCode) {
             throw new Error("Referral code is required to create an account.");
           }
-
-          existingUser = await User.create({
-            name: credentials.name,
-            email: credentials.email,
-            password: credentials.password,
-            referralCode: credentials.referralCode,
-          });
-
-          const newWallet = await Wallet.create({
-            user: existingUser._id,
-            amount: 0,
-          });
-
-          existingUser.wallet = newWallet._id;
+       
           await existingUser.save();
 
           return existingUser;
