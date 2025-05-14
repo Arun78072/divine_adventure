@@ -67,20 +67,7 @@ const Login = () => {
     }
   };
 
-  const socialLogin = async () => {
-    setLoading(true);
-    try {
-      const res = await signIn("google", { redirect: false });
-      if (res.status == 200) {
-        toast.success("Successfully Login");
-        // router.push("/");
-      }
-    } catch (e) {
-      console.log("error ===>", e);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
 
   useEffect(() => {
     if (router.query.error) {
@@ -143,45 +130,6 @@ const Login = () => {
             Login
           </button>
         </form>
-
-        <span className="mx-4 mb-4 text-[#828282] text-center block">
-          or continue with
-        </span>
-
-        <button
-          onClick={() => {
-            socialLogin();
-          }}
-          className="w-full relative p-3 border border-gray-300 rounded-md flex items-center justify-center hover:bg-gray-100 transition bg-[#EEEEEE]"
-        >
-          <span className="text-2xl">
-            <FcGoogle />
-          </span>
-          <span className="mx-auto">Google</span>
-        </button>
-
-        <div className="flex items-center gap-1 my-5">
-          <span className="text-[#828282]">Not a member ? </span>
-          <button
-            onClick={() => {
-              router.push("/registration");
-            }}
-            className="underline"
-          >
-            Sign up now
-          </button>
-        </div>
-
-        <p className="text-center text-sm text-gray-500 mt-8">
-          By clicking continue, you agree to our{" "}
-          <a href="#" className="text-black underline">
-            Terms of Service
-          </a>{" "}
-          and{" "}
-          <a href="#" className="text-black underline">
-            Privacy Policy
-          </a>
-        </p>
       </div>
     </div>
   );

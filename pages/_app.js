@@ -1,5 +1,4 @@
 import Layout from "@/components/Layouts";
-import "@/styles/resetTailwind.css"
 import "@/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import { SessionProvider } from "next-auth/react";
