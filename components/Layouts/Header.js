@@ -177,7 +177,7 @@ export default function Header() {
                         alt={session.user.name}
                         width={100}
                         height={100}
-                        className="w-[100px] rounded-full m-auto pt-[25px]"
+                        className="w-[100px] rounded-full m-auto"
                       />
                     ) : (
                       <span className="w-[100px] h-[100px] text-3xl m-auto rounded-full flex items-center justify-center bg-gray-200">
