@@ -106,13 +106,13 @@ export default function Header() {
           {/* Logo */}
           <Link className="flex items-center gap-2" href="/">
           <Image
-              src="/assets/site_logo.png"
+              src="/assets/logo.png"
               alt={'Logo'}
               width={100}
               height={100}
               className="rounded-full w-[100px] h-[100px]"
             />
-            <div className="text-sm"> Divine Adventure Holidays</div>
+            {/* <div className="text-sm"> Divine Adventure Holidays</div> */}
           </Link>
           {/* Links */}
           <div className="flex-1 flex justify-center items-center gap-2.5 hidden text-base lg:flex">
@@ -122,8 +122,20 @@ export default function Header() {
             >
               Destination
             </Link>
-            <Link className="hover:text-gray-600 duration-200" href="/about">
+            <Link className="hover:text-gray-600 duration-200" href="/">
               About
+            </Link>
+            <Link
+              className="hover:text-gray-600 duration-200"
+              href="/destination"
+            >
+              Ways To Go
+            </Link>
+            <Link className="hover:text-gray-600 duration-200" href="/">
+              Deals
+            </Link>
+            <Link className="hover:text-gray-600 duration-200" href="/">
+              Gallery
             </Link>
           </div>
 
@@ -165,7 +177,7 @@ export default function Header() {
                         alt={session.user.name}
                         width={100}
                         height={100}
-                        className="w-[100px] rounded-full m-auto"
+                        className="w-[100px] rounded-full m-auto pt-[25px]"
                       />
                     ) : (
                       <span className="w-[100px] h-[100px] text-3xl m-auto rounded-full flex items-center justify-center bg-gray-200">
