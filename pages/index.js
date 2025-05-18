@@ -1,7 +1,7 @@
 import BannerSection from "@/components/Home/Banner";
-import Booking from "@/components/Home/Booking";
 import Category from "@/components/Home/Category";
 import Post from "@/components/Home/Post";
+import Review from "@/components/Home/Review";
 import Loader from "@/components/Loader";
 import Image from "next/image";
 
@@ -18,17 +18,43 @@ export default function Home() {
         <>
           <BannerSection />
           <Category />
-
-<Booking/>
           <Image
-            src="/assets/Sepratir.png"
+            src="/assets/mountain_img.jpg"
             width={0}
             height={0}
             sizes="100vw"
             style={{ width: "100%", height: "auto" }}
           />
-
           <Post />
+          <div className="explore_section">
+            <div>
+              <Image
+                src="/assets/mountains.jpg"
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
+              <div className="explore_content">
+                <h1>Explore Nature</h1>
+                <button className="secandary_button">View Packages</button>
+              </div>
+            </div>
+            <div>
+              <Image
+                src="/assets/jaipur_city.jpg"
+                width={0}
+                height={0}
+                sizes="100vw"
+              />{" "}
+              <div className="explore_content">
+                {" "}
+                <h1>Explore Cities</h1>
+                <button className="secandary_button">View Packages</button>
+              </div>
+            </div>
+          </div>
+
+          <Review />
         </>
       )}
       {/*  Hero */}
