@@ -21,15 +21,93 @@ export default function AllSparks() {
 
   return (
     <main className="destination_section">
+      <div className="banner_image">
+        <Image
+          src="/assets/mountain_boy.jpg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "800px",
+            objectFit: "cover",
+            objectPosition: "top",
+          }}
+        />
+      </div>
+
       <Loader loading={loading} />
-
       <section className="container">
+        <div>
+          <div class="description">
+            <h1>
+              India Tourism – A Tapestry of Culture, Nature, and Spirituality
+            </h1>
+            <p>
+              India is not just a country; it is a sensory experience that
+              unfolds in layers of color, sound, and stories. From the moment
+              one steps onto its soil, India greets every traveler with a fusion
+              of ancient traditions and vibrant modern life. Tourism in India is
+              like turning the pages of a living history book—one that tells
+              tales of empires and sages, of sacred rivers and Himalayan peaks,
+              of crowded bazaars and tranquil temples.
+            </p>
+            <p>
+              As one travels through India, each state feels like a different
+              world. The diversity is extraordinary. In the north, the mighty
+              Himalayas cast long shadows over snow-fed rivers and pine-covered
+              valleys. Here, adventure and serenity blend seamlessly. Places
+              like <strong>Leh-Ladakh</strong>, <strong>Shimla</strong>, and{" "}
+              <strong>Manali</strong> are popular for trekking, biking, skiing,
+              and simply breathing in the cool, crisp mountain air. Meanwhile,
+              in the lush foothills of <strong>Uttarakhand</strong> and{" "}
+              <strong>Himachal Pradesh</strong>, sacred towns like{" "}
+              <strong>Rishikesh</strong> and <strong>Haridwar</strong> offer
+              spiritual retreats along the banks of the Ganges.
+            </p>
+            <p>
+              Move towards the west and the arid beauty of{" "}
+              <strong>Rajasthan</strong> takes over. Golden sands stretch
+              beneath the scorching sun while palaces and forts rise like jewels
+              from the desert. The city of <strong>Jaipur</strong> stuns with
+              its pink hues, intricate architecture, and royal heritage, while{" "}
+              <strong>Udaipur</strong>, with its lakes and palaces, feels like a
+              dream painted in blue and silver. In <strong>Jaisalmer</strong>,
+              one can sleep under the stars in desert camps, surrounded by music
+              and traditional Rajasthani dance.
+            </p>
+            <p>
+              In the heart of India lies <strong>Madhya Pradesh</strong>, a
+              region blessed with both wildlife and history. From the temples of{" "}
+              <strong>Khajuraho</strong>, known for their intricate carvings, to
+              the tiger reserves of <strong>Kanha</strong> and{" "}
+              <strong>Bandhavgarh</strong>, nature and culture coexist with
+              grace. Similarly, in <strong>Gujarat</strong>, tourists can marvel
+              at the White Rann of Kutch, a salt desert that glows under the
+              full moon, or visit the towering <strong>Statue of Unity</strong>,
+              the tallest statue in the world.
+            </p>
+            <p>
+              The southern part of India is a world of its own—lush, green, and
+              deeply spiritual. In <strong>Kerala</strong>, backwaters wind
+              lazily through coconut groves, and houseboats drift gently on
+              their surface. Ayurveda, an ancient healing system, thrives here
+              in tranquil wellness retreats. <strong>Tamil Nadu</strong>{" "}
+              impresses with its towering Dravidian temples in{" "}
+              <strong>Madurai</strong> and <strong>Thanjavur</strong>, each
+              carved in devotion and artistry. <strong>Karnataka</strong> offers
+              a mix of history and tech, from the ruins of{" "}
+              <strong>Hampi</strong> to the gardens and modernity of{" "}
+              <strong>Bangalore</strong>. Meanwhile,{" "}
+              <strong>Andhra Pradesh</strong> and <strong>Telangana</strong>{" "}
+              invite travelers to explore ancient dynasties and bustling cities
+              like <strong>Hyderabad</strong>, known for its biryani and
+              old-world charm.
+            </p>
+          
+          </div>
+        </div>
         <div className="max-w-screen-lg mx-auto min-h-[60vh]">
-          <h1 className="font-semibold ml-6 text-3xl">All Tours Card </h1>
-          <Link className="red-500 duration-200" href="/destination/view/00000">
-            Single Tour
-          </Link>
-
           {/* Filter Bar  */}
           <h1>Filter Bar</h1>
 
@@ -58,7 +136,7 @@ export default function AllSparks() {
                     </span>
                   </div>
                   <Link
-                    href={`/posts/view/${item?._id}`}
+                    href={`/destination/view/${index}`}
                     className="post_title"
                   >
                     Switzerland
@@ -90,7 +168,7 @@ export default function AllSparks() {
       </section>
 
       {activeScreen === "my_spark" ? (
-        "ghhhh"
+        "abc"
       ) : activeScreen === "add_spark" ? (
         <CreateEditSpark
           data={editFormData}
