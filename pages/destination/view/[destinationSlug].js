@@ -19,11 +19,7 @@ export default function ViewPost() {
   const [postData, setPostData] = useState({});
   const [loading, setLoading] = useState(false);
   const { data: session, status } = useSession();
-  const [comments, setComments] = useState([]);
-  const [confirmationBox, setConfirmationBox] = useState(false);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [messageString, setMessageString] = useState("");
-  const [tipBox, setTipBox] = useState(false);
+
   const router = useRouter();
   const { postSlug } = router.query;
 
@@ -58,19 +54,37 @@ export default function ViewPost() {
     }
   };
 
- 
-
   return (
-    <main>
-      {/* Loader === */}
-      <Image
-         src="/assets/tour.png"
-        width={0}
-        height={0}
-        sizes="100vw"
-        style={{ width: "100%", height: "auto" }} 
-      />
-     
-    </main>
+    <section>
+      <div className="banner_image">
+        <Image
+          src="/assets/mountain_boy.jpg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "800px",
+            objectFit: "cover",
+            objectPosition: "top",
+          }}
+        />
+      </div>
+      <div className="container">
+        <div className="info_tab">
+          <h1>Switzerland</h1>
+        </div>
+
+        <div className="tour_tab">
+          <h1>Tour section</h1>
+        </div>
+        <div className="location_tab">
+          <h1>Tour section</h1>
+        </div>
+        <div className="gallery_tab">
+        <h1>Tour section</h1>
+        </div>
+      </div>
+    </section>
   );
 }
