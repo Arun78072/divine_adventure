@@ -18,9 +18,9 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState("bounties");
   // If user is not Loged in
   const router = useRouter();
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  // if (status === "unauthenticated") {
+  //   router.push("/");
+  // }
   const getUserData = async () => {
     // setLoading(true);
     try {
@@ -41,9 +41,9 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    if (session?.user?.id) {
-      getUserData();
-    }
+    // if (session?.user?.id) {
+    //   getUserData();
+    // }
   }, [session]);
 
   return (

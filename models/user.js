@@ -12,26 +12,8 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    image: {
-      type: String,
-      default: "",
-    },
-    referralCode: {
-      type: String,
-    },
     password: {
       type: String,
-    },
-
-    socialAccountType: {
-      type: String,
-      enum: ["CREDENTIAL", "GMAIL"],
-      default: "CREDENTIAL",
-    },
-
-    wallet: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Wallet",
     },
   },
   {

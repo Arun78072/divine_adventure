@@ -4,6 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import axios from "axios";
+import { baseUrl } from "@/utils";
 
 const Login = () => {
   const { data: session } = useSession();
@@ -25,54 +27,63 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    let hasError = false;
+    // let hasError = false;
 
-    if (formData.email.trim().length < 2) {
-      setError((prevError) => ({
-        ...prevError,
-        email: "Email is required",
-      }));
-      hasError = true;
-    }
-    if (formData.password.trim().length < 2) {
-      setError((prevError) => ({
-        ...prevError,
-        password: "Password is required",
-      }));
-      hasError = true;
-    }
-    if (hasError) {
-      return;
-    }
-    setError({ email: "", password: "" });
+    // if (formData.email.trim().length < 2) {
+    //   setError((prevError) => ({
+    //     ...prevError,
+    //     email: "Email is required",
+    //   }));
+    //   hasError = true;
+    // }
+    // if (formData.password.trim().length < 2) {
+    //   setError((prevError) => ({
+    //     ...prevError,
+    //     password: "Password is required",
+    //   }));
+    //   hasError = true;
+    // }
+    // if (hasError) {
+    //   return;
+    // }
+    // setError({ email: "", password: "" });
 
     try {
       const data = new FormData();
       data.append("email", formData.email);
       data.append("password", formData.password);
-      const res = await signIn("credentials", {
-        email: data.get("email"),
-        password: data.get("password"),
-        type: "loginUser",
-        redirect: false,
-      });
-      if (res.status == 200) {
-        toast.success("Successfully Login");
-        router.push("/");
-      } else {
-        toast.error(res.error);
-      }
+
+      const res = await axios.post(
+        `${baseUrl}/api/auth/login_user`,
+        {
+          email: 'arun@gmail.com',
+          password: 'password123',
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // email: data.get("email"),
+      // password: data.get("password"),
+      console.log("login res  =====>", res);
+
+      // if (res.status == 200) {
+      //   toast.success("Successfully Login");
+      //   router.push("/");
+      // } else {
+      //   toast.error(res.error);
+      // }
     } catch (e) {
       console.log("error ===>", e);
     }
   };
 
-  
-
   useEffect(() => {
     if (router.query.error) {
       const error = decodeURIComponent(router.query.error);
-
       console.log(
         "error ===>",
         error == "User not found. Please sign up first."
@@ -87,12 +98,10 @@ const Login = () => {
   }, [session]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 ">
-      <div className="bg-gray p-8 rounded-lg shadow-md max-w-sm bg-[#D9D9D9] w-full my-28">
-        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
-        <p className="text-center text-base font-normal text-gray-600 mb-2">
-          Enter your email and password
-        </p>
+    <div className="container">
+      <div className="login-box">
+        <h2 className="login-title">Login</h2>
+        <p className="login-subtitle">Enter your email and password</p>
         <form onSubmit={handleLogin}>
           <input
             type="email"
@@ -101,9 +110,10 @@ const Login = () => {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            className="w-full p-3 px-2 py-3 w-96  border border-gray-300 rounded-md focus:outline-none placeholder:text-[#828282] border-[#E0E0E0] w-full"
+            className="input-field"
           />
-          <p className="h-6 text-red-500 ml-2">{error.email}</p>
+          <p className="error-text">{error.email}</p>
+
           <div className="relative">
             <input
               type={passwordEncrypt ? "text" : "password"}
@@ -112,21 +122,19 @@ const Login = () => {
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
-              className="w-full p-3 px-2 py-3 w-96  border border-gray-300 rounded-md focus:outline-none placeholder:text-[#828282] border-[#E0E0E0] w-full"
+              className="input-field"
             />
             <span
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="toggle-password"
               onClick={() => setPasswordEncrypt(!passwordEncrypt)}
             >
               {passwordEncrypt ? <IoMdEye /> : <IoMdEyeOff />}
             </span>
           </div>
 
-          <p className="h-6 text-red-500 ml-2">{error.password}</p>
-          <button
-            type="submit"
-            className="w-full px-2 py-3 w-96 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition mb-6"
-          >
+          <p className="error-text">{error.password}</p>
+
+          <button type="submit" className="login-button">
             Login
           </button>
         </form>

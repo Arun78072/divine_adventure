@@ -82,7 +82,7 @@ export default function ViewPost() {
           <h1>Tour section</h1>
         </div>
         <div className="gallery_tab">
-        <h1>Tour section</h1>
+          <h1>Tour section</h1>
         </div>
       </div>
     </section>
