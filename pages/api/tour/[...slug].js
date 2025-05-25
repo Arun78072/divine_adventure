@@ -95,7 +95,7 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while fetching topics" });
     }
-  } else if (slug[0] === "all_post") {
+  } else if (slug[0] === "all_tour") {
     try {
       let posts;
         posts = await Tour.find({

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { signIn, useSession } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
@@ -8,7 +7,7 @@ import axios from "axios";
 import { baseUrl } from "@/utils";
 
 const Login = () => {
-  const { data: session } = useSession();
+    // const { data: session } = useSession();;
   const [passwordEncrypt, setPasswordEncrypt] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -56,7 +55,7 @@ const Login = () => {
       const res = await axios.post(
         `${baseUrl}/api/auth/login_user`,
         {
-          email: 'arun@gmail.com',
+          userId: 'arun@gmail.com',
           password: 'password123',
         },
         {
@@ -70,12 +69,15 @@ const Login = () => {
       // password: data.get("password"),
       console.log("login res  =====>", res);
 
-      // if (res.status == 200) {
-      //   toast.success("Successfully Login");
-      //   router.push("/");
-      // } else {
-      //   toast.error(res.error);
-      // }
+      if (res.status == 200) {
+        localStorage.setItem('token',res.data.token)
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+
+        toast.success("Successfully Login");
+        router.push("/profile");
+      } else {
+        toast.error(res.error);
+      }
     } catch (e) {
       console.log("error ===>", e);
     }
@@ -91,11 +93,7 @@ const Login = () => {
       toast.error(error);
     }
   }, [router.query.error]);
-  useEffect(() => {
-    if (session?.user?.id) {
-      router.push("/");
-    }
-  }, [session]);
+
 
   return (
     <div className="container">

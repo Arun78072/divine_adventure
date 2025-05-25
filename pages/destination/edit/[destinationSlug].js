@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 export default function EditPost() {
   const [postData, setPostData] = useState({});
   const [loading, setLoading] = useState(false);
-  const { data: session } = useSession();
+    // const { data: session } = useSession();;
   const router = useRouter();
   const { postSlug } = router.query;
 

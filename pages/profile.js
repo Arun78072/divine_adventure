@@ -1,139 +1,96 @@
 import Loader from "@/components/Loader";
-import MyBounty from "@/components/Profile/MyBounty";
-import MySpark from "@/components/Profile/MySpark";
-import Wallet from "@/components/Profile/Wallet";
-import { baseUrl, copyToClipboard } from "@/utils";
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
+import MyTours from "@/components/Profile/MyTours";
+import api from "@/utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { FaRegCopy } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export default function Profile() {
-  const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState({});
-  const [activeTab, setActiveTab] = useState("bounties");
-  // If user is not Loged in
+  const [storeData, setStoreData] = useState({});
+  const [headline, setHeadline] = useState("");
+
   const router = useRouter();
-  // if (status === "unauthenticated") {
-  //   router.push("/");
-  // }
-  const getUserData = async () => {
-    // setLoading(true);
+
+  const getHeadlineApi = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/profile/user_detail`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.get("/api/webdata/get_headline");
+      console.log("response ======>", response);
       if (response.status == 200) {
-        setUserData(response.data.data);
+        setStoreData(response.data.data[0]);
+        setHeadline(response.data.data[0].title);
       }
     } catch (e) {
       toast.error("Something went wrong");
-      //   router.push("/");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const updateHadline = async () => {
+    if (headline.length < 3) {
+      toast.error("Invalid Headling");
+      return;
+    }
+    try {
+      const response = await api.post("/api/webdata/update_headline", {
+        id: storeData._id,
+        title: headline,
+      });
+      if (response.status == 200) {
+        window.location.reload();
+      }
+    } catch (e) {
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    // if (session?.user?.id) {
-    //   getUserData();
-    // }
-  }, [session]);
+    if (localStorage.getItem("user")) {
+      const data = JSON.parse(localStorage.getItem("user"));
+      setUserData(data);
+      getHeadlineApi();
+    } else {
+      router.push("/");
+    }
+  }, []);
 
+  // console.log("storeData======>", storeData);
   return (
-    <main className="relative max-w-screen-lg mx-auto mt-8 p-3">
+    <main className="container">
       {loading ? (
         <Loader loading={loading} />
       ) : (
         <>
-          <div className="w-full mt-32 my-5 px-3"></div>
-          <div>
-            {session?.user?.image ? (
-              <Image
-                src={session.user.image}
-                alt={session.user.name}
-                width={100}
-                height={100}
-                className="w-[100px] rounded-xl"
-              />
-            ) : (
-              <span className="w-[100px] h-[100px] text-3xl  rounded-xl flex items-center justify-center bg-gray-200">
-                {session?.user?.name.charAt(0)}
-              </span>
-            )}
-
-            <h2 className="mt-5"> Name : {session?.user.name}</h2>
-            <h2 className="mt-1"> Email : {session?.user.email}</h2>
-            <h2 className="mt-1 flex items-center gap-1">
-              Referral Code :
-              <button
-                className="cursor-pointer flex items-center"
-                onClick={() => {
-                  copyToClipboard(userData.inviteCode);
-                }}
-              >
-                {" "}
-                {userData.inviteCode} <FaRegCopy />{" "}
-              </button>
-            </h2>
+          <div className="top-spacer"></div>
+          <div className="profile-info">
+            <span className="avatar-circle">{userData?.name?.charAt(0)}</span>
+            <h2 className="user-name">Name : {userData?.name}</h2>
+            <h2 className="user-email">Email : {userData?.email}</h2>
           </div>
 
-          <div className="flex items-center gap-2 mt-3">
-            <button
-              onClick={() => {
-                setActiveTab("bounties");
+          {/* Headline Setion */}
+          <div className="headline_form">
+            <label>Change Headline </label>
+            <input
+              type="text"
+              value={headline}
+              onChange={(e) => {
+                setHeadline(e.target.value);
               }}
-              className={`${
-                activeTab == "bounties"
-                  ? "bg-black text-white"
-                  : "bg-[#E0E0E0] text-black"
-              }  max-w-[400px] w-fit my-3 py-2 px-3 rounded-lg`}
-            >
-              My Bounties
-            </button>
+            />
             <button
-              onClick={() => {
-                setActiveTab("sparks");
-              }}
-              className={`${
-                activeTab == "sparks"
-                  ? "bg-black text-white"
-                  : "bg-[#E0E0E0] text-black"
-              }  max-w-[400px] w-fit my-3 py-2 px-3 rounded-lg`}
+              onClick={() => updateHadline()}
+              className="secandary_button"
             >
-              My Sparks{" "}
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab("wallet");
-              }}
-              className={`${
-                activeTab == "wallet"
-                  ? "bg-black text-white"
-                  : "bg-[#E0E0E0] text-black"
-              }  max-w-[400px] w-fit my-3 py-2 px-3 rounded-lg`}
-            >
-              Wallet
+              Update Headline
             </button>
           </div>
 
-          <div>
-            {activeTab == "bounties" ? (
-              <MyBounty />
-            ) : activeTab == "sparks" ? (
-              <MySpark />
-            ) : activeTab == "wallet" ? (
-              <Wallet data={userData} />
-            ) : (
-              ""
-            )}
-          </div>
+          {/* All Tour Section */}
+          {/* <MyTours /> */}
         </>
       )}
     </main>

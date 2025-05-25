@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import axios from 'axios';
 
 export const baseUrl = "http://localhost:3000";
 // export const baseUrl = "https://spark.sdnaprod.com";
@@ -46,3 +47,40 @@ export const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
   toast.success("Successfully copied the Spark ID!");
 };
+
+
+
+
+const api = axios.create({
+  // process.env.NEXT_PUBLIC_API_BASE_URL || 
+  baseURL: 'http://localhost:3000', // set your base API URL
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+api.interceptors.request.use(
+  (config) => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response Interceptor
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      console.warn('Unauthorized - maybe redirect to login');
+      // Optionally: logout user, clear token, redirect, etc.
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;

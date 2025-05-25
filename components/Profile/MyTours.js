@@ -7,12 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function MyBounty() {
-  const [posts, setPosts] = useState([]);
+export default function MyTours() {
+  const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    getPosts();
+    // getPosts();
   }, []);
 
   const getPosts = async () => {
@@ -24,7 +24,7 @@ export default function MyBounty() {
       });
       if (response.status == 200) {
         const data = response.data;
-        setPosts(data.data.reverse());
+        setAllTours(data.data.reverse());
       } else {
         toast.error("Something went wrong");
       }
@@ -42,8 +42,10 @@ export default function MyBounty() {
         <Loader loading={loading} />
       ) : (
         <div>
+        <h1>All Tours</h1>
+        <button>Create New Tour </button>
           <div className="">
-            {posts?.map((item, index) => {
+            {allTours?.map((item, index) => {
               return (
                 <div
                   className="shadow-custom w-full p-2 rounded-lg my-3"

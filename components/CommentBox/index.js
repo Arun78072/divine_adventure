@@ -20,7 +20,7 @@ export default function CommentBox({ commentData, deleteRecord }) {
     id: "",
     type: "",
   });
-  const { data: session } = useSession();
+  //  const { data: session } = useSession();;
 
   useEffect(() => {
     if (commentData) {

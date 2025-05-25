@@ -5,28 +5,31 @@ const TourSchema = new mongoose.Schema(
     id: String,
     title: String,
     deleted: { type: Boolean, default: false },
+    tourImage: String,
     status: {
         type: String,
         enum: ["PUBLIC", "INDRAFT", "INACTIVE"],  
         default: "PUBLIC",
       },
-    tour: {
-      tourTitle: String,
-      tourDescription: String,
-      tourPrice: String,
-    },
-    travel: {
+
+    tourInfo: {
+      title: String,
+      description: String,
+      price: Number,
+      destination:String,
+      depature:String,
+      include: [String],
       travelDays: String,
       travelCountry: String,
       travelCity: String,
       travelNight: String,
     },
-    meals: {
-      breakfast: String,
-      lunch: String,
-      dinner: String,
-    },
-    tripMap: String,
+    tourPlan: [{
+      title:String,
+      description:String,
+      list:[String]
+    }],
+    location:String,
   },
   {
     timestamps: true,

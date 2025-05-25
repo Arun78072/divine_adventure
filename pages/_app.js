@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    <SessionProvider session={pageProps.session}>
+    // <SessionProvider session={pageProps.session}>
       <Layout>
         <Component {...pageProps} />
         <ToastContainer
@@ -25,6 +25,6 @@ export default function App({ Component, pageProps }) {
           limit={3}
         />
       </Layout>
-    </SessionProvider>
+    // {/* </SessionProvider> */}
   );
 }
