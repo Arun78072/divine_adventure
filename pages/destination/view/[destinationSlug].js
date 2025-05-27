@@ -1,24 +1,19 @@
 import { useRouter } from "next/router";
-
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { baseUrl, copyToClipboard, nestReplies } from "@/utils";
+import { baseUrl, nestReplies } from "@/utils";
 import axios from "axios";
-import Loader from "@/components/Loader";
-import { AiOutlineLike } from "react-icons/ai";
-import { FaHeart, FaRegCopy } from "react-icons/fa";
-import { LuSendHorizonal } from "react-icons/lu";
-import { useSession } from "next-auth/react";
-import CommentBox from "@/components/CommentBox";
-import { RiDeleteBinFill } from "react-icons/ri";
-import ConfirmationBox from "@/components/ConfirmationBox";
-import DialogBox from "@/components/DialogBox";
 import Image from "next/image";
+
+import InformationTab from "./InformationTab";
+import GalleryTab from "./GalleryTab";
+import LocationTab from "./LocationTab";
+import TourPlanTab from "./TourPlanTab";
 
 export default function ViewPost() {
   const [postData, setPostData] = useState({});
   const [loading, setLoading] = useState(false);
-  const { data: session, status } = useSession();
+  const [activeTab, setActiveTab] = useState("Information");
 
   const router = useRouter();
   const { postSlug } = router.query;
@@ -26,33 +21,31 @@ export default function ViewPost() {
   const getSparkDetailsApi = async (url) => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${baseUrl}/api/post/spark?sparkId=${url}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.status == 200) {
+      const response = await axios.get(`url`);
+      if (response.status === 200) {
         const data = response.data;
-
         setPostData({ ...data.data.posts, user: data.data.user });
-        setComments(nestReplies(data.data.comment));
       } else {
         toast.error("Something went wrong");
       }
     } catch (e) {
-      if (e?.response?.data?.error == "User not authenticated") {
-        toast.error("User not authenticated");
-        router.push("/");
-      } else {
-        toast.error("Something went wrong");
-      }
+      toast.error("Error fetching post data");
+      router.push("/");
     } finally {
       setLoading(false);
     }
   };
+
+  let tabContent;
+  if (activeTab === "Information") {
+    tabContent = <InformationTab />;
+  } else if (activeTab === "Tour Plan") {
+    tabContent = <TourPlanTab />;
+  } else if (activeTab === "Location") {
+    tabContent = <LocationTab />;
+  } else if (activeTab === "Gallery") {
+    tabContent = <GalleryTab />;
+  }
 
   return (
     <section>
@@ -62,6 +55,7 @@ export default function ViewPost() {
           width={0}
           height={0}
           sizes="100vw"
+          alt="Banner"
           style={{
             width: "100%",
             height: "800px",
@@ -70,20 +64,27 @@ export default function ViewPost() {
           }}
         />
       </div>
-      <div className="container">
-        <div className="info_tab">
-          <h1>Switzerland</h1>
+
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-6">Switzerland</h1>
+
+        <div className="flex space-x-4 border-b mb-6">
+          {["Information", "Tour Plan", "Location", "Gallery"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`py-2 px-4 font-semibold transition ${
+                activeTab === tab
+                  ? "border-b-4 border-blue-500 text-blue-500"
+                  : "text-gray-500 hover:text-blue-500"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
-        <div className="tour_tab">
-          <h1>Tour section</h1>
-        </div>
-        <div className="location_tab">
-          <h1>Tour section</h1>
-        </div>
-        <div className="gallery_tab">
-          <h1>Tour section</h1>
-        </div>
+        <div className="bg-white shadow rounded">{tabContent}</div>
       </div>
     </section>
   );
