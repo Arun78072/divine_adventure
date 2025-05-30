@@ -278,7 +278,7 @@ button.secandary_button:hover {
 }
 
 /* ===================  Post bar  ======================= */
-0 .post_section {
+ .post_section {
 }
 .post_section .post_title {
   font-size: 30px;
@@ -738,3 +738,5 @@ margin-top:30px;
   border-radius: 10px;
   margin: 10px 0px;
 }
+
+/* information page css */
