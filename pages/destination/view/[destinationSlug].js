@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { baseUrl, copyToClipboard, nestReplies } from "@/utils";
+import { baseUrl, nestReplies } from "@/utils";
 import axios from "axios";
 import Image from "next/image";
 
