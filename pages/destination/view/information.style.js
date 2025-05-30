@@ -4,7 +4,6 @@ const Information = styled.div`
   .tour-container {
     padding: 32px;
     font-family: sans-serif;
-    // background: cadetblue;
   }
 
   .tour-header {
