@@ -1,27 +1,26 @@
-import { baseUrl } from "@/utils";
-import axios from "axios";
+import api from "@/utils";
 import React, { useEffect, useState } from "react";
 import Loader from "../Loader";
 import { toast } from "react-toastify";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaRupeeSign } from "react-icons/fa";
+import Image from "next/image";
 
 export default function MyTours() {
   const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
-    // getPosts();
+    getPosts();
   }, []);
 
   const getPosts = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/api/bounty/my_bounty`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await api.get("/api/tour/all_tour");
       if (response.status == 200) {
         const data = response.data;
         setAllTours(data.data.reverse());
@@ -36,31 +35,66 @@ export default function MyTours() {
       }
     }
   };
+  console.log("allTours =======>", allTours);
   return (
     <>
       {loading ? (
         <Loader loading={loading} />
       ) : (
         <div>
-        <h1>All Tours</h1>
-        <button>Create New Tour </button>
-          <div className="">
+          <h1>All Tours</h1>
+          <Link href={`/destination/edit/create`}>Create New Tour</Link>
+          <div className="post_grid">
             {allTours?.map((item, index) => {
               return (
-                <div
-                  className="shadow-custom w-full p-2 rounded-lg my-3"
-                  key={index}
-                >
-                  <Link href={`/bounties/view/${item?._id}`}>
-                    <h3 className="text-xl">{item?.title}</h3>
-                    <p className="line-clamp-4">{item?.description}</p>
-                    <div className="flex gap-2 mt-2">
-                      <h3>Total Sparks : {item?.sparks.length}</h3>{" "}
-                      <span className="">
-                        Status : {item.status == "ACTIVE" ? "Open" : "Close"}
-                      </span>
-                    </div>
+                <div className="post_card" key={index}>
+                  <div className="image_wrapper">
+                    <Image
+                      src={item.tourImage}
+                      alt={"title"}
+                      width={300}
+                      height={300}
+                      className="post_image"
+                    />
+                  </div>
+                  <div className="info-row">
+                    <span className="icon">
+                      <CiCalendarDate /> {item.tourInfo.travelDays} Days
+                    </span>
+                    <span className="icon">
+                      <IoLocationOutline /> {item.tourInfo.travelCity} Locations
+                    </span>
+                  </div>
+                  <Link
+                    href={`/destination/view/${item._id}`}
+                    className="post_title"
+                  >
+                    {item.title}
                   </Link>
+                  <div className="location_row">
+                    <IoLocationOutline />
+                    India
+                  </div>
+                  <h3 className="price">
+                    <FaRupeeSign /> {item.tourInfo.price}
+                  </h3>
+                  <p className="post_description">
+                    {item.tourInfo.description}
+                  </p>
+                  <div className="action_buttons">
+                    <Link
+                      href={`/destination/view/${item._id}`}
+                      className="post_title secandary_button"
+                    >
+                      View Tour
+                    </Link>
+                    <Link
+                      href={`/destination/edit/${item._id}`}
+                      className="post_title primary_button"
+                    >
+                      Edit Tour
+                    </Link>
+                  </div>
                 </div>
               );
             })}

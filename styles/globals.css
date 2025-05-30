@@ -107,7 +107,7 @@ p {
 }
 
 /* ===================  Comman Style  ======================= */
-button.primary_button {
+.primary_button {
   background: var(--primary-color);
   color: #fff;
   padding: 20px 22px;
@@ -115,13 +115,13 @@ button.primary_button {
   border: none;
   font-size: 18px;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.5s;text-decoration: none;
 }
-button.primary_button:hover {
+.primary_button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
-button.secandary_button {
+.secandary_button {
   background: none;
   color: var(--primary-color);
   padding: 20px 22px;
@@ -129,9 +129,9 @@ button.secandary_button {
   font-size: 18px;
   cursor: pointer;
   border: 2px solid var(--primary-color);
-  transition: all 0.5s;
+  transition: all 0.5s;text-decoration: none;
 }
-button.secandary_button:hover {
+.secandary_button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
@@ -386,7 +386,7 @@ button.secandary_button:hover {
   gap: 10px;
   margin-top: 14px;
 }
-.action_buttons button {
+.action_buttons button ,.action_buttons a {
   width: 100%;
 }
 
@@ -737,4 +737,74 @@ margin-top:30px;
   padding: 10px 4px;
   border-radius: 10px;
   margin: 10px 0px;
+}
+
+/* Destination form css */
+
+.form_box {
+ 
+  background-color: #f9fafb;
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+.form_box h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .form_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form_grid .col-span-2 {
+  grid-column: span 2;
+}
+
+.form_box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #222;
+}
+
+.form_box input,
+.form_box select,
+.form_box textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.form_box input:focus,
+.form_box select:focus,
+.form_box textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }

@@ -1,6 +1,6 @@
 import CreateEditSpark from "@/components/Form/CreateEditSpark";
 import Loader from "@/components/Loader";
-import { baseUrl } from "@/utils";
+import api, { baseUrl } from "@/utils";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -12,24 +12,17 @@ export default function EditPost() {
   const [loading, setLoading] = useState(false);
     // const { data: session } = useSession();;
   const router = useRouter();
-  const { postSlug } = router.query;
+  const { destinationSlug } = router.query;
 
-  
-  const getSparkDetailsApi = async (url) => {
+  console.log('postSlug =======>',destinationSlug)
+  const getTourDetailsApi = async (url) => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${baseUrl}/api/post/spark?sparkId=${url}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.get(`/api/tour/tour_get_by_id?tourId=${url}`);
       if (response.status == 200) {
         const data = response.data;
-
-        setPostData({ ...data.data.posts, user: data.data.user });
+        consol.log('data =========>',data)
+        // setPostData({ ...data.data.posts, user: data.data.user });
       } else {
         toast.error("Something went wrong");
       }
@@ -39,22 +32,22 @@ export default function EditPost() {
       } else {
         toast.error("Something went wrong");
       }
-      router.push("/");
+      // router.push("/");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (postSlug) {
-      getSparkDetailsApi(postSlug);
+    if (destinationSlug) {
+      getTourDetailsApi(destinationSlug);
     }
-  }, [postSlug]);
+  }, [destinationSlug]);
 
   return (
     <div>
       {/* Loader === */}
-      <Loader loading={loading} />
+      {/* <Loader loading={loading} /> */}
 
       <CreateEditSpark data={postData} />
     </div>
