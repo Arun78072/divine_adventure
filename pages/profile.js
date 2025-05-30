@@ -90,7 +90,7 @@ export default function Profile() {
           </div>
 
           {/* All Tour Section */}
-          {/* <MyTours /> */}
+          <MyTours />
         </>
       )}
     </main>

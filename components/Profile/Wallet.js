@@ -13,7 +13,7 @@ export default function Wallet({ data }) {
 
     try {
       const response = await axios.post(
-        `${baseUrl}/api/wallet/add_money`,
+        `${baseUrl}/api/post/spark`,
         {
           amount: Number(amount),
         },

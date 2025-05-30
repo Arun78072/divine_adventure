@@ -1,4 +1,4 @@
-import { baseUrl } from "@/utils";
+import api, { baseUrl } from "@/utils";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -8,42 +8,39 @@ export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);
   const [editFormId, setEditFormId] = useState();
   const [formData, setFormData] = useState({
-    id: "",
-    title: "",
-    tour: {
-      tourTitle: "",
-      tourDescription: "",
-      tourPrice: "",
+    title: "Tour Name",
+    tourImage:
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.treebo.com%2Fblog%2Fmasroor-temple%2F&psig=AOvVaw1v97qnmDM2s1HdswthVh_2&ust=1748253427043000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPixjNitvo0DFQAAAAAdAAAAABAE",
+    status: "PUBLIC",
+    tourInfo: {
+      title: "Masroor Mandir ",
+      description: "This is masroor mandir okay ",
+      price: 20000,
+      destination: "masoor",
+      depature: "12 / 10 / ",
+      include: ["sb kuch"],
+      travelDays: "5",
+      travelCountry: "1",
+      travelCity: "3",
+      travelNight: "6",
     },
-    travel: {
-      travelDays: "",
-      travelCountry: "",
-      travelCity: "",
-      travelNight: "",
-    },
-    meals: {
-      breakfast: "",
-      lunch: "",
-      dinner: "",
-    },
-    tripMap: "",
+    tourPlan: [
+      {
+        title: "tour title",
+        description: "tour description ",
+        list: [""],
+      },
+    ],
+    location:
+      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4085.217993504921!2d76.13469897630256!3d32.07276297396586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b43b22d895a9d%3A0x78c1bd87f3285412!2sMasroor%20Rock-cut%20Temple!5e1!3m2!1sen!2sin!4v1748167152928!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
   });
 
   const SubmitTour = async () => {
     try {
-      console.log('formData ======>',formData)
       setLoading(true);
-      const payload = { ...formData};
-      // const payload = { ...formData, id: editFormId };
-      const response = await axios.post(
-        `${baseUrl}/api/post/add_tour`,
-        payload,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const payload = { ...formData };
+ 
+      const response = await api.post("/api/tour/add_tour",payload);
       if (response.status === 201) {
         toast.success("Tour saved successfully");
       } else {
@@ -58,172 +55,222 @@ export default function CreateEditTour({ data }) {
 
   useEffect(() => {
     if (data) {
-      setFormData(data);
-      setEditFormId(data._id);
+      // setFormData(data);
+      // setEditFormId(data._id);
     }
   }, [data]);
 
   return (
-    <div>
+    <div className="form_box">
       <Loader loading={loading} />
-      <section className="w-full mt-32 my-5">
-        <div className="max-w-screen-lg mx-auto">
-          <h1 className="font-semibold ml-6 text-3xl">Create / Edit Tour</h1>
-          <div className="flex flex-col gap-6 p-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Title */}
+      <section>
+        <div className="container">
+          <h1>Create / Edit Tour</h1>
+          <div className="form_wrapper">
+            <div className="form_grid">
               <div>
                 <label>Tour Name</label>
                 <input
                   type="text"
                   value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
                   placeholder="Main title of the tour"
                 />
               </div>
-
-              {/* Tour Section */}
               <div>
-                <label>Tour Title</label>
+                <label>Tour Image URL</label>
                 <input
                   type="text"
-                  value={formData.tour?.tourTitle}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    tour: { ...formData.tour, tourTitle: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourImage}
+                  onChange={(e) =>
+                    setFormData({ ...formData, tourImage: e.target.value })
+                  }
                 />
               </div>
               <div>
-                <label>Tour Description</label>
+                <label>Status</label>
+                <select
+                  value={formData.status}
+                  onChange={(e) =>
+                    setFormData({ ...formData, status: e.target.value })
+                  }
+                >
+                  <option value="PUBLIC">PUBLIC</option>
+                  <option value="INDRAFT">INDRAFT</option>
+                  <option value="INACTIVE">INACTIVE</option>
+                </select>
+              </div>
+              <div>
+                <label>Tour Info Title</label>
+                <input
+                  type="text"
+                  value={formData.tourInfo.title}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: { ...formData.tourInfo, title: e.target.value },
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label>Description</label>
                 <textarea
-                  value={formData.tour?.tourDescription}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    tour: { ...formData.tour, tourDescription: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourInfo.description}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        description: e.target.value,
+                      },
+                    })
+                  }
                 />
               </div>
               <div>
-                <label>Tour Price</label>
+                <label>Price</label>
                 <input
-                  type="text"
-                  value={formData.tour?.tourPrice}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    tour: { ...formData.tour, tourPrice: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  type="number"
+                  value={formData.tourInfo.price}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        price: parseFloat(e.target.value),
+                      },
+                    })
+                  }
                 />
               </div>
-
-              {/* Travel Section */}
+              <div>
+                <label>Destination</label>
+                <input
+                  type="text"
+                  value={formData.tourInfo.destination}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        destination: e.target.value,
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label>Depature</label>
+                <input
+                  type="text"
+                  value={formData.tourInfo.depature}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        depature: e.target.value,
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label>Include In Tour Plan </label>
+                <input
+                  type="text"
+                  value={formData.tourInfo.include[0]}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        include: [e.target.value],
+                      },
+                    })
+                  }
+                />
+              </div>
               <div>
                 <label>Travel Days</label>
                 <input
                   type="text"
-                  value={formData.travel?.travelDays}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    travel: { ...formData.travel, travelDays: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourInfo.travelDays}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        travelDays: e.target.value,
+                      },
+                    })
+                  }
                 />
               </div>
               <div>
                 <label>Travel Country</label>
                 <input
                   type="text"
-                  value={formData.travel?.travelCountry}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    travel: { ...formData.travel, travelCountry: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourInfo.travelCountry}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        travelCountry: e.target.value,
+                      },
+                    })
+                  }
                 />
               </div>
               <div>
                 <label>Travel City</label>
                 <input
                   type="text"
-                  value={formData.travel?.travelCity}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    travel: { ...formData.travel, travelCity: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourInfo.travelCity}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        travelCity: e.target.value,
+                      },
+                    })
+                  }
                 />
               </div>
               <div>
                 <label>Travel Night</label>
                 <input
                   type="text"
-                  value={formData.travel?.travelNight}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    travel: { ...formData.travel, travelNight: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.tourInfo.travelNight}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tourInfo: {
+                        ...formData.tourInfo,
+                        travelNight: e.target.value,
+                      },
+                    })
+                  }
                 />
               </div>
-
-              {/* Meals */}
-              <div>
-                <label>Breakfast</label>
-                <input
-                  type="text"
-                  value={formData.meals?.breakfast}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    meals: { ...formData.meals, breakfast: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
-                />
-              </div>
-              <div>
-                <label>Lunch</label>
-                <input
-                  type="text"
-                  value={formData.meals?.lunch}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    meals: { ...formData.meals, lunch: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
-                />
-              </div>
-              <div>
-                <label>Dinner</label>
-                <input
-                  type="text"
-                  value={formData.meals?.dinner}
-                  onChange={(e) => setFormData({
-                    ...formData,
-                    meals: { ...formData.meals, dinner: e.target.value },
-                  })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
-                />
-              </div>
-
-              {/* Trip Map */}
               <div className="col-span-2">
-                <label>Trip Map</label>
+                <label>Location</label>
                 <input
                   type="text"
-                  value={formData.tripMap}
-                  onChange={(e) => setFormData({ ...formData, tripMap: e.target.value })}
-                  className="w-full p-2 rounded-lg border border-black my-2"
+                  value={formData.location}
+                  onChange={(e) =>
+                    setFormData({ ...formData, location: e.target.value })
+                  }
                 />
               </div>
             </div>
 
-            <button
-              className="mt-4 w-fit py-2 px-4 font-medium text-sm border rounded-[8px] text-white bg-black hover:bg-gray-800 lg:text-medium"
-              onClick={SubmitTour}
-            >
+            <button onClick={SubmitTour} className="primary_button">
               Save changes
             </button>
           </div>

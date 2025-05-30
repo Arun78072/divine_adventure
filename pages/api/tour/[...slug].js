@@ -31,63 +31,24 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while fetching topics" });
     }
-  } else if (slug[0] === "spark") {
+  } else if (slug[0] === "tour_get_by_id") {
     try {
-      const { sparkId } = req.query;
+      const { tourId } = req.query;
       if (!req.user || !req.user.id) {
         return res.status(401).json({ error: "User not authenticated" });
       }
-      const userId = req.user.id;
-      const posts = await Post.findOne({
-        _id: sparkId,
+      const tour = await Tour.findOne({
+        _id: tourId,
         deleted: false,
       });
-
-      if (!posts._id) {
-        res.status(404).json({ error: "Invalid Spark Id" });
+      console.log("tour ========?>", tour);
+      if (!tour._id) {
+        res.status(404).json({ error: "Invalid Tour Id" });
       }
-      const userData = await User.findOne({ _id: posts.userId });
-      const findLikeCount = await LikeDislike.find({
-        postId: sparkId,
-      });
-
-      const findVotes = await Vote.find({ postId: sparkId });
-      const findComments = await Comment.find({ postId: sparkId }).populate(
-        "user"
-      );
-      const updatedComments = findComments.map((comment) => ({
-        ...comment.toObject(),
-        isLiked: comment.like.some((li) => li.user.toString() === userId),
-      }));
-
-      // posts.likeCount =
-      //   findLikeCount.filter((item) => item.type === "Like").length || 0;
-      // posts.disLikeCount =
-      //   findLikeCount.filter((item) => item.type === "Dislike").length || 0;
-      posts.isLiked =
-        findLikeCount.filter(
-          (item) => item.userId === userId && item.type === "Like"
-        ).length > 0
-          ? true
-          : false;
-      posts.isDisliked =
-        findLikeCount.filter(
-          (item) => item.userId === userId && item.type === "Dislike"
-        ).length > 0
-          ? true
-          : false;
-      posts.isVoted =
-        findVotes.filter((vote) => vote.userId === userId).length > 0
-          ? true
-          : false;
       res.status(200).json({
         status: 200,
-        message: "Topics fetched successfully",
-        data: {
-          posts,
-          user: userData,
-          comment: updatedComments,
-        },
+        message: "Tour fetched successfully",
+        data: tour,
       });
     } catch (error) {
       console.error("Error fetching topics:", error);
@@ -98,43 +59,24 @@ export default async function handler(req, res) {
   } else if (slug[0] === "all_tour") {
     try {
       let posts;
-        posts = await Tour.find({
-          deleted: false,
-          status: "PUBLIC",
-        })
+      posts = await Tour.find({
+        deleted: false,
+      });
       res.status(200).json({
         status: 200,
-        message: "Post fetched successfully",
+        message: "Tour fetched successfully",
         data: posts,
       });
     } catch (error) {
-      console.error("Error fetching post:", error);
+      console.error("Error fetching tour:", error);
       res
         .status(500)
-        .json({ error: "Something went wrong while fetching post" });
+        .json({ error: "Something went wrong while fetching tour" });
     }
   } else if (slug[0] === "add_tour") {
-    debugger
-    console.log('eq.body======>',eq.body)
+    console.log("eq.body======>", req.body);
     try {
-      const {
-        title,
-        status,
-        tour,
-        travel,
-        meals,
-        tripMap,
-      } = req.body;
-    
-      const newTour = await Tour.create({
-        title,
-        status,
-        tour,
-        travel,
-        meals,
-        tripMap,
-      });
-    
+      const newTour = await Tour.create({ ...req.body });
       res.status(201).json({
         message: "Tour Created",
         tour: newTour,
@@ -146,7 +88,6 @@ export default async function handler(req, res) {
         error: "Something went wrong while creating the tour",
       });
     }
-    
   } else if (slug[0] === "edit_spark") {
     try {
       const { title, description, category, image, id, tags } = req.body;

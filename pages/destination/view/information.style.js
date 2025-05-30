@@ -61,7 +61,6 @@ const Information = styled.div`
   max-width: 380px;
   background-color: #f9f9f9;
   padding: 32px;
-//   border-radius: 8px;
   font-family: 'Arial', sans-serif;
 }
 
