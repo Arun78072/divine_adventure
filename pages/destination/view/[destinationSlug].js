@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { baseUrl, nestReplies } from "@/utils";
+import api, { baseUrl, nestReplies } from "@/utils";
 import axios from "axios";
 import Image from "next/image";
 
@@ -9,6 +9,7 @@ import InformationTab from "./InformationTab";
 import GalleryTab from "./GalleryTab";
 import LocationTab from "./LocationTab";
 import TourPlanTab from "./TourPlanTab";
+import DestinationStyle from "./destination.style";
 
 export default function ViewPost() {
   const [postData, setPostData] = useState({});
@@ -18,37 +19,51 @@ export default function ViewPost() {
   const router = useRouter();
   const { postSlug } = router.query;
 
-  const getSparkDetailsApi = async (url) => {
+  const { destinationSlug } = router.query;
+
+  console.log('destinationSlug =======>',destinationSlug)
+  const getTourDetailsApi = async (url) => {
     setLoading(true);
     try {
-      const response = await axios.get(`url`);
-      if (response.status === 200) {
-        const data = response.data;
-        setPostData({ ...data.data.posts, user: data.data.user });
+      const response = await api.get(`/api/tour/tour_get_by_id?tourId=${url}`);
+      if (response.status == 200) {
+        const data = response.data.data;
+        setPostData(data);
+      } 
+    } catch (e) {
+      if (e?.response?.data?.error == "User not authenticated") {
+        toast.error("User not authenticated");
       } else {
         toast.error("Something went wrong");
       }
-    } catch (e) {
-      toast.error("Error fetching post data");
-      router.push("/");
+      // router.push("/");
     } finally {
       setLoading(false);
     }
   };
 
+  useEffect(() => {
+    if (destinationSlug) {
+      getTourDetailsApi(destinationSlug);
+    }
+  }, [destinationSlug]);
+
+
+
+
   let tabContent;
   if (activeTab === "Information") {
-    tabContent = <InformationTab />;
+    tabContent = <InformationTab data={postData}/>;
   } else if (activeTab === "Tour Plan") {
-    tabContent = <TourPlanTab />;
+    tabContent = <TourPlanTab data={postData}/>;
   } else if (activeTab === "Location") {
-    tabContent = <LocationTab />;
+    tabContent = <LocationTab data={postData}/>;
   } else if (activeTab === "Gallery") {
-    tabContent = <GalleryTab />;
+    tabContent = <GalleryTab data={postData}/>;
   }
 
   return (
-    <section>
+    <DestinationStyle>
       <div className="banner_image">
         <Image
           src="/assets/mountain_boy.jpg"
@@ -65,27 +80,24 @@ export default function ViewPost() {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-6">Switzerland</h1>
-
-        <div className="flex space-x-4 border-b mb-6">
+      <div className="container view_section">
+        <div className="tab_section">
           {["Information", "Tour Plan", "Location", "Gallery"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-2 px-4 font-semibold transition ${
+              className={`${
                 activeTab === tab
-                  ? "border-b-4 border-blue-500 text-blue-500"
-                  : "text-gray-500 hover:text-blue-500"
+                  ? "active"
+                  : ""
               }`}
             >
               {tab}
             </button>
           ))}
         </div>
-
         <div className="bg-white shadow rounded">{tabContent}</div>
       </div>
-    </section>
+    </DestinationStyle>
   );
 }

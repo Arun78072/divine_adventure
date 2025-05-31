@@ -35,7 +35,7 @@ export default function MyTours() {
       }
     }
   };
-  console.log("allTours =======>", allTours);
+  
   return (
     <>
       {loading ? (

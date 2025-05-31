@@ -39,7 +39,6 @@ export default function CreateEditTour({ data }) {
     try {
       setLoading(true);
       const payload = { ...formData };
- 
       const response = await api.post("/api/tour/add_tour",payload);
       if (response.status === 201) {
         toast.success("Tour saved successfully");
@@ -52,11 +51,9 @@ export default function CreateEditTour({ data }) {
       toast.error("Error while saving tour");
     }
   };
-
   useEffect(() => {
     if (data) {
-      // setFormData(data);
-      // setEditFormId(data._id);
+      setFormData(data);
     }
   }, [data]);
 

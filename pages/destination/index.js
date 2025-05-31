@@ -1,6 +1,6 @@
 import { CiCalendarDate, CiFilter } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import { baseUrl } from "@/utils";
+import api, { baseUrl } from "@/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Link from "next/link";
@@ -18,6 +18,31 @@ export default function AllSparks() {
   const [posts, setPosts] = useState([]);
   const [activeScreen, setActiveScreen] = useState("my_spark");
   const [editFormData, setEditFormData] = useState({});
+  const [allTours, setAllTours] = useState([]);
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const getPosts = async () => {
+    try {
+      const response = await api.get("/api/tour/all_tour");
+      if (response.status == 200) {
+        const data = response.data;
+        setAllTours(data.data.reverse());
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (e) {
+      if (e?.response?.data?.error == "User not authenticated") {
+        router.push("/");
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+  };
+
+
 
   return (
     <main className="destination_section">
@@ -39,7 +64,7 @@ export default function AllSparks() {
       <Loader loading={loading} />
       <section className="container">
         <div>
-          <div class="description">
+          <div className="description">
             <h1>
               India Tourism – A Tapestry of Culture, Nature, and Spirituality
             </h1>
@@ -113,13 +138,13 @@ export default function AllSparks() {
 
           {/* All Tour Post */}
           <div className="post_grid">
-            {[1, 1, 1, 1, 1, 1]?.map((item, index) => {
+            {allTours?.map((item, index) => {
               return (
                 <div className="post_card" key={index}>
                   <div className="image_wrapper">
                     <Image
                       src={
-                        "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        item.tourImage
                       }
                       alt={"title"}
                       width={300}
@@ -139,7 +164,7 @@ export default function AllSparks() {
                     href={`/destination/view/${index}`}
                     className="post_title"
                   >
-                    Switzerland
+                    {item.tourInfo.title}
                   </Link>
                   <div className="location_row">
                     <IoLocationOutline />
@@ -149,13 +174,21 @@ export default function AllSparks() {
                     <FaRupeeSign /> 12000
                   </h3>
                   <p className="post_description">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.
+                  {item.tourInfo.description}
+                    
                   </p>
-                  <div className="action_buttons">
+                  {/* <div className="action_buttons">
                     <button className="secandary_button">Query Form</button>
-                    <button className="primary_button">Explore Now</button>
+                    <button className="primary_button">View Now</button>
+                  </div> */}
+                  <div className="action_buttons">
+                  <button className="secandary_button">Query Form</button>
+                    <Link
+                      href={`/destination/view/${item._id}`}
+                      className="post_title primary_button"
+                    >
+                      View Tour
+                    </Link>
                   </div>
                 </div>
               );

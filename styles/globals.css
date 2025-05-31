@@ -26,7 +26,19 @@ p {
 }
 
 /* ----------- Loader style -------- */
-
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+}
 .loader {
   width: 40px;
   height: 20px;
@@ -115,7 +127,9 @@ p {
   border: none;
   font-size: 18px;
   cursor: pointer;
-  transition: all 0.5s;text-decoration: none;
+  transition: all 0.5s;
+  text-decoration: none;
+  text-align: center;
 }
 .primary_button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
@@ -129,7 +143,9 @@ p {
   font-size: 18px;
   cursor: pointer;
   border: 2px solid var(--primary-color);
-  transition: all 0.5s;text-decoration: none;
+  transition: all 0.5s;
+  text-decoration: none;
+  text-align: center;
 }
 .secandary_button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
@@ -192,11 +208,27 @@ p {
   background: #00000045;
   backdrop-filter: blur(5px);
   padding: 10px 0px;
-  z-index: 9;
+  z-index: 999;
+}
+.title_line_wrapper {
+  overflow: hidden;
+  white-space: nowrap;
 }
 .title_line {
-  text-align: center;
+  color: #fff;
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 30s linear infinite;
 }
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .nav_bar {
   background: transparent;
   display: flex;
@@ -278,7 +310,7 @@ p {
 }
 
 /* ===================  Post bar  ======================= */
- 
+
 .post_section .post_title {
   font-size: 30px;
   text-align: center;
@@ -385,7 +417,8 @@ p {
   gap: 10px;
   margin-top: 14px;
 }
-.action_buttons button ,.action_buttons a {
+.action_buttons button,
+.action_buttons a {
   width: 100%;
 }
 
@@ -723,7 +756,7 @@ p {
 /* Headling  */
 
 .headline_form {
-margin-top:30px;
+  margin-top: 30px;
 }
 .headline_form label {
   font-size: 18px;
@@ -741,7 +774,6 @@ margin-top:30px;
 /* Destination form css */
 
 .form_box {
- 
   background-color: #f9fafb;
   padding: 40px 20px;
   border-radius: 10px;

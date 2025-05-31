@@ -52,12 +52,26 @@ export const copyToClipboard = (text) => {
 
 
 const api = axios.create({
-  // process.env.NEXT_PUBLIC_API_BASE_URL || 
-  baseURL: 'http://localhost:3000', // set your base API URL
+  baseURL: 'http://localhost:3000', 
   headers: {
     'Content-Type': 'application/json',
+    "Cache-Control": "no-cache", 
+    Pragma: "no-cache",
+    Expires: "0",
   },
 });
+
+
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
 
 api.interceptors.request.use(
   (config) => {
@@ -66,10 +80,19 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
+    // Force no-cache only on GET requests
+    if (config.method === 'get') {
+      config.headers['Cache-Control'] = 'no-cache';
+      config.headers['Pragma'] = 'no-cache';
+      config.headers['Expires'] = '0';
+    }
+
     return config;
   },
   (error) => Promise.reject(error)
 );
+
+
 
 // Response Interceptor
 api.interceptors.response.use(
