@@ -42,7 +42,6 @@ export default function EditPost() {
   return (
     <div>
       <Loader loading={loading} />
-
       <CreateEditSpark data={postData} />
     </div>
   );
