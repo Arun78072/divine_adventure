@@ -12,8 +12,37 @@ export default function CreateEditTour({ data }) {
   const SubmitTour = async () => {
     try {
       setLoading(true);
-      const payload = { ...formData };
-      const response = await api.post("/api/tour/add_tour",payload);
+      const payload = {
+        tourInfo: {
+          title: "Masroor Mandir ",
+          description: "This is masroor mandir okay ",
+          price: 20000,
+          destination: "masoor",
+          depature: "12 / 10 / ",
+          include: ["sb kuch"],
+          travelDays: "5",
+          travelCountry: "1",
+          travelCity: "3",
+          travelNight: "6",
+        },
+        _id: "6839e9d70f6fe09b4b8c2188",
+        title: "Tour Name",
+        deleted: false,
+        tourImage:
+          "https://img.freepik.com/free-photo/young-female-traveler-enjoying-rural-surroundings_23-2149125532.jpg?uid=R26337487&ga=GA1.1.1668163620.1737013112&semt=ais_hybrid&w=740",
+        status: "PUBLIC",
+        tourPlan: [
+          {
+            title: "tour title",
+            description: "tour description ",
+            list: [""],
+            _id: "6839e9d70f6fe09b4b8c2189",
+          },
+        ],
+        location:
+          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4085.217993504921!2d76.13469897630256!3d32.07276297396586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b43b22d895a9d%3A0x78c1bd87f3285412!2sMasroor%20Rock-cut%20Temple!5e1!3m2!1sen!2sin!4v1748167152928!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+      };
+      const response = await api.post("/api/tour/add_tour", payload);
       if (response.status === 201) {
         toast.success("Tour saved successfully");
       } else {
@@ -30,7 +59,7 @@ export default function CreateEditTour({ data }) {
       setFormData(data);
     }
   }, [data]);
-console.log('formData======>',formData)
+  console.log("formData======>", formData);
   return (
     <div className="form_box">
       <Loader loading={loading} />
