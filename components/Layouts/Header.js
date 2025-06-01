@@ -46,7 +46,7 @@ export default function Header() {
         <nav className="nav_bar">
           <Link className="" href="/">
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo3.png"
               alt={"Logo"}
               width={100}
               height={50}

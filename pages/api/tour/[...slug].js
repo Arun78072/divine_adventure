@@ -1,8 +1,6 @@
 import checkAuth from "../middleware/checkAuth";
 import connectMongoDB from "@/lib/mongodb";
 import Post from "@/models/post";
-import User from "@/models/user";
-import LikeDislike from "@/models/likeDislike";
 import Vote from "@/models/vote";
 import Comment from "@/models/comment";
 import Tour from "@/models/tour";
@@ -88,27 +86,20 @@ export default async function handler(req, res) {
         error: "Something went wrong while creating the tour",
       });
     }
-  } else if (slug[0] === "edit_spark") {
+  } else if (slug[0] === "edit_tour") {
     try {
-      const { title, description, category, image, id, tags } = req.body;
-      const userId = req.user.id;
-      const newTopic = await Post.findOneAndUpdate(
-        { _id: id, userId, deleted: false },
+      const { id, ...data } = req.body;
+      console.log('id =======>',id)
+      const newTour = await Tour.findOneAndUpdate(
+        { _id: id, deleted: false },
         {
-          title,
-          description,
-          category,
-          image,
-          // userId,
-          tags,
+          ...data,
         },
         { new: true }
       );
       res
         .status(201)
-        .json({ message: "Topic Created", topic: newTopic, status: 201 });
-
-      const access_codes = tags.map((tag) => tag.code);
+        .json({ message: "Tour Created", data: newTour, status: 201 });
     } catch (error) {
       console.error("Error creating topic:", error);
       res
@@ -140,20 +131,25 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while creating the topic" });
     }
-  } else if (slug[0] === "delete_spark") {
+  } else if (slug[0] === "delete_tour") {
     try {
-      const { spark_id } = req.body;
-      const userId = req.user.id;
-      const updatedPost = await Post.findOneAndUpdate(
-        { _id: spark_id, userId },
-        { $set: { deleted: true } }
-      );
-      if (!updatedPost) {
-        return res.status(404).json({ error: "Post not found" });
+      const { tour_id } = req.query;
+      if (!req.user || !req.user.id) {
+        return res.status(401).json({ error: "User not authenticated" });
+      }
+      console.log('tour_id ========>',tour_id)
+      // const updatedPost = await Tour.findOneAndUpdate(
+      //   { _id: tour_id },
+      //   { $set: { deleted: true } }
+      // );
+      const deletedTour = await Tour.findByIdAndDelete(tour_id);
+
+      if (!deletedTour) {
+        return res.status(404).json({ error: "Tour not found" });
       }
       res.status(200).json({
-        message: "Post deleted successfully",
-        postDelete: true,
+        message: "Tour deleted successfully",
+        TourDelete: true,
       });
     } catch (error) {
       console.error("Error deleting post:", error);

@@ -144,7 +144,7 @@ export default function AllSparks() {
                   <div className="image_wrapper">
                     <Image
                       src={
-                        item.tourImage
+                        item.tourInfo.coverImage
                       }
                       alt={"title"}
                       width={300}

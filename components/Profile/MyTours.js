@@ -8,10 +8,14 @@ import { CiCalendarDate } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaRupeeSign } from "react-icons/fa";
 import Image from "next/image";
+import { RiDeleteBinFill } from "react-icons/ri";
+import ConfirmationBox from "../ConfirmationBox";
 
 export default function MyTours() {
   const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const [confirmationBox, setConfirmationBox] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -19,6 +23,7 @@ export default function MyTours() {
   }, []);
 
   const getPosts = async () => {
+    setLoading(true);
     try {
       const response = await api.get("/api/tour/all_tour");
       if (response.status == 200) {
@@ -33,9 +38,32 @@ export default function MyTours() {
       } else {
         toast.error("Something went wrong");
       }
+    } finally {
+      setLoading(false);
     }
   };
-  
+
+  const handleDeleteTour = async(id)=>{
+    setLoading(true);
+    try {
+      const response = await api.post(`/api/tour/delete_tour?tour_id=${id}`);
+      if (response.status == 200) {
+        setAllTours((item)=>item.filter((i)=>i._id != id));
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (e) {
+      if (e?.response?.data?.error == "User not authenticated") {
+        router.push("/");
+      } else {
+        toast.error("Something went wrong");
+      }
+    } finally {
+      setConfirmationBox(false)
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       {loading ? (
@@ -48,9 +76,18 @@ export default function MyTours() {
             {allTours?.map((item, index) => {
               return (
                 <div className="post_card" key={index}>
+                  <button
+                    className="delete_button"
+                    onClick={() => {
+                      setDeleteId(item._id);
+                      setConfirmationBox(true);
+                    }}
+                  >
+                    <RiDeleteBinFill />
+                  </button>
                   <div className="image_wrapper">
                     <Image
-                      src={item.tourImage}
+                      src={item.tourInfo.coverImage}
                       alt={"title"}
                       width={300}
                       height={300}
@@ -101,6 +138,15 @@ export default function MyTours() {
           </div>
         </div>
       )}
+
+      <ConfirmationBox
+        open={confirmationBox}
+        title={"Are you sure to delete this Spark"}
+        handleClick={() => {
+          handleDeleteTour(deleteId);
+        }}
+        handleClose={() => setConfirmationBox(false)}
+      />
     </>
   );
 }

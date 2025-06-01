@@ -1,8 +1,6 @@
 import CreateEditSpark from "@/components/Form/CreateEditSpark";
 import Loader from "@/components/Loader";
-import api, { baseUrl } from "@/utils";
-import axios from "axios";
-import { useSession } from "next-auth/react";
+import api from "@/utils";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -25,7 +23,7 @@ export default function EditPost() {
       if (e?.response?.data?.error == "User not authenticated") {
         toast.error("User not authenticated");
       } else {
-        toast.error("Something went wrong");
+        toast.error("Invalid Tour Id");
       }
       router.push("/");
     } finally {
@@ -35,7 +33,11 @@ export default function EditPost() {
 
   useEffect(() => {
     if (destinationSlug) {
-      getTourDetailsApi(destinationSlug);
+      if(destinationSlug == 'create'){
+        return
+      }else{
+        getTourDetailsApi(destinationSlug);
+      }
     }
   }, [destinationSlug]);
 

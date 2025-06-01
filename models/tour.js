@@ -3,33 +3,41 @@ import mongoose from "mongoose";
 const TourSchema = new mongoose.Schema(
   {
     id: String,
-    title: String,
     deleted: { type: Boolean, default: false },
-    tourImage: String,
     status: {
         type: String,
-        enum: ["PUBLIC", "INDRAFT", "INACTIVE"],  
+        enum: ["PUBLIC", "INACTIVE"],  
         default: "PUBLIC",
       },
-
     tourInfo: {
       title: String,
+      coverImage: String,
       description: String,
       price: Number,
-      destination:String,
+      destination:[String],
       depature:String,
+      depatureTime:String,
+      returnTime:String,
       include: [String],
+      notInclude: [String],
       travelDays: String,
       travelCountry: String,
       travelCity: String,
       travelNight: String,
+      country:String,
+      
     },
     tourPlan: [{
       title:String,
       description:String,
+      locationImage:String,
       list:[String]
     }],
-    location:String,
+    location:{
+      note:String,
+      address:String,
+      locationLink:String,
+    },
   },
   {
     timestamps: true,

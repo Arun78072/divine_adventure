@@ -25,6 +25,15 @@ export default function Home() {
             sizes="100vw"
             style={{ width: "100%", height: "auto" }}
           />
+          <Image
+            src="/assets/flag.jpg"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="flag_image"
+            style={{ width: "100%", height: "auto" }}
+          />
+
           <Post />
           <div className="explore_section">
             <div>
