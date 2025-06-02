@@ -165,7 +165,6 @@ p {
   content: "";
   width: 100%;
   height: calc(100% - 6px);
-
   position: absolute;
   top: 0px;
 }

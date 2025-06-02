@@ -11,40 +11,49 @@ export default function InformationTab({ data }) {
       <section className="tour-container">
         <div className="tour-header">
           <div className="left">
-            <h1>Switzerland</h1>
+            <h1>{data?.tourInfo?.title}</h1>
             <p className="price">
-              1,000 $ <span>/ Per Couple</span>
+            {data?.tourInfo?.price} <span>/ Per Couple</span>
             </p>
             <p className="reviews">⭐⭐⭐⭐⭐ (2.3k reviews)</p>
             <p className="description">
-              Ex optio sequi et quos praesentium in nostrum labore nam rerum
-              iusto aut magni nesciunt? Quo quidem neque iste expedita est dolor
-              similique ut quasi maxime ut deserunt autem.
+            {data?.tourInfo?.description}
             </p>
+
+
 
             <div className="tour-details">
               <p>
-                <strong>Destination:</strong> Zurich, Switzerland
+                <strong>Destination:</strong> {data?.tourInfo?.destination.join(', ')}
               </p>
               <p>
-                <strong>Departure:</strong> Main Square, New City
+                <strong>Departure:</strong> {data?.tourInfo?.depature}
               </p>
               <p>
-                <strong>Departure Time:</strong> Approx. 09:00 AM
+                <strong>Travel Days:</strong> {data?.tourInfo?.travelDays}
               </p>
               <p>
-                <strong>Return Time:</strong> Approx. 06:00 PM
+                <strong>Travel Country:</strong> {data?.tourInfo?.travelCountry}
               </p>
               <p>
-                <strong>Dress Code:</strong> Comfortable and light
+                <strong>Travel City:</strong> {data?.tourInfo?.travelCity}
               </p>
               <p>
-                <strong>Not Included:</strong> Gallery Ticket, Lunch
+                <strong>Travel Night:</strong> {data?.tourInfo?.travelNight}
               </p>
               <p>
-                <strong>Included:</strong> Tour & Accommodation, Breakfast,
-                Personal Guide
+                <strong>Departure Date and Time:</strong> {data?.tourInfo?.depatureTime}
               </p>
+              <p>
+                <strong>Return Time:</strong> {data?.tourInfo?.returnTime}
+              </p>
+            
+              <p>
+                <strong>Not Included:</strong> {data?.tourInfo?.notInclude?.join(', ')}
+              </p>
+              <p>
+  <strong>Included:</strong> {data?.tourInfo?.include?.join(', ')}
+</p>
             </div>
           </div>
 
