@@ -1,8 +1,23 @@
-export default function TourPlanTab() {
+export default function TourPlanTab({ data }) {
+  console.log("data ======>", data.tourPlan);
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-2">Tour plan</h2>
-      <p>This is tour plan</p>
+    <div className="tour_plan">
+      <h2 className="title">Tour plan</h2>
+
+      {data.tourPlan.map((item, index) => (
+        <div className="day_section">
+          <span>{index + 1}</span>
+          <h3>
+            Day {index + 1}: {item.title}
+          </h3>
+          <p>{item.description}</p>
+          <ul>
+            {item.list?.map((i, ix) => (
+              <li>{i}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }

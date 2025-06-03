@@ -32,14 +32,13 @@ export default async function handler(req, res) {
   } else if (slug[0] === "tour_get_by_id") {
     try {
       const { tourId } = req.query;
-      if (!req.user || !req.user.id) {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
+      // if (!req.user || !req.user.id) {
+      //   return res.status(401).json({ error: "User not authenticated" });
+      // }
       const tour = await Tour.findOne({
         _id: tourId,
         deleted: false,
       });
-      console.log("tour ========?>", tour);
       if (!tour._id) {
         res.status(404).json({ error: "Invalid Tour Id" });
       }
@@ -73,6 +72,9 @@ export default async function handler(req, res) {
     }
   } else if (slug[0] === "add_tour") {
     console.log("eq.body======>", req.body);
+     if (!req.user || !req.user.id) {
+        return res.status(401).json({ error: "User not authenticated" });
+      }
     try {
       const newTour = await Tour.create({ ...req.body });
       res.status(201).json({
@@ -88,6 +90,9 @@ export default async function handler(req, res) {
     }
   } else if (slug[0] === "edit_tour") {
     try {
+       if (!req.user || !req.user.id) {
+        return res.status(401).json({ error: "User not authenticated" });
+      }
       const { id, ...data } = req.body;
       console.log('id =======>',id)
       const newTour = await Tour.findOneAndUpdate(

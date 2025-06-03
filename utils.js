@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import axios from 'axios';
 
 export const baseUrl = "http://localhost:3000";
-// export const baseUrl = "https://spark.sdnaprod.com";
+
 
 export const formateDate = (dates) => {
   const date = new Date(dates);
@@ -48,7 +48,9 @@ export const copyToClipboard = (text) => {
   toast.success("Successfully copied the Spark ID!");
 };
 
+export const  uploadImage = ()=>{
 
+}
 
 
 const api = axios.create({
@@ -62,16 +64,6 @@ const api = axios.create({
 });
 
 
-// api.interceptors.request.use(
-//   (config) => {
-//     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => Promise.reject(error)
-// );
 
 api.interceptors.request.use(
   (config) => {

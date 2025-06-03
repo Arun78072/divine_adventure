@@ -9,6 +9,7 @@ import { RiDeleteBinFill } from "react-icons/ri";
 export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);
   const [editFormId, setEditFormId] = useState();
+  const [coverImage, setCoverImage] = useState("");
   const [formData, setFormData] = useState({
     status: "PUBLIC",
     tourInfo: {
@@ -59,6 +60,20 @@ export default function CreateEditTour({ data }) {
 
     setTourPlan(update); // If this is for `formData`
   };
+  const handleUploadImage = async (file) => {
+    try {
+      if (!file) return;
+      const formData = new FormData();
+      formData.append("image", file);
+console.log('file =========>',file)
+      const response = await api.post("/api/media/upload_image", { file });
+
+      console.log("data =upload imhg =====>", response);
+      // setUploadedUrl(data.url);
+    } catch (e) {
+      console.log("error");
+    }
+  };
   const SubmitTour = async () => {
     try {
       setLoading(true);
@@ -108,6 +123,7 @@ export default function CreateEditTour({ data }) {
   useEffect(() => {
     if (data) {
       setFormData(data);
+      setTourPlan(data.tourPlan);
       setEditFormId(data?._id);
     }
   }, [data]);
@@ -154,7 +170,8 @@ export default function CreateEditTour({ data }) {
               </div>
               <div>
                 <label>Cover Image of Tour</label>
-                <input
+                  <input type="file" onChange={(e)=>handleUploadImage(e.target.files?.[0])}/>
+                {/* <input
                   type="text"
                   value={formData?.tourInfo?.coverImage}
                   onChange={(e) =>
@@ -166,7 +183,7 @@ export default function CreateEditTour({ data }) {
                       },
                     })
                   }
-                />
+                /> */}
               </div>
               <div>
                 <label>Description of Tour</label>
@@ -507,7 +524,7 @@ export default function CreateEditTour({ data }) {
                 Add More +
               </button>
               <div className="col-span-2">
-                {tourPlan.map((item, index) => (
+                {tourPlan?.map((item, index) => (
                   <div className="form_grid tour_form">
                     <h3> Day {index + 1}</h3>
                     <button
@@ -558,7 +575,7 @@ export default function CreateEditTour({ data }) {
                       <label>List of Activity</label>
                       <input
                         type="text"
-                        value={item?.locationImage}
+                        value={item?.list}
                         onChange={(e) =>
                           handleFormChange(
                             index,

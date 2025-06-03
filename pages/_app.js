@@ -1,11 +1,6 @@
 import Layout from "@/components/Layouts";
 import "@/styles/globals.css";
-import "@/styles/tour.css";
 import { ToastContainer } from "react-toastify";
-import { SessionProvider } from "next-auth/react";
-import { baseUrl } from "@/utils"; 
-
-// Import react-toastify CSS
 import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps }) {

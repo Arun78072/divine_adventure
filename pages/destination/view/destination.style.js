@@ -82,6 +82,58 @@ const DestinationStyle = styled.section`
       border: none;
     }
   }
+  .tour_plan {
+    padding: 30px;
+    .title {
+      padding: 10px 10px 30px 10px;
+    }
+    .day_section {
+      position: relative;
+      padding-left: 60px;
+      padding-bottom: 50px;
+      span {
+        position: absolute;
+        left: 0px;
+        background: #df6951;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 600;
+        z-index: 9;
+      }
+      h3 {
+        padding: 12px 0px;
+      }
+      ul {
+        padding: 16px;
+        li {
+          padding: 10px 0px;
+        }
+      }
+    }
+    .day_section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 17px;
+      width: 2px;
+      height: 100%;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #df6951,
+        #df6951 10px,
+        transparent 10px,
+        transparent 16px
+      );
+    }
+    .day_section:last-child::after {
+      background-image: none;
+    }
+  }
 `;
 
 export default DestinationStyle;
