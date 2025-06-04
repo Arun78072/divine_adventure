@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 import Loader from "../Loader";
 import { MdAdd } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);
   const [editFormId, setEditFormId] = useState();
-  const [coverImage, setCoverImage] = useState("");
   const [formData, setFormData] = useState({
     status: "PUBLIC",
     tourInfo: {
@@ -42,10 +42,11 @@ export default function CreateEditTour({ data }) {
       title: "",
       description: "",
       locationImage: "",
-      list: [""],
+      list: [],
+      listText: "",
     },
   ]);
-
+  const router = useRouter();
   const handleFormChange = (index, key, value) => {
     const update = tourPlan?.map((item, ix) => {
       if (ix === index) {
@@ -60,20 +61,46 @@ export default function CreateEditTour({ data }) {
 
     setTourPlan(update); // If this is for `formData`
   };
-  const handleUploadImage = async (file) => {
+
+  const handleUploadImage = async (file, type, index) => {
     try {
       if (!file) return;
       const formData = new FormData();
       formData.append("image", file);
-console.log('file =========>',file)
-      const response = await api.post("/api/media/upload_image", { file });
 
+      const response = await api.post("/api/media/upload_image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("data =upload imhg =====>", response);
-      // setUploadedUrl(data.url);
+      if (type == "coverImage") {
+        setFormData({
+          ...formData,
+          tourInfo: {
+            ...formData.tourInfo,
+            coverImage: response.data.url,
+          },
+        });
+      } else if (type == "tourPlan") {
+        setTourPlan((prev) =>
+          prev.map((x, y) => {
+            if (y === index) {
+              return {
+                ...x,
+                locationImage: response.data.url,
+              };
+            } else {
+              return x;
+            }
+          })
+        );
+      }
     } catch (e) {
-      console.log("error");
+      console.log("error", e);
     }
   };
+
   const SubmitTour = async () => {
     try {
       setLoading(true);
@@ -96,7 +123,9 @@ console.log('file =========>',file)
           travelNight: formData?.tourInfo?.travelNight || "",
           coverImage: formData?.tourInfo?.coverImage || "",
         },
-        tourPlan: tourPlan,
+        tourPlan: tourPlan.map(({ listText, ...rest }) => ({
+          ...rest,
+        })),
         location: {
           note: formData?.location?.note || "",
           address: formData?.location?.address || "",
@@ -108,7 +137,7 @@ console.log('file =========>',file)
       const response = editFormId
         ? await api.post("/api/tour/edit_tour", { id: editFormId, ...payload })
         : await api.post("/api/tour/add_tour", payload);
-      if (response.status === 201) {
+      if (response.status == 201) {
         toast.success("Tour saved successfully");
         router.push("/profile");
       } else {
@@ -120,6 +149,7 @@ console.log('file =========>',file)
       toast.error("Error while saving tour");
     }
   };
+
   useEffect(() => {
     if (data) {
       setFormData(data);
@@ -152,6 +182,30 @@ console.log('file =========>',file)
               <div className="col-span-2">
                 <h3>Tour Information Section</h3>
               </div>
+              <div className="cover_image">
+                <label>Cover Image of Tour</label>
+                <input
+                  type="file"
+                  onChange={(e) =>
+                    handleUploadImage(e.target.files?.[0], "coverImage")
+                  }
+                />
+              </div>
+              <div>
+                {" "}
+                {formData?.tourInfo?.coverImage && (
+                  <img
+                    src={formData?.tourInfo?.coverImage}
+                    alt="Cover Preview"
+                    style={{
+                      width: "300px",
+                      marginTop: "10px",
+                      borderRadius: "8px",
+                    }}
+                  />
+                )}
+              </div>
+
               <div>
                 <label>Name of Tour</label>
                 <input
@@ -168,23 +222,7 @@ console.log('file =========>',file)
                   }
                 />
               </div>
-              <div>
-                <label>Cover Image of Tour</label>
-                  <input type="file" onChange={(e)=>handleUploadImage(e.target.files?.[0])}/>
-                {/* <input
-                  type="text"
-                  value={formData?.tourInfo?.coverImage}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        coverImage: e.target.value,
-                      },
-                    })
-                  }
-                /> */}
-              </div>
+
               <div>
                 <label>Description of Tour</label>
                 <textarea
@@ -421,22 +459,7 @@ console.log('file =========>',file)
                 </div>
               </div>
 
-              <div>
-                <label>Not Included in Tour Plan</label>
-                <input
-                  type="text"
-                  // value={formData?.tourInfo?.notInclude[0]}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        notInclude: [e.target.value],
-                      },
-                    })
-                  }
-                />
-              </div>
+             
 
               <div>
                 <label>Travel Days</label>
@@ -516,7 +539,7 @@ console.log('file =========>',file)
                       title: "",
                       description: "",
                       locationImage: "",
-                      list: [""],
+                      list: [],
                     },
                   ]);
                 }}
@@ -550,17 +573,29 @@ console.log('file =========>',file)
                     </div>
                     <div>
                       <label>Image of Location</label>
+
                       <input
-                        type="text"
-                        value={item?.locationImage}
+                        type="file"
                         onChange={(e) =>
-                          handleFormChange(
-                            index,
-                            "locationImage",
-                            e.target.value
+                          handleUploadImage(
+                            e.target.files?.[0],
+                            "tourPlan",
+                            index
                           )
                         }
                       />
+
+                      {item?.locationImage && (
+                        <img
+                          src={item?.locationImage}
+                          alt="Cover Preview"
+                          style={{
+                            width: "300px",
+                            marginTop: "10px",
+                            borderRadius: "8px",
+                          }}
+                        />
+                      )}
                     </div>
                     <div>
                       <label>Description</label>
@@ -571,19 +606,83 @@ console.log('file =========>',file)
                         }
                       />
                     </div>
-                    <div>
+
+                    <div className="add_multiple_list">
                       <label>List of Activity</label>
-                      <input
-                        type="text"
-                        value={item?.list}
-                        onChange={(e) =>
-                          handleFormChange(
-                            index,
-                            "locationImage",
-                            e.target.value
-                          )
-                        }
-                      />
+                      {item?.list?.length > 0 && (
+                        <ul className="mt-2">
+                          {item?.list.map((it, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-center justify-between mb-1"
+                            >
+                              <span>{it}</span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setTourPlan((prev) =>
+                                    prev.map((x, y) => {
+                                      if (y === index) {
+                                        return {
+                                          ...x,
+                                          list: x.list.filter((o) => o != it),
+                                        };
+                                      } else {
+                                        return x;
+                                      }
+                                    })
+                                  );
+                                }}
+                              >
+                                <RiDeleteBinFill />
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="input_group">
+                        <input
+                          type="text"
+                          value={item?.listText || ""}
+                          onChange={(e) =>
+                            setTourPlan((prev) =>
+                              prev.map((x, y) => {
+                                if (y === index) {
+                                  return {
+                                    ...x,
+                                    listText: e.target.value,
+                                  };
+                                } else {
+                                  return x;
+                                }
+                              })
+                            )
+                          }
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newItem = item?.listText?.trim();
+                            if (!newItem) return;
+
+                            setTourPlan((prev) =>
+                              prev.map((x, y) => {
+                                if (y === index) {
+                                  return {
+                                    ...x,
+                                    list: [...(x.list || []), newItem],
+                                    listText: "",
+                                  };
+                                } else {
+                                  return x;
+                                }
+                              })
+                            );
+                          }}
+                        >
+                          <MdAdd />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
