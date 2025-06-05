@@ -1,5 +1,5 @@
 import React from "react";
-import DestinationStyle from "./destination.style";
+import DestinationStyle from "../destination.style";
 
 export default function Tourdetails() {
   return (

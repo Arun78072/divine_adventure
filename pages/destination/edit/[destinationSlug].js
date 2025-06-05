@@ -1,4 +1,4 @@
-import CreateEditSpark from "@/components/Form/CreateEditSpark";
+import CreateEditSpark from "@/pages/destination/edit/CreateEditSpark";
 import Loader from "@/components/Loader";
 import api from "@/utils";
 import { useRouter } from "next/router";

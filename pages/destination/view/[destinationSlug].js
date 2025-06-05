@@ -9,7 +9,7 @@ import InformationTab from "./InformationTab";
 import GalleryTab from "./GalleryTab";
 import LocationTab from "./LocationTab";
 import TourPlanTab from "./TourPlanTab";
-import DestinationStyle from "./destination.style";
+import DestinationStyle from "../destination.style";
 import Loader from "@/components/Loader";
 
 export default function ViewPost() {

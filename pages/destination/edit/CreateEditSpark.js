@@ -2,10 +2,11 @@ import api, { baseUrl } from "@/utils";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Loader from "../Loader";
+import Loader from "../../../components/Loader";
 import { MdAdd } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { useRouter } from "next/router";
+import DestinationStyle from "../destination.style";
 
 export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);
@@ -159,7 +160,8 @@ export default function CreateEditTour({ data }) {
   }, [data]);
   console.log("tourPlan======>", tourPlan);
   return (
-    <div className="form_box">
+    <DestinationStyle>
+ <div className="form_box">
       <Loader loading={loading} />
       <section>
         <div className="container">
@@ -746,5 +748,7 @@ export default function CreateEditTour({ data }) {
         </div>
       </section>
     </div>
+    </DestinationStyle>
+   
   );
 }

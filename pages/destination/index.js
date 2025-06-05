@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { useSession } from "next-auth/react";
 import Loader from "@/components/Loader";
-import CreateEditSpark from "@/components/Form/CreateEditSpark";
+import CreateEditSpark from "@/pages/destination/edit/CreateEditSpark";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { IoLocationOutline } from "react-icons/io5";

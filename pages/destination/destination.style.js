@@ -106,7 +106,7 @@ const DestinationStyle = styled.section`
         z-index: 9;
       }
       h3 {
-        padding: 12px 0px;
+        padding-bottom: 12px;
       }
       ul {
         padding: 16px;
@@ -132,6 +132,84 @@ const DestinationStyle = styled.section`
     }
     .day_section:last-child::after {
       background-image: none;
+    }
+  }
+  .location_section {
+    padding: 30px;
+    h3 {
+      margin: 10px 0px;
+    }
+  }
+  .form_box {
+    background-color: #f9fafb;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #222;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #fff;
+      transition: all 0.2s ease-in-out;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+      }
+    }
+  }
+
+  .form_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    .col-span-2 {
+      grid-column: span 2;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .tour_form {
+    border: 1px solid #000;
+    padding: 24px;
+    border-radius: 10px;
+    margin: 20px;
+
+    .del_button {
+      background: #df6951;
+      border: none;
+      width: 70px;
+      cursor: pointer;
     }
   }
 `;

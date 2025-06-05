@@ -102,12 +102,7 @@ export default function MyTours() {
                       <IoLocationOutline /> {item.tourInfo.travelCity} Locations
                     </span>
                   </div>
-                  <Link
-                    href={`/destination/view/${item._id}`}
-                    className="post_title"
-                  >
-                    {item.title}
-                  </Link>
+                 <h3 className="card_title"> {item.tourInfo.title}</h3>
                   <div className="location_row">
                     <IoLocationOutline />
                     India
