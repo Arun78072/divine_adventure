@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../../../components/Loader";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdDelete } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { useRouter } from "next/router";
 import DestinationStyle from "../destination.style";
@@ -37,6 +37,9 @@ export default function CreateEditTour({ data }) {
       address: "",
       locationLink: "",
     },
+    // photoGallery:{
+
+    // }
   });
   const [tourPlan, setTourPlan] = useState([
     {
@@ -97,8 +100,11 @@ export default function CreateEditTour({ data }) {
           })
         );
       }
+      toast.success('Successful Upload Image')
     } catch (e) {
       console.log("error", e);
+      toast.error('Oops! Something went wrong. Please re-upload the image.');
+
     }
   };
 
@@ -161,594 +167,642 @@ export default function CreateEditTour({ data }) {
   console.log("tourPlan======>", tourPlan);
   return (
     <DestinationStyle>
- <div className="form_box">
-      <Loader loading={loading} />
-      <section>
-        <div className="container">
-          <h1>Create / Edit Tour</h1>
-          <div className="form_wrapper">
-            <div className="form_grid">
-              <div>
-                <label>Tour Status</label>
-                <select
-                  value={formData.status}
-                  onChange={(e) =>
-                    setFormData({ ...formData, status: e.target.value })
-                  }
-                >
-                  <option value="PUBLIC">PUBLIC</option>
-                  <option value="INACTIVE">INACTIVE</option>
-                </select>
-              </div>
-
-              <div className="col-span-2">
-                <h3>Tour Information Section</h3>
-              </div>
-              <div className="cover_image">
-                <label>Cover Image of Tour</label>
-                <input
-                  type="file"
-                  onChange={(e) =>
-                    handleUploadImage(e.target.files?.[0], "coverImage")
-                  }
-                />
-              </div>
-              <div>
-                {" "}
-                {formData?.tourInfo?.coverImage && (
-                  <img
-                    src={formData?.tourInfo?.coverImage}
-                    alt="Cover Preview"
-                    style={{
-                      width: "300px",
-                      marginTop: "10px",
-                      borderRadius: "8px",
-                    }}
-                  />
-                )}
-              </div>
-
-              <div>
-                <label>Name of Tour</label>
-                <input
-                  type="text"
-                  value={formData?.tourInfo?.title}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        title: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Description of Tour</label>
-                <textarea
-                  value={formData?.tourInfo?.description}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        description: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Price of Tour (INR)</label>
-                <input
-                  type="number"
-                  value={formData?.tourInfo?.price}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        price: parseFloat(e.target.value),
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Destination Locations of Tour</label>
-                <input
-                  type="text"
-                  value={formData?.tourInfo?.destination}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        destination: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Depature from</label>
-                <input
-                  type="text"
-                  value={formData?.tourInfo?.depature}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        depature: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Depature Time (Indian Timezone)</label>
-                <input
-                  type="datetime-local"
-                  value={formData?.tourInfo?.depatureTime}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        depatureTime: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Return Time (Indian Timezone)</label>
-                <input
-                  type="datetime-local"
-                  value={formData?.tourInfo?.returnTime}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        returnTime: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div className="add_multiple_list">
-                <label>Include In Tour Plan</label>
-                {formData?.tourInfo?.include?.length > 0 && (
-                  <ul className="mt-2">
-                    {formData.tourInfo.include.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center justify-between mb-1"
-                      >
-                        <span>{item}</span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({
-                              ...formData,
-                              tourInfo: {
-                                ...formData.tourInfo,
-                                include: formData.tourInfo.include.filter(
-                                  (_, i) => i !== idx
-                                ),
-                              },
-                            });
-                          }}
-                        >
-                          <RiDeleteBinFill />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div className="input_group">
-                  <input
-                    type="text"
-                    value={formData?.tourInfo?.includeText || ""}
+      <div className="form_box">
+        <Loader loading={loading} />
+        <section>
+          <div className="container">
+            <h1>Create / Edit Tour</h1>
+            <div className="form_wrapper">
+              <div className="form_grid">
+                <div>
+                  <label>Tour Status</label>
+                  <select
+                    value={formData.status}
                     onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          includeText: e.target.value,
-                        },
-                      })
+                      setFormData({ ...formData, status: e.target.value })
                     }
-                  />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newItem = formData?.tourInfo?.includeText?.trim();
-                      if (!newItem) return;
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          include: [
-                            ...(formData.tourInfo.include || []),
-                            newItem,
-                          ],
-                          includeText: "", // clear input after adding
-                        },
-                      });
-                    }}
                   >
-                    <MdAdd />
-                  </button>
+                    <option value="PUBLIC">PUBLIC</option>
+                    <option value="INACTIVE">INACTIVE</option>
+                  </select>
                 </div>
-              </div>
 
-              <div className="add_multiple_list">
-                <label>Not Include In Tour Plan</label>
-                {formData?.tourInfo?.notInclude?.length > 0 && (
-                  <ul className="mt-2">
-                    {formData.tourInfo.notInclude.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center justify-between mb-1"
+                <div className="col-span-2 form_title">
+                  <h3>Tour Information Section</h3>
+                </div>
+
+                <div className="cover_image">
+                  <label>Cover Image of Tour</label>
+
+                  {formData?.tourInfo?.coverImage ? (
+                    <div className="preview_image">
+                      <button
+                        onClick={() => {
+                          setFormData({
+                            ...formData,
+                            tourInfo: {
+                              ...formData.tourInfo,
+                              coverImage: "",
+                            },
+                          });
+                        }}
                       >
-                        <span>{item}</span>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setFormData({
-                              ...formData,
-                              tourInfo: {
-                                ...formData.tourInfo,
-                                notInclude: formData.tourInfo.notInclude.filter(
-                                  (_, i) => i !== idx
-                                ),
-                              },
-                            });
-                          }}
-                        >
-                          <RiDeleteBinFill />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div className="input_group">
-                  <input
-                    type="text"
-                    value={formData?.tourInfo?.notIncludeText || ""}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          notIncludeText: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const newItem =
-                        formData?.tourInfo?.notIncludeText?.trim();
-                      if (!newItem) return;
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          notInclude: [
-                            ...(formData.tourInfo.notInclude || []),
-                            newItem,
-                          ],
-                          notIncludeText: "", // clear input after adding
-                        },
-                      });
-                    }}
-                  >
-                    <MdAdd />
-                  </button>
-                </div>
-              </div>
-
-             
-
-              <div>
-                <label>Travel Days</label>
-                <input
-                  type="number"
-                  value={formData?.tourInfo?.travelDays}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        travelDays: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Travel Country</label>
-                <input
-                  type="number"
-                  value={formData?.tourInfo?.travelCountry}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        travelCountry: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Travel City</label>
-                <input
-                  type="number"
-                  value={formData?.tourInfo?.travelCity}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        travelCity: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Travel Night</label>
-                <input
-                  type="number"
-                  value={formData?.tourInfo?.travelNight}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      tourInfo: {
-                        ...formData.tourInfo,
-                        travelNight: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <h3 className="col-span-2"> Full Tour Plan</h3>
-              <button
-                className="col-span-2 add_button"
-                onClick={() => {
-                  setTourPlan((i) => [
-                    ...i,
-                    {
-                      title: "",
-                      description: "",
-                      locationImage: "",
-                      list: [],
-                    },
-                  ]);
-                }}
-              >
-                Add More +
-              </button>
-              <div className="col-span-2">
-                {tourPlan?.map((item, index) => (
-                  <div className="form_grid tour_form">
-                    <h3> Day {index + 1}</h3>
-                    <button
-                      className="del_button"
-                      onClick={() => {
-                        setTourPlan((prev) =>
-                          prev.filter((_, ix) => ix !== index)
-                        );
-                      }}
-                    >
-                      Delete
-                    </button>
-
-                    <div>
-                      <label>Title</label>
-                      <input
-                        type="text"
-                        value={item?.title}
-                        onChange={(e) =>
-                          handleFormChange(index, "title", e.target.value)
-                        }
+                        <RiDeleteBinFill />
+                      </button>
+                      <img
+                        src={formData?.tourInfo?.coverImage}
+                        alt="Cover Preview"
                       />
                     </div>
-                    <div>
-                      <label>Image of Location</label>
-
+                  ) : (
+                    <div className="image_box">
                       <input
                         type="file"
                         onChange={(e) =>
-                          handleUploadImage(
-                            e.target.files?.[0],
-                            "tourPlan",
-                            index
-                          )
+                          handleUploadImage(e.target.files?.[0], "coverImage")
                         }
                       />
-
-                      {item?.locationImage && (
-                        <img
-                          src={item?.locationImage}
-                          alt="Cover Preview"
-                          style={{
-                            width: "300px",
-                            marginTop: "10px",
-                            borderRadius: "8px",
-                          }}
-                        />
-                      )}
+                      <span>Select Cover Image For Your Tour</span>
                     </div>
-                    <div>
-                      <label>Description</label>
-                      <textarea
-                        value={item?.description}
-                        onChange={(e) =>
-                          handleFormChange(index, "description", e.target.value)
-                        }
-                      />
-                    </div>
+                  )}
+                </div>
+                <div>
+                  <label>Description of Tour</label>
+                  <textarea
+                    value={formData?.tourInfo?.description}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          description: e.target.value,
+                        },
+                      })
+                    }
+                    rows="18"
+                  />
+                </div>
+                <div>
+                  <label>Name of Tour</label>
+                  <input
+                    type="text"
+                    value={formData?.tourInfo?.title}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          title: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
 
-                    <div className="add_multiple_list">
-                      <label>List of Activity</label>
-                      {item?.list?.length > 0 && (
-                        <ul className="mt-2">
-                          {item?.list.map((it, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-center justify-between mb-1"
-                            >
-                              <span>{it}</span>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setTourPlan((prev) =>
-                                    prev.map((x, y) => {
-                                      if (y === index) {
-                                        return {
-                                          ...x,
-                                          list: x.list.filter((o) => o != it),
-                                        };
-                                      } else {
-                                        return x;
-                                      }
-                                    })
-                                  );
-                                }}
-                              >
-                                <RiDeleteBinFill />
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      <div className="input_group">
+                <div>
+                  <label>Price of Tour (INR)</label>
+                  <input
+                    type="number"
+                    value={formData?.tourInfo?.price}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          price: parseFloat(e.target.value),
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Destination Locations of Tour</label>
+                  <input
+                    type="text"
+                    value={formData?.tourInfo?.destination}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          destination: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Depature from</label>
+                  <input
+                    type="text"
+                    value={formData?.tourInfo?.depature}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          depature: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Depature Time (Indian Timezone)</label>
+                  <input
+                    type="datetime-local"
+                    value={formData?.tourInfo?.depatureTime}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          depatureTime: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Return Time (Indian Timezone)</label>
+                  <input
+                    type="datetime-local"
+                    value={formData?.tourInfo?.returnTime}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          returnTime: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div className="add_multiple_list">
+                  <label>Include In Tour Plan</label>
+                  {formData?.tourInfo?.include?.length > 0 && (
+                    <ul className="mt-2">
+                      {formData.tourInfo.include.map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center justify-between mb-1"
+                        >
+                          <span>{item}</span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setFormData({
+                                ...formData,
+                                tourInfo: {
+                                  ...formData.tourInfo,
+                                  include: formData.tourInfo.include.filter(
+                                    (_, i) => i !== idx
+                                  ),
+                                },
+                              });
+                            }}
+                          >
+                            <RiDeleteBinFill />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="input_group">
+                    <input
+                      type="text"
+                      value={formData?.tourInfo?.includeText || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          tourInfo: {
+                            ...formData.tourInfo,
+                            includeText: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newItem = formData?.tourInfo?.includeText?.trim();
+                        if (!newItem) return;
+                        setFormData({
+                          ...formData,
+                          tourInfo: {
+                            ...formData.tourInfo,
+                            include: [
+                              ...(formData.tourInfo.include || []),
+                              newItem,
+                            ],
+                            includeText: "", // clear input after adding
+                          },
+                        });
+                      }}
+                    >
+                      <MdAdd />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="add_multiple_list">
+                  <label>Not Include In Tour Plan</label>
+                  {formData?.tourInfo?.notInclude?.length > 0 && (
+                    <ul className="mt-2">
+                      {formData.tourInfo.notInclude.map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center justify-between mb-1"
+                        >
+                          <span>{item}</span>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setFormData({
+                                ...formData,
+                                tourInfo: {
+                                  ...formData.tourInfo,
+                                  notInclude:
+                                    formData.tourInfo.notInclude.filter(
+                                      (_, i) => i !== idx
+                                    ),
+                                },
+                              });
+                            }}
+                          >
+                            <RiDeleteBinFill />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="input_group">
+                    <input
+                      type="text"
+                      value={formData?.tourInfo?.notIncludeText || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          tourInfo: {
+                            ...formData.tourInfo,
+                            notIncludeText: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newItem =
+                          formData?.tourInfo?.notIncludeText?.trim();
+                        if (!newItem) return;
+                        setFormData({
+                          ...formData,
+                          tourInfo: {
+                            ...formData.tourInfo,
+                            notInclude: [
+                              ...(formData.tourInfo.notInclude || []),
+                              newItem,
+                            ],
+                            notIncludeText: "", // clear input after adding
+                          },
+                        });
+                      }}
+                    >
+                      <MdAdd />
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label>Travel Days</label>
+                  <input
+                    type="number"
+                    value={formData?.tourInfo?.travelDays}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          travelDays: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Travel Country</label>
+                  <input
+                    type="number"
+                    value={formData?.tourInfo?.travelCountry}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          travelCountry: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Travel City</label>
+                  <input
+                    type="number"
+                    value={formData?.tourInfo?.travelCity}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          travelCity: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Travel Night</label>
+                  <input
+                    type="number"
+                    value={formData?.tourInfo?.travelNight}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        tourInfo: {
+                          ...formData.tourInfo,
+                          travelNight: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <h3 className="form_title"> Full Tour Plan</h3>
+                <button
+                  className=" add_more_button secandary_button"
+                  onClick={() => {
+                    setTourPlan((i) => [
+                      ...i,
+                      {
+                        title: "",
+                        description: "",
+                        locationImage: "",
+                        list: [],
+                      },
+                    ]);
+                  }}
+                >
+                  Add More +
+                </button>
+                <div className="col-span-2">
+                  {tourPlan?.map((item, index) => (
+                    <div className="form_grid tour_form">
+                      <h3> Day {index + 1}</h3>
+                      <button
+                        className="del_button"
+                        onClick={() => {
+                          setTourPlan((prev) =>
+                            prev.filter((_, ix) => ix !== index)
+                          );
+                        }}
+                      >
+                        <RiDeleteBinFill />
+                      </button>
+
+                      <div>
+                        <label>Title</label>
                         <input
                           type="text"
-                          value={item?.listText || ""}
+                          value={item?.title}
                           onChange={(e) =>
-                            setTourPlan((prev) =>
-                              prev.map((x, y) => {
-                                if (y === index) {
-                                  return {
-                                    ...x,
-                                    listText: e.target.value,
-                                  };
-                                } else {
-                                  return x;
-                                }
-                              })
-                            )
+                            handleFormChange(index, "title", e.target.value)
                           }
                         />
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const newItem = item?.listText?.trim();
-                            if (!newItem) return;
+                      </div>
+                      <div className="add_multiple_list">
+                        <label>List of Activity</label>
+                        {item?.list?.length > 0 && (
+                          <ul className="mt-2">
+                            {item?.list.map((it, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-center justify-between mb-1"
+                              >
+                                <span>{it}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setTourPlan((prev) =>
+                                      prev.map((x, y) => {
+                                        if (y === index) {
+                                          return {
+                                            ...x,
+                                            list: x.list.filter((o) => o != it),
+                                          };
+                                        } else {
+                                          return x;
+                                        }
+                                      })
+                                    );
+                                  }}
+                                >
+                                  <RiDeleteBinFill />
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <div className="input_group">
+                          <input
+                            type="text"
+                            value={item?.listText || ""}
+                            onChange={(e) =>
+                              setTourPlan((prev) =>
+                                prev.map((x, y) => {
+                                  if (y === index) {
+                                    return {
+                                      ...x,
+                                      listText: e.target.value,
+                                    };
+                                  } else {
+                                    return x;
+                                  }
+                                })
+                              )
+                            }
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const newItem = item?.listText?.trim();
+                              if (!newItem) return;
 
-                            setTourPlan((prev) =>
-                              prev.map((x, y) => {
-                                if (y === index) {
-                                  return {
-                                    ...x,
-                                    list: [...(x.list || []), newItem],
-                                    listText: "",
-                                  };
-                                } else {
-                                  return x;
-                                }
-                              })
-                            );
-                          }}
-                        >
-                          <MdAdd />
-                        </button>
+                              setTourPlan((prev) =>
+                                prev.map((x, y) => {
+                                  if (y === index) {
+                                    return {
+                                      ...x,
+                                      list: [...(x.list || []), newItem],
+                                      listText: "",
+                                    };
+                                  } else {
+                                    return x;
+                                  }
+                                })
+                              );
+                            }}
+                          >
+                            <MdAdd />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="cover_image">
+                        <label>Image of Location</label>
+
+                        {item?.locationImage ? (
+                          <div className="preview_image">
+                            <button
+                              onClick={() => {
+                                setTourPlan((prev) =>
+                                  prev.map((i) =>
+                                    i._id == item._id
+                                      ? { ...i, locationImage: "" }
+                                      : { ...i }
+                                  )
+                                );
+                              }}
+                            >
+                              <RiDeleteBinFill />
+                            </button>
+                            <img
+                              src={item?.locationImage}
+                              alt="Cover Preview"
+                            />
+                          </div>
+                        ) : (
+                          <div className="image_box">
+                            <input
+                              type="file"
+                              onChange={(e) =>
+                                handleUploadImage(
+                                  e.target.files?.[0],
+                                  "tourPlan",
+                                  index
+                                )
+                              }
+                            />
+                            <span>Select Cover Image For Your Tour</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div>
+                        <label>Description</label>
+                        <textarea
+                          value={item?.description}
+                          onChange={(e) =>
+                            handleFormChange(
+                              index,
+                              "description",
+                              e.target.value
+                            )
+                          }
+                          rows="18"
+                        />
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                <h3 className="col-span-2 form_title">Location Section</h3>
+                <div>
+                  <label>Location Address</label>
+                  <input
+                    type="text"
+                    value={formData.location?.address}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        location: {
+                          ...formData.location,
+                          address: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+
+                <div>
+                  <label>Google Map Link</label>
+                  <input
+                    type="text"
+                    value={formData.location?.locationLink}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        location: {
+                          ...formData.location,
+                          locationLink: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label>Location Description </label>
+                  <textarea
+                    value={formData.location?.note}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        location: {
+                          ...formData.location,
+                          note: e.target.value,
+                        },
+                      })
+                    }
+                    rows={8}
+                  />
+                </div>
+                {/* <h3 className="col-span-2 form_title">Photos Section</h3>
+                <div className="col-span-2 photo_galary_section">
+
+                <div className="cover_image">
+                  <label>Cover Image of Tour</label>
+
+                  <div className="image_box">
+                      <input
+                        type="file"
+                        onChange={(e) =>
+                          handleUploadImage(e.target.files?.[0], "coverImage")
+                        }
+                      />
+                      <span>Select Cover Image For Your Tour</span>
+                    </div>
+                </div>
+                </div> */}
+
               </div>
 
-              <h3 className="col-span-2"> Location Section</h3>
-              <div>
-                <label>Location Address</label>
-                <input
-                  type="text"
-                  value={formData.location?.address}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      location: {
-                        ...formData.location,
-                        address: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>Google Map Link</label>
-                <input
-                  type="text"
-                  value={formData.location?.locationLink}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      location: {
-                        ...formData.location,
-                        locationLink: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
-              <div>
-                <label>Location Description </label>
-                <textarea
-                  value={formData.location?.note}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      location: {
-                        ...formData.location,
-                        note: e.target.value,
-                      },
-                    })
-                  }
-                />
-              </div>
+              <button onClick={SubmitTour} className="primary_button">
+                Save changes
+              </button>
             </div>
-
-            <button onClick={SubmitTour} className="primary_button">
-              Save changes
-            </button>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </DestinationStyle>
-   
   );
 }

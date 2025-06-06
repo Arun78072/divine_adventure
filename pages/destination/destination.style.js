@@ -152,7 +152,10 @@ const DestinationStyle = styled.section`
       margin-bottom: 20px;
       color: #333;
     }
-
+    .form_title {
+      font-size: 24px;
+      margin: 16px 0px;
+    }
     label {
       display: block;
       margin-bottom: 8px;
@@ -170,6 +173,7 @@ const DestinationStyle = styled.section`
       font-size: 15px;
       background-color: #fff;
       transition: all 0.2s ease-in-out;
+      font-family: inherit;
 
       &:focus {
         border-color: #007bff;
@@ -177,14 +181,31 @@ const DestinationStyle = styled.section`
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
       }
     }
+    .add_more_button {
+      width: fit-content;
+      margin-left: auto;
+    }
   }
-
-  .form_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  .tour_form {
+    border: 2px solid #939393;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0px;
+    padding: 20px;
+    button.del_button {
+      cursor: pointer;
+      width: 44px;
+      margin-left: auto;
+      font-size: 28px;
+      border-radius: 6px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #df6951;
+      border: 2px solid;
+    }
   }
-
   .form_grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -198,18 +219,102 @@ const DestinationStyle = styled.section`
       grid-template-columns: repeat(2, 1fr);
     }
   }
+  .cover_image {
+    .preview_image {
+      position: relative;
 
-  .tour_form {
-    border: 1px solid #000;
-    padding: 24px;
-    border-radius: 10px;
-    margin: 20px;
-
-    .del_button {
-      background: #df6951;
-      border: none;
-      width: 70px;
-      cursor: pointer;
+      button {
+        position: absolute;
+        right: 10px;
+        font-size: 28px;
+        border: 2px solid #fff;
+        color: #df6951;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      img {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+      }
+    }
+    .image_box {
+      height: 400px;
+      width: 100%;
+      border-radius: 10px;
+      position: relative;
+      border: 2px dashed #888888;
+      input[type="file"] {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 9;
+        position: relative;
+      }
+      span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .add_multiple_list {
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      li {
+        border: 1px solid #363535;
+        border-radius: 6px;
+        padding: 4px 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        button {
+          cursor: pointer;
+          color: #df6951;
+          border: none;
+          font-size: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    .input_group {
+      position: relative;
+      input {
+        padding: 10px 40px 10px 12px;
+      }
+      button {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background: #df6951;
+        border: none;
+        color: #fff;
+        width: 26px;
+        height: 26px;
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+      }
     }
   }
 `;
