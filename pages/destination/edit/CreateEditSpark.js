@@ -794,8 +794,6 @@ export default function CreateEditTour({ data }) {
                 </div>
                 </div> */}
 
-                {/* new/ */}
-
               </div>
 
               <button onClick={SubmitTour} className="primary_button">
