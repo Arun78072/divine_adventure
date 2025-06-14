@@ -5,38 +5,42 @@ const TourSchema = new mongoose.Schema(
     id: String,
     deleted: { type: Boolean, default: false },
     status: {
-        type: String,
-        enum: ["PUBLIC", "INACTIVE"],  
-        default: "PUBLIC",
-      },
+      type: String,
+      enum: ["PUBLIC", "INACTIVE"],
+      default: "PUBLIC",
+    },
     tourInfo: {
       title: String,
       coverImage: String,
       description: String,
       price: Number,
-      destination:[String],
-      depature:String,
-      depatureTime:String,
-      returnTime:String,
+      destination: [String],
+      depature: String,
+      depatureTime: String,
+      returnTime: String,
       include: [String],
       notInclude: [String],
       travelDays: String,
       travelCountry: String,
       travelCity: String,
       travelNight: String,
-      country:String,
-      
+      country: String,
     },
-    tourPlan: [{
-      title:String,
-      description:String,
-      locationImage:String,
-      list:[String]
-    }],
-    location:{
-      note:String,
-      address:String,
-      locationLink:String,
+    tourPlan: [
+      {
+        title: String,
+        description: String,
+        locationImage: String,
+        list: [String],
+      },
+    ],
+    location: {
+      note: String,
+      address: String,
+      locationLink: String,
+    },
+    gallery: {
+      image: [String],
     },
   },
   {

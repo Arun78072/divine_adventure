@@ -1,8 +1,17 @@
-export default function GalleryTab() {
+export default function GalleryTab({ data }) {
+  console.log("data========>", data?.gallery?.image);
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-2">galrry tab</h2>
-      <p>This is the galrry tab</p>
+    <div className="gallery_section">
+      <h2>
+        Discover the spirit of travel through our gallery—where every image is a
+        window into cultures, landscapes, and memories waiting to be made.
+      </h2>
+
+      <div className="gallery_box">
+        {data?.gallery?.image.map((i) => (
+          <img src={i} />
+        ))}
+      </div>
     </div>
   );
 }

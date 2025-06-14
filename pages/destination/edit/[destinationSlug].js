@@ -32,6 +32,9 @@ export default function EditPost() {
   };
 
   useEffect(() => {
+    if(!localStorage.getItem('token')){
+      return
+    }
     if (destinationSlug) {
       if(destinationSlug == 'create'){
         return

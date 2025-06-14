@@ -37,9 +37,6 @@ export default function CreateEditTour({ data }) {
       address: "",
       locationLink: "",
     },
-    // photoGallery:{
-
-    // }
   });
   const [tourPlan, setTourPlan] = useState([
     {
@@ -50,6 +47,10 @@ export default function CreateEditTour({ data }) {
       listText: "",
     },
   ]);
+  const [galleryImages, setGalleryImages] = useState({
+    img: [],
+    selectedImg: "",
+  });
   const router = useRouter();
   const handleFormChange = (index, key, value) => {
     const update = tourPlan?.map((item, ix) => {
@@ -67,6 +68,7 @@ export default function CreateEditTour({ data }) {
   };
 
   const handleUploadImage = async (file, type, index) => {
+    setLoading(true);
     try {
       if (!file) return;
       const formData = new FormData();
@@ -99,12 +101,18 @@ export default function CreateEditTour({ data }) {
             }
           })
         );
+      } else if (type == "galleryImage") {
+        setGalleryImages({
+          ...galleryImages,
+          img: [...galleryImages.img, response.data.url],
+        });
       }
-      toast.success('Successful Upload Image')
+      toast.success("Successful Upload Image");
     } catch (e) {
       console.log("error", e);
-      toast.error('Oops! Something went wrong. Please re-upload the image.');
-
+      toast.error("Oops! Something went wrong. Please re-upload the image.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -138,6 +146,9 @@ export default function CreateEditTour({ data }) {
           address: formData?.location?.address || "",
           locationLink: formData?.location?.locationLink || "",
         },
+        gallery : {
+          image: galleryImages.img
+        }
       };
       console.log("payload=========>", payload);
       debugger;
@@ -152,6 +163,7 @@ export default function CreateEditTour({ data }) {
       }
       setLoading(false);
     } catch (e) {
+      console.log('error ====>',e)
       setLoading(false);
       toast.error("Error while saving tour");
     }
@@ -197,6 +209,7 @@ export default function CreateEditTour({ data }) {
                   {formData?.tourInfo?.coverImage ? (
                     <div className="preview_image">
                       <button
+                        className="image_delete_button"
                         onClick={() => {
                           setFormData({
                             ...formData,
@@ -674,6 +687,7 @@ export default function CreateEditTour({ data }) {
                         {item?.locationImage ? (
                           <div className="preview_image">
                             <button
+                              className="image_delete_button"
                               onClick={() => {
                                 setTourPlan((prev) =>
                                   prev.map((i) =>
@@ -776,24 +790,37 @@ export default function CreateEditTour({ data }) {
                     rows={8}
                   />
                 </div>
-                {/* <h3 className="col-span-2 form_title">Photos Section</h3>
-                <div className="col-span-2 photo_galary_section">
-
-                <div className="cover_image">
-                  <label>Cover Image of Tour</label>
-
-                  <div className="image_box">
+                <h3 className="col-span-2 form_title">Photos Section</h3>
+                <div className="col-span-2 multiple_image_section">
+                  {galleryImages?.img.map((i) => (
+                    <div className="image_box">
+                      <img src={i} />
+                      <button
+                        className="image_delete_button"
+                        onClick={() => {
+                          setGalleryImages((gal) => ({
+                            ...gal,
+                            img: gal.img.filter((im) => im !== i),
+                          }));
+                        }}
+                      >
+                      
+                        <RiDeleteBinFill />
+                      </button>
+                    </div>
+                  ))}
+                  <div className="cover_image">
+                    <div className="image_box">
                       <input
                         type="file"
                         onChange={(e) =>
-                          handleUploadImage(e.target.files?.[0], "coverImage")
+                          handleUploadImage(e.target.files?.[0], "galleryImage")
                         }
                       />
                       <span>Select Cover Image For Your Tour</span>
                     </div>
+                  </div>
                 </div>
-                </div> */}
-
               </div>
 
               <button onClick={SubmitTour} className="primary_button">

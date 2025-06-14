@@ -140,6 +140,22 @@ const DestinationStyle = styled.section`
       margin: 10px 0px;
     }
   }
+  .gallery_section {
+    padding: 30px;
+    h3 {
+      margin: 10px 0px;
+    }
+    .gallery_box {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+      >img{
+        width:100%;
+        border-radius: 10px;
+      }
+    }
+  }
   .form_box {
     background-color: #f9fafb;
     padding: 40px 20px;
@@ -223,22 +239,6 @@ const DestinationStyle = styled.section`
     .preview_image {
       position: relative;
 
-      button {
-        position: absolute;
-        right: 10px;
-        font-size: 28px;
-        border: 2px solid #fff;
-        color: #df6951;
-        top: 10px;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        background: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
       img {
         width: 100%;
         height: 400px;
@@ -267,6 +267,22 @@ const DestinationStyle = styled.section`
         transform: translate(-50%, -50%);
       }
     }
+  }
+  .image_delete_button {
+    position: absolute;
+    right: 10px;
+    font-size: 28px;
+    border: 2px solid #fff;
+    color: #df6951;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
   }
   .add_multiple_list {
     ul {
@@ -315,6 +331,28 @@ const DestinationStyle = styled.section`
         justify-content: center;
         border-radius: 5px;
       }
+    }
+  }
+  .multiple_image_section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    .image_box {
+      width: 350px;
+      height: 200px;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .cover_image .image_box span {
+      width: 100%;
+      text-align: center;
     }
   }
 `;
