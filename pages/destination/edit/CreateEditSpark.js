@@ -6,7 +6,7 @@ import Loader from "../../../components/Loader";
 import { MdAdd, MdDelete } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { useRouter } from "next/router";
-import DestinationStyle from "../destination.style";
+import DestinationStyle from "../../../styles/destination.style";
 
 export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);

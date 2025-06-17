@@ -1,6 +1,5 @@
 import checkAuth from "../middleware/checkAuth";
 import connectMongoDB from "@/lib/mongodb";
-import Post from "@/models/post";
 import WebData from "@/models/webData";
 
 export default async function handler(req, res) {

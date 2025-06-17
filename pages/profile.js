@@ -1,5 +1,6 @@
 import Loader from "@/components/Loader";
 import MyTours from "@/components/Profile/MyTours";
+import ProfileStyle from "@/styles/profile.style";
 import api from "@/utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -63,7 +64,7 @@ export default function Profile() {
       {loading ? (
         <Loader loading={loading} />
       ) : (
-        <>
+        <ProfileStyle>
           <div className="top-spacer"></div>
           <div className="profile-info">
             <span className="avatar-circle">{userData?.name?.charAt(0)}</span>
@@ -91,7 +92,7 @@ export default function Profile() {
 
           {/* All Tour Section */}
           <MyTours />
-        </>
+        </ProfileStyle>
       )}
     </main>
   );

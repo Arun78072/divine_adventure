@@ -1,8 +1,5 @@
 import checkAuth from "../middleware/checkAuth";
 import connectMongoDB from "@/lib/mongodb";
-import Post from "@/models/post";
-import Vote from "@/models/vote";
-import Comment from "@/models/comment";
 import Tour from "@/models/tour";
 
 export default async function handler(req, res) {

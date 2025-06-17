@@ -2,6 +2,7 @@ import BannerSection from "@/components/Home/Banner";
 import Category from "@/components/Home/Category";
 import Post from "@/components/Home/Post";
 import Review from "@/components/Home/Review";
+import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
 import Image from "next/image";
 
@@ -33,7 +34,7 @@ export default function Home() {
             className="flag_image"
             style={{ width: "100%", height: "auto" }}
           />
-
+<TourPackage />
           <Post />
           <div className="explore_section">
             <div>
