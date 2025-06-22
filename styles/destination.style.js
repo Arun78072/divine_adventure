@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DestinationStyle = styled.section`
+export const DestinationStyle = styled.section`
   .view_section {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: -40px;
@@ -149,9 +149,9 @@ const DestinationStyle = styled.section`
       margin-top: 30px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap:20px;
-      >img{
-        width:100%;
+      gap: 20px;
+      > img {
+        width: 100%;
         border-radius: 10px;
       }
     }
@@ -357,4 +357,26 @@ const DestinationStyle = styled.section`
   }
 `;
 
-export default DestinationStyle;
+export const TourList = styled.section`
+  .post_card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin: 20px 0px;
+    > div {
+      > h1 {
+        font-size: 20px;
+        margin-left: 10px;
+      }
+      .description {
+        font-size: 16px;
+        margin: 0px 10px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 68px;
+      }
+    }
+  }
+`;

@@ -9,6 +9,12 @@ const TourSchema = new mongoose.Schema(
       enum: ["PUBLIC", "INACTIVE"],
       default: "PUBLIC",
     },
+    tourType:{
+      type: String,
+    },
+    tourTypeId:{
+      type: String,
+    },
     tourInfo: {
       title: String,
       coverImage: String,

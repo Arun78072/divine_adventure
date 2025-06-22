@@ -6,27 +6,7 @@ export default async function handler(req, res) {
   await checkAuth(req, res);
   await connectMongoDB();
   const { slug } = req.query;
-  if (slug[0] === "my_sparks") {
-    try {
-      if (!req.user || !req.user.id) {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
-      const posts = await Post.find({
-        userId: req.user.id,
-        deleted: false,
-      });
-      res.status(200).json({
-        status: 200,
-        message: "Topics fetched successfully",
-        data: posts,
-      });
-    } catch (error) {
-      console.error("Error fetching topics:", error);
-      res
-        .status(500)
-        .json({ error: "Something went wrong while fetching topics" });
-    }
-  } else if (slug[0] === "tour_get_by_id") {
+  if (slug[0] === "tour_get_by_id") {
     try {
       const { tourId } = req.query;
       // if (!req.user || !req.user.id) {
@@ -108,31 +88,6 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while creating the topic" });
     }
-  } else if (slug[0] === "search_spark") {
-    try {
-      const { search_query } = req.body;
-      let query = {
-        deleted: false,
-      };
-
-      if (search_query) {
-        query = {
-          ...query,
-          title: { $regex: search_query, $options: "i" },
-        };
-      }
-      const posts = await Post.find(query);
-      res.status(200).json({
-        status: 200,
-        message: "Topics fetched successfully",
-        data: posts,
-      });
-    } catch (error) {
-      console.error("Error creating topic:", error);
-      res
-        .status(500)
-        .json({ error: "Something went wrong while creating the topic" });
-    }
   } else if (slug[0] === "delete_tour") {
     try {
       const { tour_id } = req.query;
@@ -159,24 +114,7 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while deleting the post" });
     }
-  } else if (slug[0] === "semantic_search") {
-    try {
-      if (!req.user.id) {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
-      const { search_query } = req.body;
-
-      res.status(200).json({
-        status: 200,
-        data: searchSpark,
-      });
-    } catch (error) {
-      console.error("Error updating post:", error);
-      res
-        .status(500)
-        .json({ error: "Something went wrong while updating the post" });
-    }
-  } else {
+  }  else {
     res.status(405).json({ message: "Method Not Allowed" });
   }
   res.end(`Post: ${slug.join(", ")}`);

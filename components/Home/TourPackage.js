@@ -1,4 +1,5 @@
 import { TourPackageStyle } from "@/styles/home.style";
+import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
 
@@ -47,7 +48,7 @@ export default function TourPackage() {
       price: "₹68,000",
     },
   ];
-  
+
   return (
     <TourPackageStyle className="container">
       <h2>SOTC Trending Tour Packages</h2>
@@ -56,19 +57,21 @@ export default function TourPackage() {
         package around your dream destination?
       </p>
       <div className="tour_slider">
-      <Slider {...settings}>
-  {slides.map((item, index) => (
-    <div key={index} className="slider_card">
-      <img src={item.img} alt={item.title} />
-      <div className="card_content">
-        <h3>{item.title}</h3>
-        <span>Starting Price</span>
-        <h3>{item.price}</h3>
-      </div>
-    </div>
-  ))}
-</Slider>
-
+        <Slider {...settings}>
+          {slides.map((item, index) => (
+            <Link href='' >
+            <div key={index} className="slider_card">
+              <img src={item.img} alt={item.title} />
+              <div className="card_content">
+                <h3>{item.title}</h3>
+                <span>Starting Price</span>
+                <h4>{item.price}</h4>
+              </div>
+            </div>
+            </Link>
+           
+          ))}
+        </Slider>
       </div>
     </TourPackageStyle>
   );

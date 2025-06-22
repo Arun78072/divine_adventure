@@ -34,7 +34,9 @@ export default function Home() {
             className="flag_image"
             style={{ width: "100%", height: "auto" }}
           />
-<TourPackage />
+          <TourPackage />
+          <TourPackage />
+          <TourPackage />
           <Post />
           <div className="explore_section">
             <div>

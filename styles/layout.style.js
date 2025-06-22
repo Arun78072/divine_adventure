@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const HederStyle = styled.section`
   position: sticky;
   top: 0px;
-  background: #00000045;
+  background: #000000cf;
   backdrop-filter: blur(5px);
   padding: 10px 0px;
   z-index: 999;
@@ -102,3 +102,103 @@ export const HederStyle = styled.section`
   }
 `;
 export const FooterStyle = styled.section``;
+
+export const LayoutStyle = styled.section`
+  button.slick-arrow.slick-prev {
+    left: -12px;
+    z-index: 9;
+  }
+  button.slick-arrow.slick-next {
+    right: -12px;
+    z-index: 9;
+  }
+  button.slick-arrow {
+    background: #000;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 40px;
+    transform: none;
+    margin-top: 6px;
+    opacity:1;
+  }
+
+
+  .page_404 {
+  padding: 2.5rem 0;
+  background-color: #fff;
+  font-family: serif;
+  margin-top: 2.5rem;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col-sm-12,
+.col-sm-10 {
+  width: 100%;
+}
+
+.col-sm-10 {
+  max-width: 83.3333%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.four_zero_four_bg {
+  background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 24rem; /* 96 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 6rem; /* Tailwind's text-8xl = 6rem */
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+.contant_box_404 h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contant_box_404 p {
+  margin-bottom: 1rem;
+}
+
+.link_404 {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #16a34a; /* green-600 */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+
+`;

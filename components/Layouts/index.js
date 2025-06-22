@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import { Poppins } from "next/font/google";
 import Header from "./Header";
+import { LayoutStyle } from "@/styles/layout.style";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,10 +11,10 @@ const poppins = Poppins({
 
 export default function Layout({ children }) {
   return (
-    <div className={poppins.className}>
+    <LayoutStyle className={poppins.className}>
       <Header />
       <div className=""> {children}</div>
       <Footer />
-    </div>
+    </LayoutStyle>
   );
 }

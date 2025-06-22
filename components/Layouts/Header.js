@@ -139,7 +139,7 @@ export default function Header() {
               Gallery
             </Link>
           </div>
-          <button className="primary_button">Get in Touch</button>
+          {/* <button className="primary_button">Get in Touch</button> */}
         </nav>
       </header>
     </HederStyle>

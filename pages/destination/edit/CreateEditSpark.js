@@ -6,13 +6,15 @@ import Loader from "../../../components/Loader";
 import { MdAdd, MdDelete } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { useRouter } from "next/router";
-import DestinationStyle from "../../../styles/destination.style";
+import { DestinationStyle } from "@/styles/destination.style";
 
 export default function CreateEditTour({ data }) {
   const [loading, setLoading] = useState(false);
   const [editFormId, setEditFormId] = useState();
   const [formData, setFormData] = useState({
     status: "PUBLIC",
+    tourType: "",
+    tourTypeId: "",
     tourInfo: {
       title: "",
       description: "",
@@ -121,6 +123,8 @@ export default function CreateEditTour({ data }) {
       setLoading(true);
       const payload = {
         status: formData?.status || "PUBLIC",
+        tourType: formData?.tourType,
+        tourTypeId: formData?.tourTypeId,
         tourInfo: {
           title: formData?.tourInfo?.title || "",
           description: formData?.tourInfo?.description || "",
@@ -146,9 +150,9 @@ export default function CreateEditTour({ data }) {
           address: formData?.location?.address || "",
           locationLink: formData?.location?.locationLink || "",
         },
-        gallery : {
-          image: galleryImages.img
-        }
+        gallery: {
+          image: galleryImages.img,
+        },
       };
       console.log("payload=========>", payload);
       debugger;
@@ -163,7 +167,7 @@ export default function CreateEditTour({ data }) {
       }
       setLoading(false);
     } catch (e) {
-      console.log('error ====>',e)
+      console.log("error ====>", e);
       setLoading(false);
       toast.error("Error while saving tour");
     }
@@ -176,7 +180,27 @@ export default function CreateEditTour({ data }) {
       setEditFormId(data?._id);
     }
   }, [data]);
-  console.log("tourPlan======>", tourPlan);
+
+  const tourTypeOption = [
+    { id: 1, value: "Char Dham Tour" },
+    { id: 2, value: "Honeymoon Tour" },
+    { id: 3, value: "Adventure Tour" },
+    { id: 4, value: "Pilgrimage Tour" },
+    { id: 5, value: "Wildlife Tour" },
+    { id: 6, value: "Beach Tour" },
+    { id: 7, value: "Heritage Tour" },
+    { id: 8, value: "Hill Station Tour" },
+    { id: 9, value: "Desert Safari Tour" },
+    { id: 10, value: "Luxury Train Tour" },
+    { id: 11, value: "Yoga & Wellness Tour" },
+    { id: 12, value: "Backwater Tour (Kerala)" },
+    { id: 13, value: "Cultural Tour" },
+    { id: 14, value: "North East India Tour" },
+    { id: 15, value: "South India Temple Tour" },
+  ];
+
+  console.log("formData======>", formData);
+
   return (
     <DestinationStyle>
       <div className="form_box">
@@ -196,6 +220,26 @@ export default function CreateEditTour({ data }) {
                   >
                     <option value="PUBLIC">PUBLIC</option>
                     <option value="INACTIVE">INACTIVE</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Tour Type</label>
+                  <select
+                    value={formData.tourTypeId}
+                    onChange={(e) => {
+                      const selectedOption =
+                        e.target.options[e.target.selectedIndex];
+                      setFormData({
+                        ...formData,
+                        tourTypeId: e.target.value,
+                        tourType: selectedOption.text,
+                      });
+                    }}
+                  >
+                   <option value='' disabled>Select</option>
+                    {tourTypeOption.map((i) => (
+                      <option value={i.id}>{i.value}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -804,7 +848,6 @@ export default function CreateEditTour({ data }) {
                           }));
                         }}
                       >
-                      
                         <RiDeleteBinFill />
                       </button>
                     </div>
