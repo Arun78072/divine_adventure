@@ -1,4 +1,5 @@
 import BannerSection from "@/components/Home/Banner";
+import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
 import Post from "@/components/Home/Post";
 import Review from "@/components/Home/Review";
@@ -37,6 +38,7 @@ export default function Home() {
           <TourPackage />
           <TourPackage />
           <TourPackage />
+          <Blogs />
           <Post />
           <div className="explore_section">
             <div>
