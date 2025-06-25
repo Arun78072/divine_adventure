@@ -1,9 +1,15 @@
 import { TourPackageStyle } from "@/styles/home.style";
+import api from "@/utils";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import Loader from "../Loader";
+import { toast } from "react-toastify";
 
-export default function TourPackage() {
+export default function TourPackage({category}) {
+  const [loading, setLoading] = useState(false);
+  const [postData, setPostData] = useState([]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -49,30 +55,57 @@ export default function TourPackage() {
     },
   ];
 
+  const getTourDetailsApi = async () => {
+    setLoading(true);
+    try {
+      const response = await api.get(
+        `/api/tour/tour_get_by_category?categoryId=${category}`
+      );
+      if (response.status == 200) {
+        const data = response.data.data;
+        setPostData([...data,...data,...data,...data]);
+      }
+    } catch (e) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTourDetailsApi();
+  }, []);
+  console.log("postData======>", postData);
   return (
-    <TourPackageStyle className="container">
-      <h2>SOTC Trending Tour Packages</h2>
-      <p>
-        Tired of browsing through travel agencies and trying to find the best
-        package around your dream destination?
-      </p>
-      <div className="tour_slider">
-        <Slider {...settings}>
-          {slides.map((item, index) => (
-            <Link href='' >
-            <div key={index} className="slider_card">
-              <img src={item.img} alt={item.title} />
-              <div className="card_content">
-                <h3>{item.title}</h3>
-                <span>Starting Price</span>
-                <h4>{item.price}</h4>
-              </div>
-            </div>
-            </Link>
-           
-          ))}
-        </Slider>
-      </div>
-    </TourPackageStyle>
+    <>
+      {loading ? (
+        <Loader loading={loading} />
+      ) : (
+        <TourPackageStyle className="container">
+          <h2>SOTC Trending Tour Packages</h2>
+          <p>
+            Tired of browsing through travel agencies and trying to find the
+            best package around your dream destination?
+          </p>
+          <div className="tour_slider">
+          {postData.length>0 &&<Slider {...settings}>
+              {postData?.map((item, index) => (
+                <Link href="">
+                  <div key={index} className="slider_card">
+                    <img src={item.coverImage} alt={item.title} />
+                    <div className="card_content">
+                      <h3>{item.title}</h3>
+                      <span>Starting Price</span>
+                      <h4>{item.price}</h4>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </Slider> }
+            
+          </div>
+        </TourPackageStyle>
+      )}
+    </>
   );
 }

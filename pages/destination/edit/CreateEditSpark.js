@@ -15,6 +15,8 @@ export default function CreateEditTour({ data }) {
     status: "PUBLIC",
     tourType: "",
     tourTypeId: "",
+    tourCategory: "",
+    tourCategoryId: "",
     tourInfo: {
       title: "",
       description: "",
@@ -125,6 +127,8 @@ export default function CreateEditTour({ data }) {
         status: formData?.status || "PUBLIC",
         tourType: formData?.tourType,
         tourTypeId: formData?.tourTypeId,
+        tourCategory: formData?.tourCategory,
+        tourCategoryId: formData?.tourCategoryId,
         tourInfo: {
           title: formData?.tourInfo?.title || "",
           description: formData?.tourInfo?.description || "",
@@ -198,8 +202,14 @@ export default function CreateEditTour({ data }) {
     { id: 14, value: "North East India Tour" },
     { id: 15, value: "South India Temple Tour" },
   ];
+  const tourCategoryOption = [
+    { id: 1, value: "Trending Tour" },
+    { id: 2, value: "New Launches" },
+    { id: 3, value: "Specials Tour" },
+    { id: 4, value: "Upcomming Tour" },
+    
+  ];
 
-  console.log("formData======>", formData);
 
   return (
     <DestinationStyle>
@@ -238,6 +248,26 @@ export default function CreateEditTour({ data }) {
                   >
                    <option value='' disabled>Select</option>
                     {tourTypeOption.map((i) => (
+                      <option value={i.id}>{i.value}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label>Tour Category</label>
+                  <select
+                    value={formData.tourCategoryId}
+                    onChange={(e) => {
+                      const selectedOption =
+                        e.target.options[e.target.selectedIndex];
+                      setFormData({
+                        ...formData,
+                        tourCategoryId: e.target.value,
+                        tourCategory: selectedOption.text,
+                      });
+                    }}
+                  >
+                   <option value='' disabled>Select</option>
+                    {tourCategoryOption.map((i) => (
                       <option value={i.id}>{i.value}</option>
                     ))}
                   </select>

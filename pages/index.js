@@ -36,9 +36,9 @@ export default function Home() {
             className="flag_image"
             style={{ width: "100%", height: "auto" }}
           />
-          <TourPackage />
-          <TourPackage />
-          <TourPackage />
+          <TourPackage category={1}/>
+          <TourPackage category={2}/>
+          <TourPackage category={3}/>
           <Blogs />
           <HolidayBanner />
           <Post />

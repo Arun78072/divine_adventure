@@ -15,6 +15,13 @@ const TourSchema = new mongoose.Schema(
     tourTypeId:{
       type: String,
     },
+    tourCategory:{
+      type: String,
+    },
+    tourCategoryId:{
+      type: String,
+    },
+
     tourInfo: {
       title: String,
       coverImage: String,

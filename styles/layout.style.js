@@ -45,7 +45,7 @@ export const HederStyle = styled.section`
     a {
       color: #fff;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .mega_menu {
@@ -138,11 +138,7 @@ export const LayoutStyle = styled.section`
   margin-top: 2.5rem;
 }
 
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
+
 
 .row {
   display: flex;

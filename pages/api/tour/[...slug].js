@@ -9,9 +9,6 @@ export default async function handler(req, res) {
   if (slug[0] === "tour_get_by_id") {
     try {
       const { tourId } = req.query;
-      // if (!req.user || !req.user.id) {
-      //   return res.status(401).json({ error: "User not authenticated" });
-      // }
       const tour = await Tour.findOne({
         _id: tourId,
         deleted: false,
@@ -30,10 +27,32 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while fetching topics" });
     }
+  } else if (slug[0] === "tour_get_by_category") {
+    try {
+      const { categoryId } = req.query;
+      const posts = await Tour.find({
+        tourCategoryId: categoryId,
+        deleted: false,
+      });
+      const extractedTours = posts.map(tour => {
+        const { coverImage, title, price } = tour.tourInfo;
+        return { coverImage, title, price };
+      });
+      
+      res.status(200).json({
+        status: 200,
+        message: "Tour fetched successfully",
+        data: extractedTours,
+      });
+    } catch (error) {
+      console.error("Error fetching topics:", error);
+      res
+        .status(500)
+        .json({ error: "Something went wrong while fetching topics" });
+    }
   } else if (slug[0] === "all_tour") {
     try {
-      let posts;
-      posts = await Tour.find({
+      const posts = await Tour.find({
         deleted: false,
       });
       res.status(200).json({
@@ -49,9 +68,9 @@ export default async function handler(req, res) {
     }
   } else if (slug[0] === "add_tour") {
     console.log("eq.body======>", req.body);
-     if (!req.user || !req.user.id) {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ error: "User not authenticated" });
+    }
     try {
       const newTour = await Tour.create({ ...req.body });
       res.status(201).json({
@@ -67,11 +86,11 @@ export default async function handler(req, res) {
     }
   } else if (slug[0] === "edit_tour") {
     try {
-       if (!req.user || !req.user.id) {
+      if (!req.user || !req.user.id) {
         return res.status(401).json({ error: "User not authenticated" });
       }
       const { id, ...data } = req.body;
-      console.log('id =======>',id)
+      console.log("id =======>", id);
       const newTour = await Tour.findOneAndUpdate(
         { _id: id, deleted: false },
         {
@@ -94,7 +113,7 @@ export default async function handler(req, res) {
       if (!req.user || !req.user.id) {
         return res.status(401).json({ error: "User not authenticated" });
       }
-      console.log('tour_id ========>',tour_id)
+      console.log("tour_id ========>", tour_id);
       // const updatedPost = await Tour.findOneAndUpdate(
       //   { _id: tour_id },
       //   { $set: { deleted: true } }
@@ -114,7 +133,7 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while deleting the post" });
     }
-  }  else {
+  } else {
     res.status(405).json({ message: "Method Not Allowed" });
   }
   res.end(`Post: ${slug.join(", ")}`);

@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 
 export const TourPackageStyle = styled.section`
-  margin-top: 60px;
+  margin-top: 100px;
   h2 {
-    font-size: 26px;
+    margin-top:20px;
+    font-size: 20px;
     font-weight: 800;
   }
   p {
     margin: 10px 0px;
+    font-size: 16px;
   }
   .tour_slider {
     .slider_card {
@@ -16,6 +18,8 @@ export const TourPackageStyle = styled.section`
       > img {
         width: 100%;
         border-radius: 6px;
+        height: 260px;
+    object-fit: cover;
       }
       .card_content {
         position: absolute;
@@ -36,7 +40,10 @@ export const TourPackageStyle = styled.section`
         transition: all 0.5s;
         > h3 {
           margin-bottom: auto;
-          font-size: 16px;
+          font-size: 18px;
+        }
+        >span{
+          font-size: 18px;
         }
         > h4 {
           font-size: 20px;

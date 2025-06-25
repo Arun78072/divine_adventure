@@ -52,7 +52,7 @@ export default function Header() {
             </Link>
             <div className="mega_menu">
               <Link className="" href="/destination">
-                Travel Packages <FaAngleDown />
+              Indian <FaAngleDown />
               </Link>
               <div className="sub_menu">
                 <div>
@@ -91,7 +91,7 @@ export default function Header() {
             </div>
             <div className="mega_menu">
               <Link className="" href="/destination">
-                Travel Packages 2<FaAngleDown />
+               International <FaAngleDown />
               </Link>
               <div className="sub_menu">
                 <div>
