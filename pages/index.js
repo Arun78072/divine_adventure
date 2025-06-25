@@ -1,6 +1,7 @@
 import BannerSection from "@/components/Home/Banner";
 import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
+import HolidayBanner from "@/components/Home/HolidayBanner";
 import Post from "@/components/Home/Post";
 import Review from "@/components/Home/Review";
 import TourPackage from "@/components/Home/TourPackage";
@@ -39,6 +40,7 @@ export default function Home() {
           <TourPackage />
           <TourPackage />
           <Blogs />
+          <HolidayBanner />
           <Post />
           <div className="explore_section">
             <div>

@@ -25,7 +25,7 @@ const blogs = [
 
 export default function Blogs() {
   return (
-    <BlogSectionWrapper>
+    <BlogSectionWrapper className="container">
       <Heading>Reading Corner</Heading>
       <BlogGrid>
         {blogs.map((blog, index) => (
