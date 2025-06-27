@@ -11,7 +11,6 @@ export default function TourPackage({category}) {
   const [postData, setPostData] = useState([]);
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -75,7 +74,6 @@ export default function TourPackage({category}) {
   useEffect(() => {
     getTourDetailsApi();
   }, []);
-  console.log("postData======>", postData);
   return (
     <>
       {loading ? (
@@ -90,7 +88,7 @@ export default function TourPackage({category}) {
           <div className="tour_slider">
           {postData.length>0 &&<Slider {...settings}>
               {postData?.map((item, index) => (
-                <Link href="">
+                <Link href={`destination/view/${item._id}`}>
                   <div key={index} className="slider_card">
                     <img src={item.coverImage} alt={item.title} />
                     <div className="card_content">

@@ -1,30 +1,23 @@
-import Image from "next/image";
-import Head from "next/head";
-// import styles from "@/styles/tour";
-import Information from "./information.style";
 import Tourdetails from "./Tourdetails";
+import { Information } from "@/styles/destination.style";
+
 export default function InformationTab({ data }) {
   console.log("postData =======>", data);
   return (
     <Information>
-      <Head>{/* <title>Switzerland Tour Details</title> */}</Head>
       <section className="tour-container">
         <div className="tour-header">
           <div className="left">
             <h1>{data?.tourInfo?.title}</h1>
             <p className="price">
-            {data?.tourInfo?.price} <span>/ Per Couple</span>
+              {data?.tourInfo?.price} <span>/ Per Couple</span>
             </p>
             <p className="reviews">⭐⭐⭐⭐⭐ (2.3k reviews)</p>
-            <p className="description">
-            {data?.tourInfo?.description}
-            </p>
-
-
-
+            <p className="description">{data?.tourInfo?.description}</p>
             <div className="tour-details">
               <p>
-                <strong>Destination:</strong> {data?.tourInfo?.destination.join(', ')}
+                <strong>Destination:</strong>{" "}
+                {data?.tourInfo?.destination.join(", ")}
               </p>
               <p>
                 <strong>Departure:</strong> {data?.tourInfo?.depature}
@@ -41,19 +34,16 @@ export default function InformationTab({ data }) {
               <p>
                 <strong>Travel Night:</strong> {data?.tourInfo?.travelNight}
               </p>
-              <p>
-                <strong>Departure Date and Time:</strong> {data?.tourInfo?.depatureTime}
-              </p>
-              <p>
-                <strong>Return Time:</strong> {data?.tourInfo?.returnTime}
-              </p>
             
+           
+
               <p>
-                <strong>Not Included:</strong> {data?.tourInfo?.notInclude?.join(', ')}
+                <strong>Not Included:</strong>{" "}
+                {data?.tourInfo?.notInclude?.join(", ")}
               </p>
               <p>
-  <strong>Included:</strong> {data?.tourInfo?.include?.join(', ')}
-</p>
+                <strong>Included:</strong> {data?.tourInfo?.include?.join(", ")}
+              </p>
             </div>
           </div>
 

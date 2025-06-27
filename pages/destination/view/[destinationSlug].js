@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import api, { baseUrl, nestReplies } from "@/utils";
+import api from "@/utils";
 import axios from "axios";
 import Image from "next/image";
 
@@ -9,8 +9,8 @@ import InformationTab from "./InformationTab";
 import GalleryTab from "./GalleryTab";
 import LocationTab from "./LocationTab";
 import TourPlanTab from "./TourPlanTab";
-import DestinationStyle from "../../../styles/destination.style";
 import Loader from "@/components/Loader";
+import { DestinationStyle } from "@/styles/destination.style";
 
 export default function ViewPost() {
   const [postData, setPostData] = useState({});
@@ -18,7 +18,6 @@ export default function ViewPost() {
   const [activeTab, setActiveTab] = useState("Information");
 
   const router = useRouter();
-  const { postSlug } = router.query;
 
   const { destinationSlug } = router.query;
 

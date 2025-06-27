@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
 export const TourPackageStyle = styled.section`
-  margin-top: 100px;
+  margin-top: 40px;
   h2 {
     margin-top:20px;
-    font-size: 20px;
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: 600;
   }
   p {
     margin: 10px 0px;

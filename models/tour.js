@@ -2,35 +2,26 @@ import mongoose from "mongoose";
 
 const TourSchema = new mongoose.Schema(
   {
-    id: String,
     deleted: { type: Boolean, default: false },
     status: {
       type: String,
       enum: ["PUBLIC", "INACTIVE"],
       default: "PUBLIC",
     },
-    tourType:{
-      type: String,
-    },
-    tourTypeId:{
-      type: String,
-    },
-    tourCategory:{
-      type: String,
-    },
-    tourCategoryId:{
-      type: String,
-    },
+    tourType: { type: String, required: true },
+    tourTypeId: { type: String, required: true },
+    tourCountry: { type: String, required: true },
+    tourCountryId: { type: String, required: true },
+    tourCategory: { type: String, required: true },
+    tourCategoryId: { type: String, required: true },
 
     tourInfo: {
-      title: String,
-      coverImage: String,
-      description: String,
-      price: Number,
+      title: { type: String, required: true },
+      coverImage: { type: String, required: true },
+      description: { type: String },
+      price: { type: Number, default: 0 },
       destination: [String],
       depature: String,
-      depatureTime: String,
-      returnTime: String,
       include: [String],
       notInclude: [String],
       travelDays: String,

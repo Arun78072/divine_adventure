@@ -1,5 +1,5 @@
+import { DestinationStyle } from "@/styles/destination.style";
 import React from "react";
-import DestinationStyle from "../../../styles/destination.style";
 
 export default function Tourdetails() {
   return (

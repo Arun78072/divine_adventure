@@ -380,3 +380,115 @@ export const TourList = styled.section`
     }
   }
 `;
+export const Information = styled.section`
+  .tour-container {
+    padding: 32px;
+    font-family: sans-serif;
+
+    .tour-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+
+      .left {
+        flex: 1;
+      }
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #555;
+
+      strong {
+        color: #DF6951;
+        font-weight: 600;
+      }
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 600;
+      color: #DF6951;
+
+      span {
+        font-size: 14px;
+        color: #DF6951;
+        margin-left: 4px;
+      }
+    }
+
+    .reviews {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .description {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #444;
+    }
+  }
+
+  .gallery-section {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 60px;
+
+    .gallery-left {
+      flex: 1;
+      max-width: 60%;
+
+      h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1c2141;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+
+        img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .gallery-right {
+      flex: 1;
+      max-width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+`;

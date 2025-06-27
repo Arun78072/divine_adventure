@@ -15,6 +15,9 @@ export default function CreateEditTour({ data }) {
     status: "PUBLIC",
     tourType: "",
     tourTypeId: "",
+    tourCountry: "",
+    tourCountryId: "",
+
     tourCategory: "",
     tourCategoryId: "",
     tourInfo: {
@@ -24,8 +27,6 @@ export default function CreateEditTour({ data }) {
       country: "",
       destination: "",
       depature: "",
-      depatureTime: "",
-      returnTime: "",
       include: [""],
       includeText: "",
       notInclude: [""],
@@ -127,6 +128,8 @@ export default function CreateEditTour({ data }) {
         status: formData?.status || "PUBLIC",
         tourType: formData?.tourType,
         tourTypeId: formData?.tourTypeId,
+        tourCountry: formData?.tourCountry,
+        tourCountryId: formData?.tourCountryId,
         tourCategory: formData?.tourCategory,
         tourCategoryId: formData?.tourCategoryId,
         tourInfo: {
@@ -136,8 +139,6 @@ export default function CreateEditTour({ data }) {
           country: formData?.tourInfo?.country || "",
           destination: formData?.tourInfo?.destination || "",
           depature: formData?.tourInfo?.depature || "",
-          depatureTime: formData?.tourInfo?.depatureTime || "",
-          returnTime: formData?.tourInfo?.returnTime || "",
           include: formData?.tourInfo?.include || [""],
           notInclude: formData?.tourInfo?.notInclude || [""],
           travelDays: formData?.tourInfo?.travelDays || "",
@@ -186,30 +187,55 @@ export default function CreateEditTour({ data }) {
   }, [data]);
 
   const tourTypeOption = [
-    { id: 1, value: "Char Dham Tour" },
-    { id: 2, value: "Honeymoon Tour" },
-    { id: 3, value: "Adventure Tour" },
-    { id: 4, value: "Pilgrimage Tour" },
-    { id: 5, value: "Wildlife Tour" },
-    { id: 6, value: "Beach Tour" },
-    { id: 7, value: "Heritage Tour" },
-    { id: 8, value: "Hill Station Tour" },
-    { id: 9, value: "Desert Safari Tour" },
-    { id: 10, value: "Luxury Train Tour" },
-    { id: 11, value: "Yoga & Wellness Tour" },
-    { id: 12, value: "Backwater Tour (Kerala)" },
-    { id: 13, value: "Cultural Tour" },
-    { id: 14, value: "North East India Tour" },
-    { id: 15, value: "South India Temple Tour" },
+    {
+      id: 1,
+      value: "India",
+      children: [
+        { id: 101, value: "Char Dham Yatra" },
+        { id: 102, value: "Honeymoon Tour" },
+        { id: 103, value: "Adventure Tour" },
+        { id: 104, value: "Pilgrimage Tour" },
+        { id: 105, value: "Wildlife Safari" },
+        { id: 106, value: "Beach Retreats" },
+        { id: 107, value: "Heritage & Historical Tour" },
+        { id: 108, value: "Hill Station Getaway" },
+        { id: 109, value: "Desert Safari Rajasthan" },
+        { id: 110, value: "Luxury Train Experience" },
+        { id: 111, value: "Yoga & Wellness Retreat" },
+        { id: 112, value: "Backwater Cruise - Kerala" },
+        { id: 113, value: "Cultural Exploration" },
+        { id: 114, value: "North East India Discovery" },
+        { id: 115, value: "South India Temple Trail" },
+      ],
+    },
+    {
+      id: 2,
+      value: "International",
+      children: [
+        { id: 201, value: "European Highlights Tour" },
+        { id: 202, value: "USA West Coast Tour" },
+        { id: 203, value: "Southeast Asia Discovery" },
+        { id: 204, value: "Australia & New Zealand Adventure" },
+        { id: 205, value: "Middle East Luxury Tour" },
+        { id: 206, value: "African Safari Expedition" },
+        { id: 207, value: "Maldives Honeymoon" },
+        { id: 208, value: "Bali Wellness & Spa Retreat" },
+        { id: 209, value: "Japan Cultural Tour" },
+        { id: 210, value: "South Korea K-Culture Tour" },
+        { id: 211, value: "Dubai Desert & City Combo" },
+        { id: 212, value: "Canada Rockies Tour" },
+        { id: 213, value: "Northern Lights Experience - Iceland" },
+        { id: 214, value: "Cruise Holiday - Mediterranean" },
+      ],
+    },
   ];
+
   const tourCategoryOption = [
     { id: 1, value: "Trending Tour" },
     { id: 2, value: "New Launches" },
     { id: 3, value: "Specials Tour" },
     { id: 4, value: "Upcomming Tour" },
-    
   ];
-
 
   return (
     <DestinationStyle>
@@ -232,26 +258,7 @@ export default function CreateEditTour({ data }) {
                     <option value="INACTIVE">INACTIVE</option>
                   </select>
                 </div>
-                <div>
-                  <label>Tour Type</label>
-                  <select
-                    value={formData.tourTypeId}
-                    onChange={(e) => {
-                      const selectedOption =
-                        e.target.options[e.target.selectedIndex];
-                      setFormData({
-                        ...formData,
-                        tourTypeId: e.target.value,
-                        tourType: selectedOption.text,
-                      });
-                    }}
-                  >
-                   <option value='' disabled>Select</option>
-                    {tourTypeOption.map((i) => (
-                      <option value={i.id}>{i.value}</option>
-                    ))}
-                  </select>
-                </div>
+
                 <div>
                   <label>Tour Category</label>
                   <select
@@ -266,10 +273,58 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                   <option value='' disabled>Select</option>
+                    <option value="" disabled>
+                      Select
+                    </option>
                     {tourCategoryOption.map((i) => (
                       <option value={i.id}>{i.value}</option>
                     ))}
+                  </select>
+                </div>
+                <div>
+                  <label>Travel Country</label>
+                  <select
+                    value={formData.tourCountryId}
+                    onChange={(e) => {
+                      const selectedOption =
+                        e.target.options[e.target.selectedIndex];
+                      setFormData({
+                        ...formData,
+                        tourCountryId: e.target.value,
+                        tourCountry: selectedOption.text,
+                      });
+                    }}
+                  >
+                    <option value="" disabled>
+                      Select
+                    </option>
+                    {tourTypeOption.map((i) => (
+                      <option value={i.id}>{i.value}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label>Tour Type</label>
+                  <select
+                    value={formData.tourTypeId}
+                    onChange={(e) => {
+                      const selectedOption =
+                        e.target.options[e.target.selectedIndex];
+                      setFormData({
+                        ...formData,
+                        tourTypeId: e.target.value,
+                        tourType: selectedOption.text,
+                      });
+                    }}
+                  >
+                    <option value="" disabled>
+                      Select
+                    </option>
+                    {tourTypeOption
+                      .filter((item) => item.id == formData.tourCountryId)[0]
+                      ?.children.map((i) => (
+                        <option value={i.id}>{i.value}</option>
+                      ))}
                   </select>
                 </div>
 
@@ -391,40 +446,6 @@ export default function CreateEditTour({ data }) {
                         tourInfo: {
                           ...formData.tourInfo,
                           depature: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <label>Depature Time (Indian Timezone)</label>
-                  <input
-                    type="datetime-local"
-                    value={formData?.tourInfo?.depatureTime}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          depatureTime: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-
-                <div>
-                  <label>Return Time (Indian Timezone)</label>
-                  <input
-                    type="datetime-local"
-                    value={formData?.tourInfo?.returnTime}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        tourInfo: {
-                          ...formData.tourInfo,
-                          returnTime: e.target.value,
                         },
                       })
                     }

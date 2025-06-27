@@ -35,8 +35,9 @@ export default async function handler(req, res) {
         deleted: false,
       });
       const extractedTours = posts.map(tour => {
-        const { coverImage, title, price } = tour.tourInfo;
-        return { coverImage, title, price };
+        const {_id} = tour
+        const { coverImage, title, price} = tour.tourInfo;
+        return { coverImage, title, price ,_id};
       });
       
       res.status(200).json({
