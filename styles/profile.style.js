@@ -27,61 +27,7 @@ const ProfileStyle = styled.section`
     }
   }
 
-  .booking_form {
-    max-width: 380px;
-    background-color: #f9f9f9;
-    padding: 32px;
-    h2 {
-      font-size: 24px;
-      color: #1c2141;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    p {
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    input,
-    textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 12px;
-      border: none;
-      background-color: #fff;
-      border-radius: 6px;
-      font-size: 14px;
-      box-shadow: 0 0 0 1px #ddd;
-    }
-    input::placeholder,
-    textarea::placeholder {
-      color: #bbb;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .btn {
-      width: 100%;
-      padding: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .booking_form .btn.primary {
-      background-color: #f0673e;
-      color: white;
-      border: none;
-    }
-    .btn.secondary {
-      background-color: #db4935;
-      color: white;
-      border: none;
-    }
-  }
+
   .tour_plan {
     padding: 30px;
     .title {

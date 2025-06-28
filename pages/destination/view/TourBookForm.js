@@ -1,11 +1,10 @@
 import { DestinationStyle } from "@/styles/destination.style";
 import React from "react";
 
-export default function Tourdetails() {
+export default function TourBookForm() {
   return (
     <DestinationStyle>
-      <div className="booking_form">
-        <div className="booking-form">
+        <div>
           <h2>Book This Tour</h2>
           <p>
             Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto
@@ -17,10 +16,8 @@ export default function Tourdetails() {
           <input type="tel" placeholder="Phone" />
           <input type="number" placeholder="Number of people" />
           <textarea placeholder="Message"></textarea>
-          <button className="btn primary">Check Availability</button>
-          <button className="btn secondary">Book Now</button>
+          <button className="primary_button">Book Now</button>
         </div>
-      </div>
     </DestinationStyle>
   );
 }
