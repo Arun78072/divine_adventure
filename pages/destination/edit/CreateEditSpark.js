@@ -17,7 +17,6 @@ export default function CreateEditTour({ data }) {
     tourTypeId: "",
     tourCountry: "",
     tourCountryId: "",
-
     tourCategory: "",
     tourCategoryId: "",
     tourInfo: {
@@ -27,9 +26,9 @@ export default function CreateEditTour({ data }) {
       country: "",
       destination: "",
       depature: "",
-      include: [""],
+      include: [],
       includeText: "",
-      notInclude: [""],
+      notInclude: [],
       notIncludeText: "",
       travelDays: "",
       travelCountry: "",
@@ -85,33 +84,36 @@ export default function CreateEditTour({ data }) {
         },
       });
       console.log("data =upload imhg =====>", response);
-      if (type == "coverImage") {
-        setFormData({
-          ...formData,
-          tourInfo: {
-            ...formData.tourInfo,
-            coverImage: response.data.url,
-          },
-        });
-      } else if (type == "tourPlan") {
-        setTourPlan((prev) =>
-          prev.map((x, y) => {
-            if (y === index) {
-              return {
-                ...x,
-                locationImage: response.data.url,
-              };
-            } else {
-              return x;
-            }
-          })
-        );
-      } else if (type == "galleryImage") {
-        setGalleryImages({
-          ...galleryImages,
-          img: [...galleryImages.img, response.data.url],
-        });
+      switch (type) {
+        case "coverImage":
+          setFormData((prev) => ({
+            ...prev,
+            tourInfo: {
+              ...(prev.tourInfo || {}),
+              coverImage: response.data.url,
+            },
+          }));
+          break;
+      
+        case "tourPlan":
+          setTourPlan((prev) =>
+            prev.map((item, idx) =>
+              idx === index ? { ...item, locationImage: response.data.url } : item
+            )
+          );
+          break;
+      
+        case "galleryImage":
+          setGalleryImages((prev) => ({
+            ...prev,
+            img: [...(prev.img || []), response.data.url],
+          }));
+          break;
+      
+        default:
+          console.warn(`Unknown upload type: ${type}`);
       }
+      
       toast.success("Successful Upload Image");
     } catch (e) {
       console.log("error", e);
@@ -147,7 +149,7 @@ export default function CreateEditTour({ data }) {
           travelNight: formData?.tourInfo?.travelNight || "",
           coverImage: formData?.tourInfo?.coverImage || "",
         },
-        tourPlan: tourPlan.map(({ listText, ...rest }) => ({
+        tourPlan: tourPlan?.map(({ listText, ...rest }) => ({
           ...rest,
         })),
         location: {
@@ -179,12 +181,13 @@ export default function CreateEditTour({ data }) {
   };
 
   useEffect(() => {
-    if (data) {
+    if (data._id) {
       setFormData(data);
       setTourPlan(data.tourPlan);
       setEditFormId(data?._id);
     }
   }, [data]);
+  console.log('formData =====>',formData)
 
   const tourTypeOption = [
     {
@@ -295,7 +298,7 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                    <option value="" disabled>
+                    <option value="">
                       Select
                     </option>
                     {tourTypeOption.map((i) => (
@@ -317,7 +320,7 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                    <option value="" disabled>
+                    <option value="">
                       Select
                     </option>
                     {tourTypeOption

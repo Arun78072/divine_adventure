@@ -68,7 +68,7 @@ export default async function handler(req, res) {
         .json({ error: "Something went wrong while fetching tour" });
     }
   } else if (slug[0] === "add_tour") {
-    console.log("eq.body======>", req.body);
+    console.log("Req.body======>", req.body);
     if (!req.user || !req.user.id) {
       return res.status(401).json({ error: "User not authenticated" });
     }
