@@ -77,7 +77,6 @@ export default function CreateEditTour({ data }) {
       if (!file) return;
       const formData = new FormData();
       formData.append("image", file);
-
       const response = await api.post("/api/media/upload_image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",

@@ -51,7 +51,7 @@ export default function Header() {
               Home
             </Link>
             <div className="mega_menu">
-              <Link className="" href="/destination">
+              <Link href="#" onClick={(e) => e.preventDefault()}>
               Indian <FaAngleDown />
               </Link>
               <div className="sub_menu">
@@ -59,13 +59,13 @@ export default function Header() {
                   <h4>Indian Packages</h4>
                   <ul>
                     <li>
-                      <Link href="/destination/europe">Europe Tours</Link>
+                      <Link href="/indian-tour/europe">Europe Tours</Link>
                     </li>
                     <li>
-                      <Link href="/destination/asia">Asia Trips</Link>
+                      <Link href="/indian-tour/asia">Asia Trips</Link>
                     </li>
                     <li>
-                      <Link href="/destination/adventure">
+                      <Link href="/indian-tour/adventure">
                         Adventure Packages
                       </Link>
                     </li>

@@ -38,7 +38,6 @@ export default function ViewPost() {
       getTourDetailsApi(destinationSlug);
     }
   }, [destinationSlug]);
-  console.log("destinationSlug =======>", postData.gallery  );
   return (
     <>
       <Loader loading={loading} />

@@ -1,82 +1,75 @@
 import { toast } from "react-toastify";
-import axios from 'axios';
+import axios from "axios";
 
 export const baseUrl = "http://localhost:3000";
 
-
-export const formateDate = (dates) => {
-  const date = new Date(dates);
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = date.toLocaleDateString("en-US", options);
-  return formattedDate;
-};
-
-export const formatTimeAgo = (dateString) => {
-  const now = new Date();
-  const date = new Date(dateString);
-  const diffInSeconds = Math.floor((now - date) / 1000);
-
-  if (diffInSeconds < 60) return `${diffInSeconds} sec ago`;
-  if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} min ago`;
-  if (diffInSeconds < 86400)
-    return `${Math.floor(diffInSeconds / 3600)} hr ago`;
-
-  return `${Math.floor(diffInSeconds / 86400)} days ago`;
-};
-
-export const nestReplies = (comments) => {
-  const mainComments = comments.filter((comment) => !comment.commentId);
-
-  const commentMap = mainComments.reduce((acc, comment) => {
-    acc[comment._id] = { ...comment, reply: [] }; // Initialize reply array
-    return acc;
-  }, {});
-  comments.forEach((comment) => {
-    if (comment.commentId) {
-      const parentComment = commentMap[comment.commentId];
-      if (parentComment) {
-        parentComment.reply.push(comment);
-      }
-    }
-  });
-
-  return Object.values(commentMap);
-};
-
-export const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text);
-  toast.success("Successfully copied the Spark ID!");
-};
-
-export const  uploadImage = ()=>{
-
-}
-
+export const tourTypeOption = [
+  {
+    id: 1,
+    value: "India",
+    children: [
+      { id: 101, value: "Char Dham Yatra" },
+      { id: 102, value: "Honeymoon Tour" },
+      { id: 103, value: "Adventure Tour" },
+      { id: 104, value: "Pilgrimage Tour" },
+      { id: 105, value: "Wildlife Safari" },
+      { id: 106, value: "Beach Retreats" },
+      { id: 107, value: "Heritage & Historical Tour" },
+      { id: 108, value: "Hill Station Getaway" },
+      { id: 109, value: "Desert Safari Rajasthan" },
+      { id: 110, value: "Luxury Train Experience" },
+      { id: 111, value: "Yoga & Wellness Retreat" },
+      { id: 112, value: "Backwater Cruise - Kerala" },
+      { id: 113, value: "Cultural Exploration" },
+      { id: 114, value: "North East India Discovery" },
+      { id: 115, value: "South India Temple Trail" },
+    ],
+  },
+  {
+    id: 2,
+    value: "International",
+    children: [
+      { id: 201, value: "European Highlights Tour" },
+      { id: 202, value: "USA West Coast Tour" },
+      { id: 203, value: "Southeast Asia Discovery" },
+      { id: 204, value: "Australia & New Zealand Adventure" },
+      { id: 205, value: "Middle East Luxury Tour" },
+      { id: 206, value: "African Safari Expedition" },
+      { id: 207, value: "Maldives Honeymoon" },
+      { id: 208, value: "Bali Wellness & Spa Retreat" },
+      { id: 209, value: "Japan Cultural Tour" },
+      { id: 210, value: "South Korea K-Culture Tour" },
+      { id: 211, value: "Dubai Desert & City Combo" },
+      { id: 212, value: "Canada Rockies Tour" },
+      { id: 213, value: "Northern Lights Experience - Iceland" },
+      { id: 214, value: "Cruise Holiday - Mediterranean" },
+    ],
+  },
+];
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000', 
+  baseURL: "http://localhost:3000",
   headers: {
-    'Content-Type': 'application/json',
-    "Cache-Control": "no-cache", 
+    "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
     Pragma: "no-cache",
     Expires: "0",
   },
 });
 
-
-
 api.interceptors.request.use(
   (config) => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const token =
+      typeof window !== "undefined" ? localStorage.getItem("token") : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
     // Force no-cache only on GET requests
-    if (config.method === 'get') {
-      config.headers['Cache-Control'] = 'no-cache';
-      config.headers['Pragma'] = 'no-cache';
-      config.headers['Expires'] = '0';
+    if (config.method === "get") {
+      config.headers["Cache-Control"] = "no-cache";
+      config.headers["Pragma"] = "no-cache";
+      config.headers["Expires"] = "0";
     }
 
     return config;
@@ -84,14 +77,12 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-
-
 // Response Interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      console.warn('Unauthorized - maybe redirect to login');
+      console.warn("Unauthorized - maybe redirect to login");
       // Optionally: logout user, clear token, redirect, etc.
     }
     return Promise.reject(error);

@@ -41,8 +41,8 @@ export const DestinationStyle = styled.section`
           .tour_content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            >div{
-              width:100%;
+            > div {
+              width: 100%;
             }
           }
           span {
@@ -148,7 +148,7 @@ export const DestinationStyle = styled.section`
         textarea {
           width: 100%;
           padding: 14px;
-          margin-bottom: 12px;
+          margin-top: 12px;
           border: none;
           background-color: #fff;
           border-radius: 6px;
@@ -166,10 +166,16 @@ export const DestinationStyle = styled.section`
         .primary_button {
           width: 100%;
         }
+        span.error {
+          font-size: 12px;
+          height: 20px;
+          color: red;
+          display: block;
+          margin-left: 5px;
+        }
       }
     }
   }
-
 
   .location_section {
     padding: 30px 0px;
@@ -265,7 +271,7 @@ export const DestinationStyle = styled.section`
         width: 100%;
         height: 400px;
         border-radius: 10px;
-        object-fit:cover;
+        object-fit: cover;
       }
     }
     .image_box {
@@ -379,7 +385,6 @@ export const DestinationStyle = styled.section`
     }
   }
 `;
-
 export const TourList = styled.section`
   .post_card {
     display: grid;
