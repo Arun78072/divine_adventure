@@ -1,42 +1,64 @@
-import Link from "next/link";
-
+import React from "react";
+import {
+  FooterWrapper,
+  FooterContainer,
+  FooterBrand,
+  FooterLinks,
+  FooterBottom,
+} from "./Footer.styles";
+import { MapContainer } from './Footer.styles';
+import { FaXTwitter, FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <section className="footer_section">
-      <div className="container">
-        <div className="footer_top">
-          <div className="footer_brand">
-            <div className="footer-logo">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 35 36" className="logo-icon">
-                <ellipse cx="17.3887" cy="18" rx="17.3887" ry="18" fill="url(#paint0_linear_11_233)" />
-                <defs>
-                  <linearGradient id="paint0_linear_11_233" x1="2.60711e-07" y1="12.5" x2="30.4817" y2="30.0729" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF2B2B" />
-                    <stop offset="1" stopColor="#1A92AC" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="logo-text">Blog</div>
-            </div>
-            <div className="footer_description">
-              Join our newsletter to be at the forefront of accessing exclusive content and expert insights.
-            </div>
-           
+    <FooterWrapper>
+      <FooterContainer className='container'>
+        <FooterBrand>
+          <h2>DEVINE ADVENTURE</h2>
+          <p>
+            Empowering explorers with unforgettable tour & travel experiences. Trusted travel experts for your every destination.
+          </p>
+          <div className="social-icons">
+            <a href="#"><FaXTwitter /></a>
+            <a href="#"><FaLinkedin /></a>
+            <a href="#"><FaInstagram /></a>
+            <a href="#"><FaFacebookF /></a>
           </div>
-          {/* Links */}
-          <div className="footer_links">
-            <Link className="footer-link" href="/">Subscribe</Link>
-            <Link className="footer-link" href="/">Categories</Link>
-            <Link className="footer-link" href="/">Membership</Link>
-            <Link className="footer-link" href="/">Resources</Link>
+          <a href="#" className="back-to-top">↑ Back to Top</a>
+        </FooterBrand>
+
+        <FooterLinks>
+          <div className="column">
+            <h4>Site Map</h4>
+            <ul>
+              <li><a href="#">Homepage</a></li>
+              <li><a href="#">Destinations</a></li>
+              <li><a href="#">Holiday Packages</a></li>
+              <li><a href="#">Gallery</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
           </div>
-        </div>
-        {/* Copyright */}
-        <div className="footer-bottom">
-          Copyright © 2025 Blog. Developed with Arun Kumar
-        </div>
-      </div>
-    </section>
+          <div className="column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cancellation Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27004.26370366919!2d76.29856557617885!3d32.21681318823619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b50df65bd7311%3A0x3e08bdb100c6dc10!2sDharamshala%2C%20Himachal%20Pradesh!5e0!3m2!1sen!2sin!4v1751264635107!5m2!1sen!2sin"
+             
+            ></iframe>
+          </div>
+        </FooterLinks>
+        
+      </FooterContainer>
+
+      <FooterBottom>
+        &copy; {new Date().getFullYear()} Devine Adventure Holidays Tour & Travels. All Rights Reserved.
+      </FooterBottom>
+    </FooterWrapper>
   );
 }

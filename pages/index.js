@@ -21,7 +21,7 @@ export default function Home() {
         <>
           <BannerSection />
           <Category />
-          <Image
+          {/* <Image
             src="/assets/mountain_img.jpg"
             width={0}
             height={0}
@@ -35,7 +35,7 @@ export default function Home() {
             sizes="100vw"
             className="flag_image"
             style={{ width: "100%", height: "auto" }}
-          />
+          /> */}
           <TourPackage category={1}/>
           <TourPackage category={2}/>
           <TourPackage category={3}/>

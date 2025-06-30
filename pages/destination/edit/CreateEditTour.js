@@ -208,6 +208,13 @@ export default function CreateEditTour({ data }) {
         { id: 113, value: "Cultural Exploration" },
         { id: 114, value: "North East India Discovery" },
         { id: 115, value: "South India Temple Trail" },
+        { id: 116, value: "Ladakh Trip" },
+        { id: 117, value: "Mini Char Dham Yatra" },
+        { id: 120, value: "All India Tour" },
+        { id: 121, value: "Lahaul Spiti" },
+        
+        
+        
       ],
     },
     {
@@ -228,6 +235,9 @@ export default function CreateEditTour({ data }) {
         { id: 212, value: "Canada Rockies Tour" },
         { id: 213, value: "Northern Lights Experience - Iceland" },
         { id: 214, value: "Cruise Holiday - Mediterranean" },
+        { id: 215, value: "Nepal" },
+        { id: 216, value: "Butan" },
+        { id: 216, value: "China" },
       ],
     },
   ];
