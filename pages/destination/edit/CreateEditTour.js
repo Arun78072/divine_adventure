@@ -212,8 +212,13 @@ export default function CreateEditTour({ data }) {
         { id: 117, value: "Mini Char Dham Yatra" },
         { id: 120, value: "All India Tour" },
         { id: 121, value: "Lahaul Spiti" },
-        
-        
+        { id: 122, value: "Rajasthan" },
+        { id: 123, value: "Kashmir" },
+        { id: 124, value: "Kerala"},  
+        { id: 125, value: "Karnataka "},
+        { id: 126, value: "Amarnath "},
+         
+
         
       ],
     },
