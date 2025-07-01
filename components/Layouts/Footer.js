@@ -18,7 +18,9 @@ export default function Footer() {
           <p>
             Empowering explorers with unforgettable tour & travel experiences. Trusted travel experts for your every destination.
           </p>
+          <h3>FOLLOW US</h3>
           <div className="social-icons">
+            
             <a href="#"><FaXTwitter /></a>
             <a href="#"><FaLinkedin /></a>
             <a href="#"><FaInstagram /></a>
@@ -46,7 +48,13 @@ export default function Footer() {
               <li><a href="#">Cancellation Policy</a></li>
             </ul>
           </div>
-          <div>
+          <div className="map-column">
+           <h2>Office Location</h2>
+           <p><strong>Devine Adventure Holidays Tour & Travels</strong></p>
+           <p>Main Square, Near Bus Stand Road,<br />Dharamshala, Himachal Pradesh 176215</p>
+           <p><strong>Phone:</strong> +91 94595 75748</p>
+           <p><strong>Email:</strong> divineadventureholidays35@gmail.com</p>
+           <p><strong>Working Hours:</strong> 24 - Hours</p>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27004.26370366919!2d76.29856557617885!3d32.21681318823619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b50df65bd7311%3A0x3e08bdb100c6dc10!2sDharamshala%2C%20Himachal%20Pradesh!5e0!3m2!1sen!2sin!4v1751264635107!5m2!1sen!2sin"
              

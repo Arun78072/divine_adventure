@@ -5,19 +5,9 @@ export const FooterWrapper = styled.footer`
   color: white;
   padding: 60px 40px 30px;
   border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+ 
 `;
-export const MapContainer = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-  iframe {
-    width: 50%;
-    height: 200px;
-    border: none;
-  }
-`;
+
 export const FooterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +64,11 @@ export const FooterBrand = styled.div`
       color: #0b3b36;
     }
   }
+    
+ 
 `;
+
+
 
 export const FooterLinks = styled.div`
   display: flex;
@@ -105,6 +99,7 @@ export const FooterLinks = styled.div`
 
           &:hover {
             text-decoration: underline;
+            
           }
         }
       }
