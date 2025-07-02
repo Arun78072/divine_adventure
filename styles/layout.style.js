@@ -75,6 +75,8 @@ export const HederStyle = styled.section`
         }
         ul {
           list-style: none;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
         a {
           display: block;
@@ -127,74 +129,69 @@ export const LayoutStyle = styled.section`
     font-size: 40px;
     transform: none;
     margin-top: 6px;
-    opacity:1;
+    opacity: 1;
   }
 
-
   .page_404 {
-  padding: 2.5rem 0;
-  background-color: #fff;
-  font-family: serif;
-  margin-top: 2.5rem;
-}
+    padding: 2.5rem 0;
+    background-color: #fff;
+    font-family: serif;
+    margin-top: 2.5rem;
+  }
 
+  .row {
+    display: flex;
+    justify-content: center;
+  }
 
+  .col-sm-12,
+  .col-sm-10 {
+    width: 100%;
+  }
 
-.row {
-  display: flex;
-  justify-content: center;
-}
+  .col-sm-10 {
+    max-width: 83.3333%;
+    margin: 0 auto;
+  }
 
-.col-sm-12,
-.col-sm-10 {
-  width: 100%;
-}
+  .text-center {
+    text-align: center;
+  }
 
-.col-sm-10 {
-  max-width: 83.3333%;
-  margin: 0 auto;
-}
+  .four_zero_four_bg {
+    background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24rem; /* 96 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.text-center {
-  text-align: center;
-}
+  .four_zero_four_bg h1 {
+    font-size: 6rem; /* Tailwind's text-8xl = 6rem */
+  }
 
-.four_zero_four_bg {
-  background-image: url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 24rem; /* 96 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .contant_box_404 {
+    margin-top: -50px;
+  }
 
-.four_zero_four_bg h1 {
-  font-size: 6rem; /* Tailwind's text-8xl = 6rem */
-}
+  .contant_box_404 h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
-.contant_box_404 {
-  margin-top: -50px;
-}
+  .contant_box_404 p {
+    margin-bottom: 1rem;
+  }
 
-.contant_box_404 h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.contant_box_404 p {
-  margin-bottom: 1rem;
-}
-
-.link_404 {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #16a34a; /* green-600 */
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-
+  .link_404 {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #16a34a; /* green-600 */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
 `;

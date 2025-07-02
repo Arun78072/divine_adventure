@@ -31,19 +31,20 @@ export default async function handler(req, res) {
     try {
       const { categoryId } = req.query;
       const posts = await Tour.find({
-        tourCategoryId: categoryId,
+        tourTypeId: categoryId,
         deleted: false,
+        status:'PUBLIC'
       });
-      const extractedTours = posts.map(tour => {
-        const {_id} = tour
-        const { coverImage, title, price} = tour.tourInfo;
-        return { coverImage, title, price ,_id};
-      });
+      // const extractedTours = posts.map(tour => {
+      //   const {_id} = tour
+      //   const { coverImage, title, price} = tour.tourInfo;
+      //   return { coverImage, title, price ,_id};
+      // });
       
       res.status(200).json({
         status: 200,
         message: "Tour fetched successfully",
-        data: extractedTours,
+        data: posts,
       });
     } catch (error) {
       console.error("Error fetching topics:", error);

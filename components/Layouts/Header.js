@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import api from "@/utils";
+import api, { tourTypeOption } from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
 import { FaAngleDown } from "react-icons/fa";
 
@@ -27,6 +27,7 @@ export default function Header() {
   useEffect(() => {
     getHeadlineApi();
   }, []);
+
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -52,80 +53,46 @@ export default function Header() {
             </Link>
             <div className="mega_menu">
               <Link href="#" onClick={(e) => e.preventDefault()}>
-              Indian <FaAngleDown />
+                Indian <FaAngleDown />
               </Link>
               <div className="sub_menu">
-                <div>
-                  <h4>Indian Packages</h4>
-                  <ul>
-                    <li>
-                      <Link href="/indian-tour/europe">Europe Tours</Link>
-                    </li>
-                    <li>
-                      <Link href="/indian-tour/asia">Asia Trips</Link>
-                    </li>
-                    <li>
-                      <Link href="/indian-tour/adventure">
-                        Adventure Packages
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>International Packages</h4>
-                  <ul>
-                    <li>
-                      <Link href="/destination/europe">Europe Tours</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/asia">Asia Trips</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/adventure">
-                        Adventure Packages
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                <ul>
+                  {tourTypeOption[0]?.children.map((item) => {
+                    const slug = item.value
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, "-")
+                      .replace(/^-+|-+$/g, "");
+                    return (
+                      <li key={item.id}>
+                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                          {item.value}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
             <div className="mega_menu">
               <Link className="" href="/destination">
-               International <FaAngleDown />
+                International <FaAngleDown />
               </Link>
               <div className="sub_menu">
-                <div>
-                  <h4>Indian Packages 2</h4>
-                  <ul>
-                    <li>
-                      <Link href="/destination/europe">Europe Tours 2</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/asia">Asia Trips 2</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/adventure">
-                        Adventure Packages 2
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>International Packages 2</h4>
-                  <ul>
-                    <li>
-                      <Link href="/destination/europe">Europe Tours 2</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/asia">Asia Trips 2</Link>
-                    </li>
-                    <li>
-                      <Link href="/destination/adventure">
-                        Adventure Packages 2
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                <ul>
+                  {tourTypeOption[1]?.children.map((item) => {
+                    const slug = item.value
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, "-")
+                      .replace(/^-+|-+$/g, "");
+                    return (
+                      <li key={item.id}>
+                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                          {item.value}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-import api, { baseUrl } from "@/utils";
+import api, { baseUrl, tourTypeOption } from "@/utils";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -186,66 +186,6 @@ export default function CreateEditTour({ data }) {
       setEditFormId(data?._id);
     }
   }, [data]);
-  console.log('formData =====>',formData)
-
-  const tourTypeOption = [
-    {
-      id: 1,
-      value: "India",
-      children: [
-        { id: 101, value: "Char Dham Yatra" },
-        { id: 102, value: "Honeymoon Tour" },
-        { id: 103, value: "Adventure Tour" },
-        { id: 104, value: "Pilgrimage Tour" },
-        { id: 105, value: "Wildlife Safari" },
-        { id: 106, value: "Beach Retreats" },
-        { id: 107, value: "Heritage & Historical Tour" },
-        { id: 108, value: "Hill Station Getaway" },
-        { id: 109, value: "Desert Safari Rajasthan" },
-        { id: 110, value: "Luxury Train Experience" },
-        { id: 111, value: "Yoga & Wellness Retreat" },
-        { id: 112, value: "Backwater Cruise - Kerala" },
-        { id: 113, value: "Cultural Exploration" },
-        { id: 114, value: "North East India Discovery" },
-        { id: 115, value: "South India Temple Trail" },
-        { id: 116, value: "Ladakh Trip" },
-        { id: 117, value: "Mini Char Dham Yatra" },
-        { id: 120, value: "All India Tour" },
-        { id: 121, value: "Lahaul Spiti" },
-        { id: 122, value: "Rajasthan" },
-        { id: 123, value: "Kashmir" },
-        { id: 124, value: "Kerala"},  
-        { id: 125, value: "Karnataka "},
-        { id: 126, value: "Amarnath "},
-         
-
-        
-      ],
-    },
-    {
-      id: 2,
-      value: "International",
-      children: [
-        { id: 201, value: "European Highlights Tour" },
-        { id: 202, value: "USA West Coast Tour" },
-        { id: 203, value: "Southeast Asia Discovery" },
-        { id: 204, value: "Australia & New Zealand Adventure" },
-        { id: 205, value: "Middle East Luxury Tour" },
-        { id: 206, value: "African Safari Expedition" },
-        { id: 207, value: "Maldives Honeymoon" },
-        { id: 208, value: "Bali Wellness & Spa Retreat" },
-        { id: 209, value: "Japan Cultural Tour" },
-        { id: 210, value: "South Korea K-Culture Tour" },
-        { id: 211, value: "Dubai Desert & City Combo" },
-        { id: 212, value: "Canada Rockies Tour" },
-        { id: 213, value: "Northern Lights Experience - Iceland" },
-        { id: 214, value: "Cruise Holiday - Mediterranean" },
-        { id: 215, value: "Nepal" },
-        { id: 216, value: "Butan" },
-        { id: 216, value: "China" },
-      ],
-    },
-  ];
 
   const tourCategoryOption = [
     { id: 1, value: "Trending Tour" },
@@ -315,7 +255,7 @@ export default function CreateEditTour({ data }) {
                     <option value="">
                       Select
                     </option>
-                    {tourTypeOption.map((i) => (
+                    {tourTypeOption?.map((i) => (
                       <option value={i.id}>{i.value}</option>
                     ))}
                   </select>
@@ -337,8 +277,7 @@ export default function CreateEditTour({ data }) {
                     <option value="">
                       Select
                     </option>
-                    {tourTypeOption
-                      .filter((item) => item.id == formData.tourCountryId)[0]
+                    {tourTypeOption?.filter((item) => item.id == formData.tourCountryId)[0]
                       ?.children.map((i) => (
                         <option value={i.id}>{i.value}</option>
                       ))}
