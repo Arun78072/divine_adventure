@@ -31,16 +31,35 @@ export default async function handler(req, res) {
     try {
       const { categoryId } = req.query;
       const posts = await Tour.find({
+        tourCategoryId: categoryId,
+        deleted: false,
+        status: "PUBLIC",
+      });
+      const extractedTours = posts.map(tour => {
+        const {_id} = tour
+        const { coverImage, title, price} = tour.tourInfo;
+        return { coverImage, title, price ,_id};
+      });
+
+      res.status(200).json({
+        status: 200,
+        message: "Tour fetched successfully",
+        data: extractedTours,
+      });
+    } catch (error) {
+      console.error("Error fetching topics:", error);
+      res
+        .status(500)
+        .json({ error: "Something went wrong while fetching topics" });
+    }
+  } else if (slug[0] === "tour_get_by_type") {
+    try {
+      const { categoryId } = req.query;
+      const posts = await Tour.find({
         tourTypeId: categoryId,
         deleted: false,
-        status:'PUBLIC'
+        status: "PUBLIC",
       });
-      // const extractedTours = posts.map(tour => {
-      //   const {_id} = tour
-      //   const { coverImage, title, price} = tour.tourInfo;
-      //   return { coverImage, title, price ,_id};
-      // });
-      
       res.status(200).json({
         status: 200,
         message: "Tour fetched successfully",
@@ -69,7 +88,6 @@ export default async function handler(req, res) {
         .json({ error: "Something went wrong while fetching tour" });
     }
   } else if (slug[0] === "add_tour") {
-    console.log("Req.body======>", req.body);
     if (!req.user || !req.user.id) {
       return res.status(401).json({ error: "User not authenticated" });
     }

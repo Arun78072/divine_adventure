@@ -5,7 +5,7 @@ export default function CategoryWize() {
  
   return (
     <main className="destination_section">
-      <CategoryTour type ={'indian'}/>
+      <CategoryTour type ={'international'}/>
     </main>
   );
 }

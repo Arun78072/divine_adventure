@@ -10,18 +10,18 @@ import { FaRupeeSign } from "react-icons/fa";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-export default function CategoryTour() {
+export default function CategoryTour({ type }) {
   const [loading, setLoading] = useState(false);
   const [allTours, setAllTours] = useState([]);
   const router = useRouter();
-  const [categoryId , setCategoryId] = useState('')
-  const [pageData , setPageData] = useState({})
+  const [categoryId, setCategoryId] = useState("");
+  const [pageData, setPageData] = useState({});
   const { categorySlug } = router.query;
 
   useEffect(() => {
     if (categorySlug) {
-        setCategoryId(categorySlug.split("-")[0])
-      getPosts(); 
+      setCategoryId(categorySlug.split("-")[0]);
+      getPosts();
     }
   }, [categorySlug]);
 
@@ -29,9 +29,7 @@ export default function CategoryTour() {
     setLoading(true);
     try {
       const response = await api.post(
-        `/api/tour/tour_get_by_category?categoryId=${
-          categorySlug.split("-")[0]
-        }`
+        `/api/tour/tour_get_by_type?categoryId=${categorySlug.split("-")[0]}`
       );
       if (response.status == 200) {
         const data = response.data;
@@ -49,91 +47,98 @@ export default function CategoryTour() {
       setLoading(false);
     }
   };
-  useEffect(()=>{
-if(categoryId){
-    setPageData(tourTypeOption[0].children.filter((i)=> i.id == categoryId)[0])
-}
-  },[categoryId])
-  console.log('categoryId-====>',pageData)
+  useEffect(() => {
+    if (categoryId) {
+      const data =
+        type == "indian"
+          ? tourTypeOption[0].children.filter((i) => i.id == categoryId)[0]
+          : tourTypeOption[1].children.filter((i) => i.id == categoryId)[0];
+      setPageData(data);
+    }
+  }, [categoryId]);
+  console.log("categoryId-====>", pageData);
   return (
-    <main className="destination_section">
-      <div className="banner_image">
-        <Image
-          src={pageData.coverImage}
-        //   src="/assets/mountain_boy.jpg"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "800px",
-            objectFit: "cover",
-            objectPosition: "top",
-          }}
-        />
-      </div>
-
-      <Loader loading={loading} />
-
-      <section className="container">
-        <div>
-          <div className="description">
-            <h1>{pageData.value}</h1>
-            <p>
-             {pageData.description}
-            </p>
+    <>
+    <Loader loading={loading} />
+      {/* allTours */}
+      {allTours.length > 0 ?
+      <main className="destination_section">
+        <div className="banner_image">
+          <Image
+            src={pageData?.coverImage}
+            //   src="/assets/mountain_boy.jpg"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "800px",
+              objectFit: "cover",
+              objectPosition: "top",
+            }}
+          />
+        </div>
+        <section className="container">
+          <div>
+            <div className="description">
+              <h1>{pageData?.value}</h1>
+              <p>{pageData?.description}</p>
+            </div>
           </div>
-        </div>
-        <div className="">
-          {/* All Tour Post */}
-          <TourList>
-            {allTours?.map((item, index) => {
-              return (
-                <div className="post_card" key={index}>
-                
-                  <div className="image_wrapper">
-                    <Image
-                      src={item?.tourInfo?.coverImage}
-                      alt={"title"}
-                      width={300}
-                      height={300}
-                      className="post_image"
-                    />
+          <div className="">
+            {/* All Tour Post */}
+            <TourList>
+              {allTours?.map((item, index) => {
+                return (
+                  <div className="post_card" key={index}>
+                    <div className="image_wrapper">
+                      <Image
+                        src={item?.tourInfo?.coverImage}
+                        alt={"title"}
+                        width={300}
+                        height={300}
+                        className="post_image"
+                      />
+                    </div>
+                    <div>
+                      <h1>{item.tourInfo?.title}</h1>
+                      <div className="info-row">
+                        <span className="icon">
+                          <CiCalendarDate /> 8 Days
+                        </span>
+                        <span className="icon">
+                          <IoLocationOutline /> 3 Locations
+                        </span>
+                      </div>
+                      <div className="location_row">
+                        <IoLocationOutline />
+                        India
+                      </div>
+                      <h3 className="price">
+                        <FaRupeeSign /> 12000
+                      </h3>
+                      <p className="description">
+                        {item.tourInfo?.description}
+                      </p>
+                      <div className="action_buttons">
+                        <button className="secandary_button">Book Form</button>
+                        <Link
+                          href={`/destination/view/${item._id}`}
+                          className="post_title primary_button"
+                        >
+                          View Tour
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h1>{item.tourInfo?.title}</h1>
-                    <div className="info-row">
-                      <span className="icon">
-                        <CiCalendarDate /> 8 Days
-                      </span>
-                      <span className="icon">
-                        <IoLocationOutline /> 3 Locations
-                      </span>
-                    </div>
-                    <div className="location_row">
-                      <IoLocationOutline />
-                      India
-                    </div>
-                    <h3 className="price">
-                      <FaRupeeSign /> 12000
-                    </h3>
-                    <p className="description">{item.tourInfo?.description}</p>
-                    <div className="action_buttons">
-                      <button className="secandary_button">Book Form</button>
-                      <Link
-                        href={`/destination/view/${item._id}`}
-                        className="post_title primary_button"
-                      >
-                        View Tour
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </TourList>
-        </div>
-      </section>
-    </main>
+                );
+              })}
+            </TourList>
+          </div>
+        </section>
+      </main> :<p>
+      No data found
+      </p>}
+    </>
   );
 }
