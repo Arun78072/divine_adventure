@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const TourPackageStyle = styled.section`
   margin-top: 40px;
   h2 {
-    margin-top:20px;
+    margin-top: 20px;
     font-size: 22px;
     font-weight: 600;
   }
@@ -19,7 +19,7 @@ export const TourPackageStyle = styled.section`
         width: 100%;
         border-radius: 6px;
         height: 260px;
-    object-fit: cover;
+        object-fit: cover;
       }
       .card_content {
         position: absolute;
@@ -42,7 +42,7 @@ export const TourPackageStyle = styled.section`
           margin-bottom: auto;
           font-size: 18px;
         }
-        >span{
+        > span {
           font-size: 18px;
         }
         > h4 {
@@ -128,5 +128,55 @@ export const BannerSetion = styled.section`
     gap: 10px;
     background: #f7f7f7;
     padding: 36px 10px;
+  }
+`;
+
+export const CountriesStyle = styled.section`
+  background-color: #df6951;
+  color: #fff;
+  padding: 30px 0px;
+
+  .title {
+    line-height: 60px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  .slider_section {
+    .link_url {
+      color: #000;
+      text-decoration: none;
+    }
+    .slider_card {
+      height: 260px;
+      background: #fff;
+
+      margin: 6px;
+      border-radius: 5px;
+      overflow: hidden;
+      .card_content h3 {
+        color: #000;
+        padding: 3px;
+        height: 35px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+      }
+      > img {
+        width: 100%;
+        height: calc(100% - 40px);
+        object-fit: cover;
+      }
+    }
+    button.slick-arrow.slick-next {
+      right: 6px;
+      top: -27px;
+      z-index: 9;
+    }
+    button.slick-arrow.slick-prev {
+      z-index: 9;
+      left: 91%;
+      top: -27px;
+    }
   }
 `;

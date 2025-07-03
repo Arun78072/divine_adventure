@@ -16,43 +16,6 @@ export default function TourPackage({category}) {
     slidesToShow: 5,
     slidesToScroll: 1,
   };
-  const slides = [
-    {
-      title: "Char Dham Yatra by Helicopter",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹23,23,000",
-    },
-    {
-      title: "Leh Ladakh Tour",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹98,000",
-    },
-    {
-      title: "Kashmir Paradise Getaway",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹85,000",
-    },
-    {
-      title: "North East Delight – Gangtok & Darjeeling",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹74,999",
-    },
-    {
-      title: "Golden Triangle – Delhi, Agra & Jaipur",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹65,000",
-    },
-    {
-      title: "Spiritual South India Tour",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹57,500",
-    },
-    {
-      title: "Himachal Hills – Manali & Shimla",
-      img: "https://www.sotc.in/images/sotc_home_page/new-launches/Char-Dham-Yatra-By-Helicopter.jpg",
-      price: "₹68,000",
-    },
-  ];
 
   const getTourDetailsApi = async () => {
     setLoading(true);

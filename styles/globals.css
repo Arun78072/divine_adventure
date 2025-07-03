@@ -186,13 +186,7 @@ p {
 
 /* ===================  Post bar  ======================= */
 
-.post_section .post_title {
-  font-size: 30px;
-  text-align: center;
-  color: #000;
-  margin-left: 9px;
-  text-decoration: none;
-}
+
 .post_grid {
   display: grid;
   place-items: center;

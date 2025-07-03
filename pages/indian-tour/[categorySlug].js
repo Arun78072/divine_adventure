@@ -1,6 +1,5 @@
 import CategoryTour from "@/components/CategoryTour";
 
-
 export default function CategoryWize() {
  
   return (
