@@ -131,6 +131,7 @@ p {
   transition: all 0.5s;
   text-decoration: none;
   text-align: center;
+  display: inline-block;
 }
 .primary_button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
@@ -187,129 +188,11 @@ p {
 /* ===================  Post bar  ======================= */
 
 
-.post_grid {
-  display: grid;
-  place-items: center;
-  padding-top: 0.75rem; /* py-3 */
-  padding-bottom: 0.75rem;
 
-  gap: 40px;
-}
-
-@media (min-width: 768px) {
-  .post_grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .post_grid {
-    grid-template-columns: repeat(3, 1fr);
-    padding-top: 2rem; /* lg:pt-8 */
-  }
-}
-
-.post_card {
-  width: 100%;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: 10px;
-  border-radius: 10px;
-  transition: all 0.5s;
-  position: relative;
-}
-.delete_button {
-  border: none;
-  color: #df6951;
-  font-size: 36px;
-  position: absolute;
-  right: 14px;
-  top: 15px;
-  background: #fff;
-  padding: 12px 14px;
-  border-radius: 10px;
+.top_bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.post_card:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.image_wrapper {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.post_image {
-  object-fit: cover;
-  width: 100%;
-
-  height: 300px;
-  border-radius: 10px;
-}
-
-.info-row {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: #747474;
-  font-size: 1.25rem;
-  margin: 10px 8px;
-}
-
-.info-row .icon {
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 400;
-  color: #7d7d7d;
-}
-
-.info-row .icon svg {
-  font-size: 26px;
-}
-
-.post_description {
-  font-size: 16px;
-  margin: 0px 10px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
-  min-height: 123px;
-}
-.location_row {
-  margin: 0px 8px;
-
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  gap: 4px;
-  color: #3c3b3b;
-  font-weight: 400;
-}
-.post_card .price {
-  font-size: 34px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #df6951;
-  margin: 0px 10px;
-}
-.post_card .price svg {
-  font-size: 26px;
-}
-.action_buttons {
-  display: flex;
   justify-content: space-between;
-  gap: 10px;
-  margin-top: 14px;
-}
-.action_buttons button,
-.action_buttons a {
-  width: 100%;
 }
 
 /* ===================  Services section  ======================= */

@@ -9,6 +9,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaRupeeSign } from "react-icons/fa";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { TourPackageStyle } from "@/styles/home.style";
 
 export default function CategoryTour({ type }) {
   const [loading, setLoading] = useState(false);
@@ -56,89 +57,128 @@ export default function CategoryTour({ type }) {
       setPageData(data);
     }
   }, [categoryId]);
-  console.log("categoryId-====>", pageData);
+  console.log("categoryId-====>", pageData?.coverImage);
   return (
     <>
-    <Loader loading={loading} />
+      <Loader loading={loading} />
       {/* allTours */}
-      {allTours.length > 0 ?
-      <main className="destination_section">
-        <div className="banner_image">
-          <Image
-            src={pageData?.coverImage}
-            //   src="/assets/mountain_boy.jpg"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{
-              width: "100%",
-              height: "800px",
-              objectFit: "cover",
-              objectPosition: "top",
-            }}
-          />
-        </div>
-        <section className="container">
-          <div>
-            <div className="description">
-              <h1>{pageData?.value}</h1>
-              <p>{pageData?.description}</p>
+      {allTours.length > 0 ? (
+        <main className="destination_section">
+          <div className="banner_image">
+            <Image
+              src={pageData?.coverImage}
+                // src="/assets/mountain_boy.jpg"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "800px",
+                objectFit: "cover",
+                objectPosition: "top",
+              }}
+            />
+          </div>
+          <section className="container">
+            <div>
+              <div className="description">
+                <h1>{pageData?.value}</h1>
+                <p>{pageData?.description}</p>
+              </div>
             </div>
-          </div>
-          <div className="">
-            {/* All Tour Post */}
-            <TourList>
-              {allTours?.map((item, index) => {
-                return (
-                  <div className="post_card" key={index}>
-                    <div className="image_wrapper">
-                      <Image
-                        src={item?.tourInfo?.coverImage}
-                        alt={"title"}
-                        width={300}
-                        height={300}
-                        className="post_image"
-                      />
-                    </div>
-                    <div>
-                      <h1>{item.tourInfo?.title}</h1>
-                      <div className="info-row">
-                        <span className="icon">
-                          <CiCalendarDate /> 8 Days
-                        </span>
-                        <span className="icon">
-                          <IoLocationOutline /> 3 Locations
-                        </span>
-                      </div>
-                      <div className="location_row">
-                        <IoLocationOutline />
-                        India
-                      </div>
-                      <h3 className="price">
-                        <FaRupeeSign /> 12000
-                      </h3>
-                      <p className="description">
-                        {item.tourInfo?.description}
-                      </p>
-                      <div className="action_buttons">
-                        <button className="secandary_button">Book Form</button>
+            <div className="">
+              {/* All Tour Post */}
+              <TourList>
+              <TourPackageStyle className="container">
+                <div className="tour_slider">
+                  {allTours.length > 0 &&
+                    allTours?.map((item, index) => (
+                      <Link href={`destination/view/${item._id}`}>
+                        <div key={index} className="slider_card">
+                        <Image
+                          src={item?.tourInfo?.coverImage}
+                          alt={"title"}
+                          width={300}
+                          height={300}
+                          className="post_image"
+                        />
+
+                          {/* <img    src={item?.tourInfo?.coverImage} alt={item.tourInfo?.title} /> */}
+                          <div className="card_content">
+                            <h3>{item.tourInfo?.title}</h3>
+                            <span>Starting Price</span>
+                            <h4>{item.tourInfo.price}</h4>
+                          </div>
+                        </div>
+                       
                         <Link
-                          href={`/destination/view/${item._id}`}
-                          className="post_title primary_button"
-                        >
-                          View Tour
-                        </Link>
+                        href={`/destination/view/${item._id}`}
+                        className="button primary_button"
+                      >
+                        View Tour
+                      </Link>
+                      </Link>
+                    ))}
+                </div>
+              </TourPackageStyle>
+              </TourList>
+             
+
+              {/* <TourList>
+                {allTours?.map((item, index) => {
+                  return (
+                    <div className="post_card" key={index}>
+                      <div className="image_wrapper">
+                        <Image
+                          src={item?.tourInfo?.coverImage}
+                          alt={"title"}
+                          width={300}
+                          height={300}
+                          className="post_image"
+                        />
+                      </div>
+                      <div>
+                        <h1>{item.tourInfo?.title}</h1>
+                        <div className="info-row">
+                          <span className="icon">
+                            <CiCalendarDate /> 8 Days
+                          </span>
+                          <span className="icon">
+                            <IoLocationOutline /> 3 Locations
+                          </span>
+                        </div>
+                        <div className="location_row">
+                          <IoLocationOutline />
+                          India
+                        </div>
+                        <h3 className="price">
+                          <FaRupeeSign /> 12000
+                        </h3>
+                        <p className="description">
+                          {item.tourInfo?.description}
+                        </p>
+                        <div className="action_buttons">
+                          <button className="secandary_button">
+                            Book Form
+                          </button>
+                          <Link
+                            href={`/destination/view/${item._id}`}
+                            className="post_title primary_button"
+                          >
+                            View Tour
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </TourList>
-          </div>
-        </section>
-      </main> :<p>
-      No data found
-      </p>}
+                  );
+                })}
+              </TourList> */}
+            </div>
+          </section>
+        </main>
+      ) : (
+        <p>No data found</p>
+      )}
     </>
   );
 }
