@@ -1,8 +1,8 @@
 import BannerSection from "@/components/Home/Banner";
 import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
+import Countries from "@/components/Home/Countries";
 import HolidayBanner from "@/components/Home/HolidayBanner";
-import Post from "@/components/Home/Post";
 import Review from "@/components/Home/Review";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
@@ -21,27 +21,12 @@ export default function Home() {
         <>
           <BannerSection />
           <Category />
-          {/* <Image
-            src="/assets/mountain_img.jpg"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
-          />
-          <Image
-            src="/assets/flag.jpg"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="flag_image"
-            style={{ width: "100%", height: "auto" }}
-          /> */}
           <TourPackage category={1}/>
           <TourPackage category={2}/>
           <TourPackage category={3}/>
           <Blogs />
           <HolidayBanner />
-          <Post />
+          <Countries/>
           <div className="explore_section">
             <div>
               <Image
