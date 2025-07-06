@@ -38,9 +38,12 @@ export const TourPackageStyle = styled.section`
         top: 50%;
         transform: translate(-50%, -50%);
         transition: all 0.5s;
+        background: #00000066;
+        backdrop-filter: blur(2px);
         > h3 {
           margin-bottom: auto;
           font-size: 18px;
+          text-transform: capitalize;
         }
         > span {
           font-size: 18px;

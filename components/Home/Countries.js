@@ -10,7 +10,7 @@ export default function Countries() {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow:6,
     slidesToScroll: 1,
   };
 

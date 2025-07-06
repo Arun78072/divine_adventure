@@ -102,7 +102,7 @@ export default function Header() {
             <Link className="" href="/destination">
               Ways To Go
             </Link>
-            <Link className="" href="/">
+            <Link className="" href="/gallery">
               Gallery
             </Link>
           </div>
