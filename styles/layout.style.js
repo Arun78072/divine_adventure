@@ -102,6 +102,65 @@ export const HederStyle = styled.section`
       }
     }
   }
+  .navigation{
+    @media (max-width: 1050px) {
+      display: none;
+    }
+  }
+  .mobile_navbar.navigation {
+    position: absolute;
+    display: flex
+;
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+    background: #000000cf;
+    backdrop-filter: blur(5px);
+    top: 100px;
+    left: 0px;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    padding: 20px;
+    .mega_menu {
+      padding: 0px;
+    }
+    .mega_menu.active_mega_menu,
+    .mega_menu:hover {
+      .sub_menu {
+        position: relative;
+        display: block;
+        top: 0px;
+        background: none;
+        box-shadow: none;
+        padding: 0px;
+        ul {
+          grid-template-columns: 1fr;
+        }
+        a {
+          color: #ffffff;
+        }
+        a:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+  
+  .hamburger_menu {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+    background: none;
+    border: none;
+    svg {
+      font-size: 30px;
+      color: #fff;
+    }
+    @media (max-width: 1050px) {
+      display: block;
+    }
+  }
 `;
 export const FooterStyle = styled.section``;
 
