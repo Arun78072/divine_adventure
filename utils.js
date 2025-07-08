@@ -1,7 +1,7 @@
-import { toast } from "react-toastify";
 import axios from "axios";
 
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://divine-adventure.vercel.app/";
+// export const baseUrl = "http://localhost:3000";
 
 export const tourTypeOption = [
   {
@@ -228,7 +228,7 @@ export const tourTypeOption = [
 ];
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",
