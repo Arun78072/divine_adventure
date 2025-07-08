@@ -31,6 +31,7 @@ export default function Header() {
       if (!isMobile) {
         setActiveMegaMenu('');
         setToggel(false);
+        document.body.style.overflow = 'auto'; 
       }
     };
     if (typeof window !== 'undefined') {
@@ -44,7 +45,7 @@ export default function Header() {
     };
   }, []);
   
-  console.log("activeMegaMenu =>", activeMegaMenu);
+  console.log("toggel =>", toggel);
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -153,6 +154,11 @@ export default function Header() {
           <button
             className="hamburger_menu"
             onClick={() => {
+              if(!toggel){
+                document.body.style.overflow = 'hidden'
+              }else{
+                document.body.style.overflow = 'auto'
+              }
               setToggel(!toggel);
             }}
           >

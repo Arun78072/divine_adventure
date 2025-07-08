@@ -131,6 +131,75 @@ export const BannerSetion = styled.section`
     gap: 10px;
     background: #f7f7f7;
     padding: 36px 10px;
+    img {
+      width: 180px;
+      height: auto;
+      object-fit: contain;
+      @media (max-width: 900px) {
+        width: 100px;
+      }
+      @media (max-width: 500px) {
+        width: 80px;
+      }
+    }
+  }
+`;
+
+export const ServiceCard = styled.section`
+  .category_container {
+    margin: 100px 0;
+
+    .category_title {
+      text-align: center;
+      font-size: 40px;
+      margin: 2rem 0;
+    }
+
+    .category_image {
+      text-align: center;
+      display: block;
+    }
+
+    .card_section {
+      display: grid;
+      gap: 40px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      @media (max-width : 900px){
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width : 500px){
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .category_card {
+      position: relative;
+      box-shadow: rgb(99 99 99 / 11%) 0px 5px 8px 0px;
+      max-width: 300px;
+      padding: 20px;
+      text-align: center;
+      border-radius: 20px;
+      cursor: pointer;
+      transform: translateY(0px);
+      transition: all 0.5s;
+      margin: auto;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transform: translateY(-12px);
+      }
+
+      .card_heading {
+        font-size: 20px;
+        margin: 20px 0;
+        color: #000000;
+        font-weight: 400;
+      }
+
+      .card_text {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+    }
   }
 `;
 

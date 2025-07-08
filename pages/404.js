@@ -3,18 +3,18 @@ import React from "react";
 
 export default function AccessDenied() {
   return (
-    <section class="page_404">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="col-sm-10 text-center">
-            <div class="four_zero_four_bg">
+    <section className="page_404">
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12">
+          <div className="col-sm-10 text-center">
+            <div className="four_zero_four_bg">
               <h1>404</h1>
             </div>
-            <div class="contant_box_404">
+            <div className="contant_box_404">
               <h3>Look like you're lost</h3>
               <p>The page you are looking for is not available!</p>
-              <a href="/" class="link_404">Go to Home</a>
+              <a href="/" className="link_404">Go to Home</a>
             </div>
           </div>
         </div>

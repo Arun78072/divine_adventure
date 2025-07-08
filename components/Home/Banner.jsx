@@ -81,35 +81,30 @@ export default function BannerSection() {
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
         />
         <Image
           src="/assets/banner/logo2.png"
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
         />
         <Image
           src="/assets/banner/logo3.png"
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
         />
         <Image
           src="/assets/banner/logo4.png"
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
         />
         <Image
           src="/assets/banner/logo5.png"
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: "180px", height: "auto", objectFit: "contain" }}
         />
       </div>
     </BannerSetion>

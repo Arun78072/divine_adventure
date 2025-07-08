@@ -197,55 +197,6 @@ p {
 
 /* ===================  Services section  ======================= */
 
-.category_container {
-  margin: 100px 0px;
-}
-.category_title {
-  text-align: center;
-  font-size: 40px;
-  margin: 2rem 0;
-}
-
-.card_section {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 40px;
-}
-
-.category_card {
-  position: relative;
-  box-shadow: rgb(99 99 99 / 11%) 0px 5px 8px 0px;
-  max-width: 300px;
-  padding: 20px;
-  text-align: center;
-  border-radius: 20px;
-  cursor: pointer;
-  transform: translateY(0px);
-  transition: all 0.5s;
-}
-.category_card:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transform: translateY(-12px);
-}
-
-.card_heading {
-  font-size: 20px;
-  margin: 20px 0px;
-  color: #000000;
-  font-weight: 400;
-}
-
-.card_text {
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-.category_container .category_image {
-  text-align: center;
-
-  display: block;
-}
 
 /* ===================  Explore section  ======================= */
 .explore_section {
