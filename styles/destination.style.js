@@ -1,12 +1,30 @@
 import styled from "styled-components";
 
 export const DestinationStyle = styled.section`
+  .banner_img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    object-position: top;
+    @media (max-width: 1080px) {
+      height: 600px;
+    }
+    @media (max-width: 786px) {
+      height: 400px;
+    }
+    @media (max-width: 500px) {
+      height: 200px;
+    }
+  }
   .view_section {
     position: relative;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
     margin-top: 30px;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
     .left_section {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       padding: 10px;
@@ -41,6 +59,10 @@ export const DestinationStyle = styled.section`
           .tour_content {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            @media (max-width: 500px) {
+              display: flex;
+              flex-direction: column-reverse;
+            }
             > div {
               width: 100%;
             }
@@ -389,15 +411,15 @@ export const TourList = styled.section`
   .tour_slider {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:10px;
-    a{
-      text-decoration:none;
+    gap: 10px;
+    a {
+      text-decoration: none;
     }
-    .button{
+    .button {
       padding: 7px;
-    width: 96%;
-    margin: auto;
-    display: block;
+      width: 96%;
+      margin: auto;
+      display: block;
     }
   }
 `;

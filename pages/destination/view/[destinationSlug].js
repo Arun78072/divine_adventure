@@ -13,7 +13,7 @@ export default function ViewPost() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { destinationSlug } = router.query;
-  
+
   const getTourDetailsApi = async (url) => {
     setLoading(true);
     try {
@@ -42,21 +42,14 @@ export default function ViewPost() {
     <>
       <Loader loading={loading} />
       <DestinationStyle>
-        <div className="banner_image">
           <Image
             src={postData?.tourInfo?.coverImage}
             width={0}
             height={0}
             sizes="100vw"
             alt="Banner"
-            style={{
-              width: "100%",
-              height: "800px",
-              objectFit: "cover",
-              objectPosition: "top",
-            }}
+            className="banner_img"
           />
-        </div>
 
         <div className="container view_section">
           <div className="left_section">
@@ -132,10 +125,13 @@ export default function ViewPost() {
               </p>
 
               <div className="gallery_grid">
-              {postData?.gallery?.image?.map((img, index) => (
-  <img key={index} src={img} alt={`Gallery Image ${index + 1}`} />
-))}
-
+                {postData?.gallery?.image?.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`Gallery Image ${index + 1}`}
+                  />
+                ))}
 
                 {/* <img src="/assets/info1.png" alt="Scenery 1" />
                 <img src="/assets/info2.png" alt="Scenery 2" />

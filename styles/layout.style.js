@@ -41,7 +41,7 @@ export const HederStyle = styled.section`
     display: flex;
     gap: 24px;
     align-items: center;
-
+  
     a {
       color: #fff;
       text-decoration: none;
@@ -51,6 +51,7 @@ export const HederStyle = styled.section`
     .mega_menu {
       position: relative;
       padding: 20px 0px;
+      z-index: 9;
       a {
         color: #fff;
         text-decoration: none;
@@ -92,7 +93,7 @@ export const HederStyle = styled.section`
         }
       }
 
-      &:hover {
+      &.active_mega_menu {
         .sub_menu {
           display: flex;
           padding: 10px;
@@ -102,15 +103,23 @@ export const HederStyle = styled.section`
       }
     }
   }
-  .navigation{
+  .close_button {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    
+    cursor: pointer;
+  }
+  .navigation {
     @media (max-width: 1050px) {
       display: none;
     }
   }
   .mobile_navbar.navigation {
     position: absolute;
-    display: flex
-;
+    display: flex;
     height: 100vh;
     width: 100%;
     overflow: scroll;
@@ -125,8 +134,7 @@ export const HederStyle = styled.section`
     .mega_menu {
       padding: 0px;
     }
-    .mega_menu.active_mega_menu,
-    .mega_menu:hover {
+    .mega_menu.active_mega_menu {
       .sub_menu {
         position: relative;
         display: block;
@@ -146,7 +154,7 @@ export const HederStyle = styled.section`
       }
     }
   }
-  
+
   .hamburger_menu {
     display: none;
     cursor: pointer;

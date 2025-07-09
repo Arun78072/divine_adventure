@@ -6,6 +6,7 @@ import HolidayBanner from "@/components/Home/HolidayBanner";
 import Review from "@/components/Home/Review";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
+import { ExploreSection } from "@/styles/home.style";
 import Image from "next/image";
 
 import { useState } from "react";
@@ -27,6 +28,7 @@ export default function Home() {
           <Blogs />
           <HolidayBanner />
           <Countries/>
+          <ExploreSection>
           <div className="explore_section">
             <div>
               <Image
@@ -54,6 +56,8 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </ExploreSection>
+         
           <Review />
         </>
       )}

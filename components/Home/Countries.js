@@ -12,6 +12,21 @@ export default function Countries() {
     speed: 500,
     slidesToShow:6,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      
+    ],
   };
 
   useEffect(() => {

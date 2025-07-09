@@ -16,11 +16,13 @@ export const BlogGrid = styled.div`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  @media (max-width:600px){
+    flex-direction:column;
+  }
 `;
 
 export const BlogCard = styled.div`
-  flex: 1 1 calc(33.333% - 20px);
-  max-width: calc(33.333% - 20px);
+  flex:1;
   background: #fff;
   overflow: hidden;
   cursor: pointer;

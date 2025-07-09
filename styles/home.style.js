@@ -124,6 +124,15 @@ export const BannerSetion = styled.section`
     }
   }
 
+  .home_banner {
+    .slick-slide img {
+      width: 100%;
+      object-fit: cover;
+      @media (max-width: 500px) {
+        height: 200px;
+      }
+    }
+  }
   .collabration_logo_section {
     display: flex;
     justify-content: space-around;
@@ -131,6 +140,9 @@ export const BannerSetion = styled.section`
     gap: 10px;
     background: #f7f7f7;
     padding: 36px 10px;
+    @media (max-width: 500px) {
+      padding: 20px 10px;
+    }
     img {
       width: 180px;
       height: auto;
@@ -164,10 +176,10 @@ export const ServiceCard = styled.section`
       display: grid;
       gap: 40px;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      @media (max-width : 900px){
+      @media (max-width: 900px) {
         grid-template-columns: 1fr 1fr;
       }
-      @media (max-width : 500px){
+      @media (max-width: 500px) {
         grid-template-columns: 1fr;
       }
     }
@@ -250,5 +262,89 @@ export const CountriesStyle = styled.section`
       left: 91%;
       top: -27px;
     }
+  }
+`;
+
+export const ExploreSection = styled.section`
+  .explore_section {
+    display: flex;
+    justify-content: center;
+    margin: 80px 0;
+
+    @media (max-width: 786px) {
+      flex-direction: column;
+    }
+
+    > div {
+      position: relative;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        object-fit: cover;
+      }
+    }
+
+    .explore_content {
+      position: absolute;
+      z-index: 9;
+      background: #0000001c;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      > h1 {
+        font-size: 54px;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      > button.secandary_button {
+        color: #ffffff;
+        border: 2px solid #fff;
+      }
+    }
+  }
+`;
+
+export const ReviewSection = styled.section`
+  .review_section {
+    background: #f8f8f8;
+    padding-bottom: 50px;
+  }
+  .review_section .category_title {
+    padding: 30px 0px;
+    text-align: center;
+  }
+  .review_section .review_card {
+    max-width: 800px;
+    margin: 30px auto auto auto;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .review_section .user_image {
+    background: #fff;
+    border-radius: 50%;
+    width: 100px;
+    margin: -66px auto 34px auto;
+    height: 100px;
+    border: 2px solid #df6951;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .review_section p.review_discription {
+    margin-bottom: 30px;
   }
 `;

@@ -9,7 +9,7 @@ export default function BannerSection() {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplay: true,
+    autoplay: false ,
     autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -32,11 +32,11 @@ export default function BannerSection() {
           style={{ width: "100%", height: "1000px" }}
         /> */}
 
-        <div className="tour_slider">
+        <div className="tour_slider home_banner">
         <Slider {...settings}>
           {bannerImages.map((item, index) => (
-           <Link href={'/'}>
-           <img src={item} alt={item} />
+           <Link href={'/'} key={index}>
+           <img src={item} alt={item} className="banner_img" />
            </Link>
           ))}
         </Slider>

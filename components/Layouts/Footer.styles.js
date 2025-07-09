@@ -5,7 +5,10 @@ export const FooterWrapper = styled.footer`
   color: white;
   padding: 60px 40px 30px;
   border-top-left-radius: 12px;
- 
+  margin-top:30px;
+ @media (max-width: 500px){
+  padding: 28px 10px;
+ }
 `;
 
 export const FooterContainer = styled.div`
@@ -13,6 +16,9 @@ export const FooterContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 80px;
+  @media (max-width : 1024px){
+    flex-direction:column;
+  }
 `;
 
 export const FooterBrand = styled.div`
@@ -72,11 +78,14 @@ export const FooterBrand = styled.div`
 
 export const FooterLinks = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 60px;
   flex: 2;
   min-width: 300px;
-
+  justify-content: space-between;
+  @media (max-width:768px){
+    gap:10px;
+    flex-direction: column;
+  }
   .column {
     min-width: 150px;
 

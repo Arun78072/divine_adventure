@@ -24,28 +24,28 @@ export default function Header() {
   useEffect(() => {
     getHeadlineApi();
   }, []);
-  
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 1050;
-      if (!isMobile) {
-        setActiveMegaMenu('');
-        setToggel(false);
-        document.body.style.overflow = 'auto'; 
-      }
-    };
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize);
-    }
-    handleResize();
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', handleResize);
-      }
-    };
-  }, []);
-  
-  console.log("toggel =>", toggel);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const isMobile = window.innerWidth < 1050;
+  //     if (!isMobile) {
+  //       setActiveMegaMenu('');
+  //       setToggel(false);
+  //       document.body.style.overflow = 'auto';
+  //     }
+  //   };
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('resize', handleResize);
+  //   }
+  //   handleResize();
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       window.removeEventListener('resize', handleResize);
+  //     }
+  //   };
+  // }, []);
+
+  console.log("activeMegaMenu =>", activeMegaMenu);
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -96,7 +96,10 @@ export default function Header() {
                       .replace(/^-+|-+$/g, "");
                     return (
                       <li key={item.id}>
-                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                        <Link
+                          href={`/indian-tour/${item.id}-${slug}`}
+                          onClick={() => setActiveMegaMenu("")}
+                        >
                           {item.value}
                         </Link>
                       </li>
@@ -131,7 +134,10 @@ export default function Header() {
                       .replace(/^-+|-+$/g, "");
                     return (
                       <li key={item.id}>
-                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                        <Link
+                          href={`/indian-tour/${item.id}-${slug}`}
+                          onClick={() => setActiveMegaMenu("")}
+                        >
                           {item.value}
                         </Link>
                       </li>
@@ -150,14 +156,16 @@ export default function Header() {
               Gallery
             </Link>
           </div>
+{activeMegaMenu.length > 0 &&   <span onClick={()=>setActiveMegaMenu('')} className="close_button"></span>}
+        
 
           <button
             className="hamburger_menu"
             onClick={() => {
-              if(!toggel){
-                document.body.style.overflow = 'hidden'
-              }else{
-                document.body.style.overflow = 'auto'
+              if (!toggel) {
+                document.body.style.overflow = "hidden";
+              } else {
+                document.body.style.overflow = "auto";
               }
               setToggel(!toggel);
             }}
