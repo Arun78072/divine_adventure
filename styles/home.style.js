@@ -348,3 +348,25 @@ export const ReviewSection = styled.section`
     margin-bottom: 30px;
   }
 `;
+
+export const InstaGallery = styled.section`
+  .insta_title {
+    padding: 30px 0px;
+    text-align: center;
+  }
+  .insta_post {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:10px;
+    @media (max-width:700px){
+      grid-template-columns: 1fr  1fr;
+    }
+    @media (max-width:500px){
+      grid-template-columns: 1fr ;
+    }
+    .insta_img{
+      width:100%;
+    }
+}
+
+`;

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Router from 'next/router'; 
 
 export const baseUrl = "https://divine-adventure.vercel.app/";
 // export const baseUrl = "http://localhost:3000";
@@ -226,7 +227,6 @@ export const tourTypeOption = [
     ],
   },
 ];
-
 const api = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -263,6 +263,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       console.warn("Unauthorized - maybe redirect to login");
+      Router.push('/login');
       // Optionally: logout user, clear token, redirect, etc.
     }
     return Promise.reject(error);

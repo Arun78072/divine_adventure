@@ -10,6 +10,8 @@ export default function TourPackage({category}) {
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState([]);
 
+
+
   const settings = {
     infinite: true,
     speed: 500,

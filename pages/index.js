@@ -3,6 +3,7 @@ import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
 import Countries from "@/components/Home/Countries";
 import HolidayBanner from "@/components/Home/HolidayBanner";
+import InstagramGallery from "@/components/Home/InstagramGallery";
 import Review from "@/components/Home/Review";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
@@ -59,6 +60,7 @@ export default function Home() {
           </ExploreSection>
          
           <Review />
+          <InstagramGallery />
         </>
       )}
       {/*  Hero */}

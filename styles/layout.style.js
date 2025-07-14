@@ -131,6 +131,7 @@ export const HederStyle = styled.section`
     align-items: start;
     justify-content: flex-start;
     padding: 20px;
+    z-index:999;
     .mega_menu {
       padding: 0px;
     }

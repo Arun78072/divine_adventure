@@ -280,6 +280,11 @@ export const DestinationStyle = styled.section`
     .col-span-2 {
       grid-column: span 2;
     }
+    >div{
+      @media (max-width:500px){
+        grid-column: span 2;
+      }
+    }
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
