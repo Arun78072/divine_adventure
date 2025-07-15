@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import api, { tourTypeOption } from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 export default function Header() {
@@ -87,25 +87,97 @@ export default function Header() {
               <Link href="#" onClick={(e) => e.preventDefault()}>
                 Indian <FaAngleDown />
               </Link>
-              <div className="sub_menu">
-                <ul>
-                  {tourTypeOption[0]?.children.map((item) => {
-                    const slug = item.value
-                      .toLowerCase()
-                      .replace(/[^a-z0-9]+/g, "-")
-                      .replace(/^-+|-+$/g, "");
-                    return (
-                      <li key={item.id}>
-                        <Link
-                          href={`/indian-tour/${item.id}-${slug}`}
-                          onClick={() => setActiveMegaMenu("")}
-                        >
-                          {item.value}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div className="sub_menu container">
+                <div className="megamenu">
+                  <div>
+                    <h4 className="tour_heading">Indian Tour</h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Honeymoon Tour</h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Indian Special </h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Indian Tourism </h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             <div
@@ -122,28 +194,100 @@ export default function Header() {
                 );
               }}
             >
-              <Link className="" href="/destination">
+              <Link href="#" onClick={(e) => e.preventDefault()}>
                 International <FaAngleDown />
               </Link>
-              <div className="sub_menu">
-                <ul>
-                  {tourTypeOption[1]?.children.map((item) => {
-                    const slug = item.value
-                      .toLowerCase()
-                      .replace(/[^a-z0-9]+/g, "-")
-                      .replace(/^-+|-+$/g, "");
-                    return (
-                      <li key={item.id}>
-                        <Link
-                          href={`/indian-tour/${item.id}-${slug}`}
-                          onClick={() => setActiveMegaMenu("")}
-                        >
-                          {item.value}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div className="sub_menu container">
+                <div className="megamenu">
+                  <div>
+                    <h4 className="tour_heading">Indian Tour</h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Honeymoon Tour</h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Indian Special </h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="tour_heading">Indian Tourism </h4>
+                    <ul>
+                      {tourTypeOption[0]?.children.map((item) => {
+                        const slug = item.value
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, "-")
+                          .replace(/^-+|-+$/g, "");
+                        return (
+                          <li key={item.id}>
+                            <FaAngleRight />
+                            <Link
+                              href={`/indian-tour/${item.id}-${slug}`}
+                              onClick={() => setActiveMegaMenu("")}
+                            >
+                              {item.value}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             <Link className="" href="/about">
@@ -156,8 +300,12 @@ export default function Header() {
               Gallery
             </Link>
           </div>
-{activeMegaMenu.length > 0 &&   <span onClick={()=>setActiveMegaMenu('')} className="close_button"></span>}
-        
+          {activeMegaMenu.length > 0 && (
+            <span
+              onClick={() => setActiveMegaMenu("")}
+              className="close_button"
+            ></span>
+          )}
 
           <button
             className="hamburger_menu"

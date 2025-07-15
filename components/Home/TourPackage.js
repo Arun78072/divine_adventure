@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Loader from "../Loader";
 import { toast } from "react-toastify";
+import { MdCurrencyRupee } from "react-icons/md";
 
 export default function TourPackage({category}) {
   const [loading, setLoading] = useState(false);
@@ -75,7 +76,7 @@ export default function TourPackage({category}) {
                     <div className="card_content">
                       <h3>{item.title}</h3>
                       <span>Starting Price</span>
-                      <h4>{item.price}</h4>
+                      <h4><MdCurrencyRupee />{item.price} /-</h4>
                     </div>
                   </div>
                 </Link>

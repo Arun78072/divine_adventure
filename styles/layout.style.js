@@ -41,7 +41,7 @@ export const HederStyle = styled.section`
     display: flex;
     gap: 24px;
     align-items: center;
-  
+
     a {
       color: #fff;
       text-decoration: none;
@@ -59,11 +59,26 @@ export const HederStyle = styled.section`
         display: flex;
         gap: 6px;
       }
+      .megamenu {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 100%;
+       @media (max-width:800px){
+        grid-template-columns: 1fr 1fr ;
+       }
+       @media (max-width:500px){
+        grid-template-columns: 1fr ;
+       }
+      }
       .sub_menu {
         display: none;
-        position: absolute;
+        /* position: absolute; */
+        position: fixed;
+        transform: translateX(-50%);
         top: 100%;
-        left: 0;
+        width: 76%;
+        left: 50%;
         background: #ffffff;
         padding: 10px 0;
         min-width: 180px;
@@ -77,15 +92,21 @@ export const HederStyle = styled.section`
         ul {
           list-style: none;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          li {
+            display: flex;
+            align-items: center;
+            margin-left: 4px;
+            font-weight: 400;
+          }
         }
         a {
           display: block;
-          padding: 10px 8px;
+          padding: 2px 0px;
           color: #000;
           white-space: nowrap;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 14px;
 
           &:hover {
             background: #f0f0f0;
@@ -109,7 +130,7 @@ export const HederStyle = styled.section`
     height: 100vh;
     left: 0px;
     top: 0px;
-    
+
     cursor: pointer;
   }
   .navigation {
@@ -131,7 +152,7 @@ export const HederStyle = styled.section`
     align-items: start;
     justify-content: flex-start;
     padding: 20px;
-    z-index:999;
+    z-index: 999;
     .mega_menu {
       padding: 0px;
     }
@@ -146,7 +167,7 @@ export const HederStyle = styled.section`
         ul {
           grid-template-columns: 1fr;
         }
-        a {
+        a ,svg{
           color: #ffffff;
         }
         a:hover {

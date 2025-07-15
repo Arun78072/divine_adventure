@@ -39,7 +39,7 @@ export const TourPackageStyle = styled.section`
         transform: translate(-50%, -50%);
         transition: all 0.5s;
         background: #00000066;
-        backdrop-filter: blur(2px);
+        /* backdrop-filter: blur(2px); */
         > h3 {
           margin-bottom: auto;
           font-size: 18px;
@@ -50,6 +50,8 @@ export const TourPackageStyle = styled.section`
         }
         > h4 {
           font-size: 20px;
+          display: flex;
+          align-items: center;
         }
         &:hover {
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -129,7 +131,7 @@ export const BannerSetion = styled.section`
       width: 100%;
       object-fit: cover;
       @media (max-width: 500px) {
-        height: 200px;
+        height: 128px;
       }
     }
   }
@@ -357,16 +359,15 @@ export const InstaGallery = styled.section`
   .insta_post {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:10px;
-    @media (max-width:700px){
-      grid-template-columns: 1fr  1fr;
+    gap: 10px;
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr 1fr;
     }
-    @media (max-width:500px){
-      grid-template-columns: 1fr ;
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
     }
-    .insta_img{
-      width:100%;
+    .insta_img {
+      width: 100%;
     }
-}
-
+  }
 `;
