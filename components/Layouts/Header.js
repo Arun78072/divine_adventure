@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import api, { tourTypeOption } from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
 import { FaAngleDown } from "react-icons/fa";
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoClose } from "react-icons/io5";
 export default function Header() {
-  const [loading, setLoading] = useState(false);
-  const [profileBox, setProfileBox] = useState(false);
+  const [toggel, setToggel] = useState();
   const [headline, setHeadline] = useState("");
-
+  const [activeMegaMenu, setActiveMegaMenu] = useState("");
   const getHeadlineApi = async () => {
     try {
       const response = await api.get("/api/webdata/get_headline");
@@ -19,8 +18,6 @@ export default function Header() {
       }
     } catch (e) {
       // toast.error("Something went wrong");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -28,6 +25,27 @@ export default function Header() {
     getHeadlineApi();
   }, []);
 
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const isMobile = window.innerWidth < 1050;
+  //     if (!isMobile) {
+  //       setActiveMegaMenu('');
+  //       setToggel(false);
+  //       document.body.style.overflow = 'auto';
+  //     }
+  //   };
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('resize', handleResize);
+  //   }
+  //   handleResize();
+  //   return () => {
+  //     if (typeof window !== 'undefined') {
+  //       window.removeEventListener('resize', handleResize);
+  //     }
+  //   };
+  // }, []);
+
+  console.log("activeMegaMenu =>", activeMegaMenu);
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -47,11 +65,25 @@ export default function Header() {
               className="logo_img"
             />
           </Link>
-          <div className="navigation">
+
+          <div className={`${toggel ? "mobile_navbar " : ""}navigation`}>
             <Link className="" href="/">
               Home
             </Link>
-            <div className="mega_menu">
+            <div
+              className={`mega_menu ${
+                activeMegaMenu === "india" ? "active_mega_menu" : ""
+              }`}
+              onClick={() => {
+                setActiveMegaMenu(
+                  activeMegaMenu == "india"
+                    ? ""
+                    : activeMegaMenu == "international"
+                    ? "india"
+                    : "india"
+                );
+              }}
+            >
               <Link href="#" onClick={(e) => e.preventDefault()}>
                 Indian <FaAngleDown />
               </Link>
@@ -64,7 +96,10 @@ export default function Header() {
                       .replace(/^-+|-+$/g, "");
                     return (
                       <li key={item.id}>
-                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                        <Link
+                          href={`/indian-tour/${item.id}-${slug}`}
+                          onClick={() => setActiveMegaMenu("")}
+                        >
                           {item.value}
                         </Link>
                       </li>
@@ -73,7 +108,20 @@ export default function Header() {
                 </ul>
               </div>
             </div>
-            <div className="mega_menu">
+            <div
+              className={`mega_menu ${
+                activeMegaMenu === "international" ? "active_mega_menu" : ""
+              }`}
+              onClick={() => {
+                setActiveMegaMenu(
+                  activeMegaMenu == "international"
+                    ? ""
+                    : activeMegaMenu == "india"
+                    ? "international"
+                    : "international"
+                );
+              }}
+            >
               <Link className="" href="/destination">
                 International <FaAngleDown />
               </Link>
@@ -86,7 +134,10 @@ export default function Header() {
                       .replace(/^-+|-+$/g, "");
                     return (
                       <li key={item.id}>
-                        <Link href={`/indian-tour/${item.id}-${slug}`}>
+                        <Link
+                          href={`/indian-tour/${item.id}-${slug}`}
+                          onClick={() => setActiveMegaMenu("")}
+                        >
                           {item.value}
                         </Link>
                       </li>
@@ -95,7 +146,6 @@ export default function Header() {
                 </ul>
               </div>
             </div>
-
             <Link className="" href="/about">
               About
             </Link>
@@ -106,7 +156,22 @@ export default function Header() {
               Gallery
             </Link>
           </div>
-          {/* <button className="primary_button">Get in Touch</button> */}
+{activeMegaMenu.length > 0 &&   <span onClick={()=>setActiveMegaMenu('')} className="close_button"></span>}
+        
+
+          <button
+            className="hamburger_menu"
+            onClick={() => {
+              if (!toggel) {
+                document.body.style.overflow = "hidden";
+              } else {
+                document.body.style.overflow = "auto";
+              }
+              setToggel(!toggel);
+            }}
+          >
+            {!toggel ? <GiHamburgerMenu /> : <IoClose />}
+          </button>
         </nav>
       </header>
     </HederStyle>

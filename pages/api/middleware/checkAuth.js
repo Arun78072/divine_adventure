@@ -6,9 +6,9 @@ export default async function checkAuth(req, res) {
   try {
     const authHeader = req.headers.authorization;
  
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'Unauthorized - Missing token' });
-    }
+    // if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    //   return res.status(401).json({ message: 'Unauthorized - Missing token' });
+    // }
     const token = authHeader.split(' ')[1]; 
     const decoded = jwt.verify(token, secret); 
     req.user = decoded; 

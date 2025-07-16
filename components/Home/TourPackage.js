@@ -10,11 +10,29 @@ export default function TourPackage({category}) {
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState([]);
 
+
+
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      
+    ],
+
   };
 
   const getTourDetailsApi = async () => {

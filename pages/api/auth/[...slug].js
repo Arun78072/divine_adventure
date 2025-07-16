@@ -1,9 +1,3 @@
-// import connectMongoDB from "@/lib/mongodb";
-// import { getToken } from "next-auth/jwt";
-
-// export default async function handler(req, res) {
-//   res.status(405).json({ message: "Method Not Allowed" });
-// }
 
 
 import connectMongoDB from "@/lib/mongodb";
@@ -32,11 +26,9 @@ export default async function handler(req, res) {
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
-    // const isMatch = await bcrypt.compare(password, user.password);
 
-    // if (!isMatch) {
-    //   return res.status(401).json({ error: "Invalid credentials" });
-    // }
+  
+
     const token = jwt.sign(
       {
         id: user._id,

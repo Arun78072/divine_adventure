@@ -27,7 +27,6 @@ const ProfileStyle = styled.section`
     }
   }
 
-
   .tour_plan {
     padding: 30px;
     .title {
@@ -95,9 +94,9 @@ const ProfileStyle = styled.section`
       margin-top: 30px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap:20px;
-      >img{
-        width:100%;
+      gap: 20px;
+      > img {
+        width: 100%;
         border-radius: 10px;
       }
     }
@@ -176,6 +175,7 @@ const ProfileStyle = styled.section`
     .col-span-2 {
       grid-column: span 2;
     }
+   
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
