@@ -6,7 +6,7 @@ import Slider from "react-slick";
 
 export default function Countries() {
   const [data, setData] = useState([]);
-  // tourTypeOption
+ 
   const settings = {
     infinite: true,
     speed: 500,
@@ -31,7 +31,7 @@ export default function Countries() {
 
   useEffect(() => {
     if (tourTypeOption) {
-        const update = [...tourTypeOption[0].children , ...tourTypeOption[1].children]
+        const update = [...tourTypeOption[0].category[0].tours]
       setData(update);
     }
   }, [tourTypeOption]);

@@ -45,7 +45,7 @@ export default function Header() {
   //   };
   // }, []);
 
-  console.log("activeMegaMenu =>", activeMegaMenu);
+  console.log("activeMegaMenu =>", tourTypeOption[0]?.category[0].tours);
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -92,7 +92,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Indian Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[0].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -114,7 +114,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Honeymoon Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[1].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -136,29 +136,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Indian Special </h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
-                        const slug = item.value
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, "-")
-                          .replace(/^-+|-+$/g, "");
-                        return (
-                          <li key={item.id}>
-                            <FaAngleRight />
-                            <Link
-                              href={`/indian-tour/${item.id}-${slug}`}
-                              onClick={() => setActiveMegaMenu("")}
-                            >
-                              {item.value}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="tour_heading">Indian Tourism </h4>
-                    <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[2].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -202,7 +180,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Indian Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[0].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -224,7 +202,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Honeymoon Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[1].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -246,29 +224,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Indian Special </h4>
                     <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
-                        const slug = item.value
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, "-")
-                          .replace(/^-+|-+$/g, "");
-                        return (
-                          <li key={item.id}>
-                            <FaAngleRight />
-                            <Link
-                              href={`/indian-tour/${item.id}-${slug}`}
-                              onClick={() => setActiveMegaMenu("")}
-                            >
-                              {item.value}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="tour_heading">Indian Tourism </h4>
-                    <ul>
-                      {tourTypeOption[0]?.children.map((item) => {
+                      {tourTypeOption[0]?.category[2].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
