@@ -93,26 +93,28 @@ export default function CreateEditTour({ data }) {
             },
           }));
           break;
-      
+
         case "tourPlan":
           setTourPlan((prev) =>
             prev.map((item, idx) =>
-              idx === index ? { ...item, locationImage: response.data.url } : item
+              idx === index
+                ? { ...item, locationImage: response.data.url }
+                : item
             )
           );
           break;
-      
+
         case "galleryImage":
           setGalleryImages((prev) => ({
             ...prev,
             img: [...(prev.img || []), response.data.url],
           }));
           break;
-      
+
         default:
           console.warn(`Unknown upload type: ${type}`);
       }
-      
+
       toast.success("Successful Upload Image");
     } catch (e) {
       console.log("error", e);
@@ -252,9 +254,7 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                    <option value="">
-                      Select
-                    </option>
+                    <option value="">Select</option>
                     {tourTypeOption?.map((i) => (
                       <option value={i.id}>{i.value}</option>
                     ))}
@@ -274,12 +274,18 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                    <option value="">
-                      Select
-                    </option>
-                    {tourTypeOption?.filter((item) => item.id == formData.tourCountryId)[0]
-                      ?.children.map((i) => (
-                        <option value={i.id}>{i.value}</option>
+                    <option value="">Select</option>
+                    {tourTypeOption
+                      ?.find((item) => item.id == formData.tourCountryId)
+                      ?.category.map((i, idx) => (
+                        <React.Fragment key={idx}>
+                          <option disabled>{i.value}</option>
+                          {i.tours?.map((j) => (
+                            <option key={j.id} value={j.id}>
+                              {j.value}
+                            </option>
+                          ))}
+                        </React.Fragment>
                       ))}
                   </select>
                 </div>
