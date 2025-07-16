@@ -233,7 +233,7 @@ export const CountriesStyle = styled.section`
       text-decoration: none;
     }
     .slider_card {
-      height: 260px;
+      height: 280px;
       background: #fff;
 
       margin: 6px;
@@ -241,7 +241,7 @@ export const CountriesStyle = styled.section`
       overflow: hidden;
       .card_content h3 {
         color: #000;
-        padding: 3px;
+        padding:14px 3px;
         height: 35px;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -250,7 +250,7 @@ export const CountriesStyle = styled.section`
       }
       > img {
         width: 100%;
-        height: calc(100% - 40px);
+        height: calc(100% - 56px);
         object-fit: cover;
       }
     }
