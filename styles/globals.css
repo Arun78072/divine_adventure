@@ -154,14 +154,18 @@ p {
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.flag_image {
+.no_data_found {
+  text-align: center;
+}
+.no_data_found p {
+  font-size: 22px;
+  margin: 24px;
 }
 /* =================== Banner Style ============================= */
 .banner_image {
   margin-top: -110px;
   position: relative;
 }
-
 
 .description h1 {
   font-size: 2.2em;
@@ -180,14 +184,9 @@ p {
   width: 0px;
 }
 
-
-
 /* =================== Banner  Css =================== */
 
-
 /* ===================  Post bar  ======================= */
-
-
 
 .top_bar {
   display: flex;
@@ -197,11 +196,9 @@ p {
 
 /* ===================  Services section  ======================= */
 
-
 /* ===================  Explore section  ======================= */
 
 /* ===================  Review section  ======================= */
-
 
 /* ===================  footer section     ======================= */
 .footer_section {
@@ -429,7 +426,6 @@ p {
 
 /* Destination form css */
 
-
 /* ===================  Confirmation box    ======================= */
 
 .confirmation_modal {
@@ -484,6 +480,4 @@ p {
   cursor: pointer;
 }
 
-
 /* =================   Slice Slider ============== */
-

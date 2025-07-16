@@ -60,14 +60,18 @@ export const HederStyle = styled.section`
         gap: 6px;
       }
       .megamenu {
-        display: grid;
+        display: flex;
         gap: 10px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
         width: 100%;
+        >div{
+          width:fit-content;
+        }
        @media (max-width:800px){
+        display:grid;
         grid-template-columns: 1fr 1fr ;
        }
        @media (max-width:500px){
+        display:grid;
         grid-template-columns: 1fr ;
        }
       }
@@ -77,7 +81,7 @@ export const HederStyle = styled.section`
         position: fixed;
         transform: translateX(-50%);
         top: 100%;
-        width: 76%;
+        width: fit-content;
         left: 50%;
         background: #ffffff;
         padding: 10px 0;

@@ -7,7 +7,7 @@ export const baseUrl = "http://localhost:3000";
 export const tourTypeOption = [
   {
     id: 1,
-    key:'india',
+    key: "india",
     value: "India",
     category: [
       {
@@ -15,339 +15,336 @@ export const tourTypeOption = [
         value: "Indian Tour",
         tours: [
           {
-  id: 101,
-  value: "India Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 102,
-  value: "Maharashtra Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 103,
-  value: "Jammu And Kashmir Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 104,
-  value: "Kerala Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 105,
-  value: "Goa Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 106,
-  value: "Bhutan Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 107,
-  value: "Sri Lanka Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 108,
-  value: "Nepal Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 109,
-  value: "Himachal Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 110,
-  value: "Andaman And Nicobar Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 111,
-  value: "Ladakh Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 112,
-  value: "Rajasthan Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 113,
-  value: "Char Dham Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 114,
-  value: "Uttarakhand Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 115,
-  value: "Sikkim And West Bengal Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 116,
-  value: "Ayodhya Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 117,
-  value: "Cordelia Cruises Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-
+            id: 101,
+            value: "India Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 102,
+            value: "Maharashtra Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 103,
+            value: "Jammu And Kashmir Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 104,
+            value: "Kerala Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 105,
+            value: "Goa Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 106,
+            value: "Bhutan Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 107,
+            value: "Sri Lanka Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 108,
+            value: "Nepal Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 109,
+            value: "Himachal Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 110,
+            value: "Andaman And Nicobar Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 111,
+            value: "Ladakh Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 112,
+            value: "Rajasthan Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 113,
+            value: "Char Dham Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 114,
+            value: "Uttarakhand Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 115,
+            value: "Sikkim And West Bengal Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 116,
+            value: "Ayodhya Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 117,
+            value: "Cordelia Cruises Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
         ],
       },
       {
         key: "honeyMoonTour",
         value: "Honey Moon Tour",
         tours: [
-         {
-  id: 201,
-  value: "Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 202,
-  value: "India Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 203,
-  value: "Goa Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 204,
-  value: "Ooty Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 205,
-  value: "Coorg Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 206,
-  value: "Bhutan Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 207,
-  value: "Jammu And Kashmir Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 208,
-  value: "Kerala Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 209,
-  value: "Andaman And Nicobar Islands Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 210,
-  value: "Manali Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 211,
-  value: "Munnar Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 212,
-  value: "Shimla Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 213,
-  value: "Darjeeling Honeymoon Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-
+          {
+            id: 201,
+            value: "Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 202,
+            value: "India Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 203,
+            value: "Goa Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 204,
+            value: "Ooty Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 205,
+            value: "Coorg Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 206,
+            value: "Bhutan Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 207,
+            value: "Jammu And Kashmir Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 208,
+            value: "Kerala Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 209,
+            value: "Andaman And Nicobar Islands Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 210,
+            value: "Manali Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 211,
+            value: "Munnar Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 212,
+            value: "Shimla Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 213,
+            value: "Darjeeling Honeymoon Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
         ],
       },
       {
         key: "indianSpecial",
         value: "Indian Special",
         tours: [
-         {
-  id: 301,
-  value: "Air Inclusive Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 302,
-  value: "Wildlife & Safari Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 303,
-  value: "Spiritual Journeys",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 304,
-  value: "Bike Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 305,
-  value: "Short Getaway Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 306,
-  value: "Sporty Getaway",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 307,
-  value: "Ramayan Trails",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 308,
-  value: "Luxury Train Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-{
-  id: 309,
-  value: "Buy 1 Get 1 Free Domestic Tour Packages",
-  description:
-    "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-  coverImage:
-    "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
-},
-
+          {
+            id: 301,
+            value: "Air Inclusive Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 302,
+            value: "Wildlife & Safari Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 303,
+            value: "Spiritual Journeys",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 304,
+            value: "Bike Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 305,
+            value: "Short Getaway Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 306,
+            value: "Sporty Getaway",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 307,
+            value: "Ramayan Trails",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 308,
+            value: "Luxury Train Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
+          {
+            id: 309,
+            value: "Buy 1 Get 1 Free Domestic Tour Packages",
+            description:
+              "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
+            coverImage:
+              "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp",
+          },
         ],
       },
     ],
   },
   {
     id: 2,
-    key:'international',
+    key: "international",
     value: "International",
     category: [
       {

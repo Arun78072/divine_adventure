@@ -50,14 +50,19 @@ export default function CategoryTour({ type }) {
   };
   useEffect(() => {
     if (categoryId) {
+      const id = categoryId.split("")[0];
       const data =
         type == "indian"
-          ? tourTypeOption[0].children.filter((i) => i.id == categoryId)[0]
-          : tourTypeOption[1].children.filter((i) => i.id == categoryId)[0];
+          ? tourTypeOption[0].category[id - 1].tours.filter(
+              (i) => i.id == categoryId
+            )[0]
+          : tourTypeOption[1].category[id - 1].tours.filter(
+              (i) => i.id == categoryId
+            )[0];
       setPageData(data);
     }
   }, [categoryId]);
-  console.log("categoryId-====>", pageData?.coverImage);
+  console.log("categoryId-====>", categoryId.split("")[0]);
   return (
     <>
       <Loader loading={loading} />
@@ -67,7 +72,7 @@ export default function CategoryTour({ type }) {
           <div className="banner_image">
             <Image
               src={pageData?.coverImage}
-                // src="/assets/mountain_boy.jpg"
+              // src="/assets/mountain_boy.jpg"
               width={0}
               height={0}
               sizes="100vw"
@@ -89,40 +94,39 @@ export default function CategoryTour({ type }) {
             <div className="">
               {/* All Tour Post */}
               <TourList>
-              <TourPackageStyle className="container">
-                <div className="tour_slider">
-                  {allTours.length > 0 &&
-                    allTours?.map((item, index) => (
-                      <Link href={`destination/view/${item._id}`}>
-                        <div key={index} className="slider_card">
-                        <Image
-                          src={item?.tourInfo?.coverImage}
-                          alt={"title"}
-                          width={300}
-                          height={300}
-                          className="post_image"
-                        />
+                <TourPackageStyle className="container">
+                  <div className="tour_slider">
+                    {allTours.length > 0 &&
+                      allTours?.map((item, index) => (
+                        <Link href={`destination/view/${item._id}`}>
+                          <div key={index} className="slider_card">
+                            <Image
+                              src={item?.tourInfo?.coverImage}
+                              alt={"title"}
+                              width={300}
+                              height={300}
+                              className="post_image"
+                            />
 
-                          {/* <img    src={item?.tourInfo?.coverImage} alt={item.tourInfo?.title} /> */}
-                          <div className="card_content">
-                            <h3>{item.tourInfo?.title}</h3>
-                            <span>Starting Price</span>
-                            <h4>{item.tourInfo.price}</h4>
+                            {/* <img    src={item?.tourInfo?.coverImage} alt={item.tourInfo?.title} /> */}
+                            <div className="card_content">
+                              <h3>{item.tourInfo?.title}</h3>
+                              <span>Starting Price</span>
+                              <h4>{item.tourInfo.price}</h4>
+                            </div>
                           </div>
-                        </div>
-                       
-                        <Link
-                        href={`/destination/view/${item._id}`}
-                        className="button primary_button"
-                      >
-                        View Tour
-                      </Link>
-                      </Link>
-                    ))}
-                </div>
-              </TourPackageStyle>
+
+                          <Link
+                            href={`/destination/view/${item._id}`}
+                            className="button primary_button"
+                          >
+                            View Tour
+                          </Link>
+                        </Link>
+                      ))}
+                  </div>
+                </TourPackageStyle>
               </TourList>
-             
 
               {/* <TourList>
                 {allTours?.map((item, index) => {
@@ -177,7 +181,10 @@ export default function CategoryTour({ type }) {
           </section>
         </main>
       ) : (
-        <p>No data found</p>
+        <div className="no_data_found">
+          <p> No data found</p>
+          <Link href='/' className="primary_button">Go Back To Home Page </Link>
+        </div>
       )}
     </>
   );
