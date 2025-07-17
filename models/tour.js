@@ -10,8 +10,8 @@ const TourSchema = new mongoose.Schema(
     },
     tourType: { type: String, required: true },
     tourTypeId: { type: String, required: true },
-    tourCountry: { type: String, required: true },
-    tourCountryId: { type: String, required: true },
+    tourCountry: { type: String},
+    tourCountryId: { type: String },
     tourCategory: { type: String, required: true },
     tourCategoryId: { type: String, required: true },
 

@@ -232,7 +232,7 @@ export default function CreateEditTour({ data }) {
                       });
                     }}
                   >
-                    <option value="" disabled>
+                    <option value="" >
                       Select
                     </option>
                     {tourCategoryOption.map((i) => (

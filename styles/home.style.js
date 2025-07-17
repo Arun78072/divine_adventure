@@ -241,8 +241,7 @@ export const CountriesStyle = styled.section`
       overflow: hidden;
       .card_content h3 {
         color: #000;
-        padding:14px 3px;
-        height: 35px;
+        padding:14px 6px;
         text-overflow: ellipsis;
         overflow: hidden;
         width: 100%;
