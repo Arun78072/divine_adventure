@@ -165,6 +165,22 @@ p {
 .banner_image {
   margin-top: -110px;
   position: relative;
+  .content {
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    z-index: 9;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background: #0000003b;
+    h1 {
+      font-size: 31px;
+      color: #fff;
+    }
+  }
 }
 
 .description h1 {

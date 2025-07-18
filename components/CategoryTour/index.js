@@ -83,6 +83,9 @@ export default function CategoryTour({ type }) {
                 objectPosition: "top",
               }}
             />
+              <div className="content">
+              <h1>{pageData?.value}</h1>
+              </div>
           </div>
           <section className="container">
             <div>
