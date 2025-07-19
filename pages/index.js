@@ -23,9 +23,9 @@ export default function Home() {
         <>
           <BannerSection />
           <Category />
-          <TourPackage category={1}/>
-          <TourPackage category={2}/>
-          <TourPackage category={3}/>
+          <TourPackage category={1} title={'Divine Adventure Trending Tour Packages'}/>
+          <TourPackage category={2} title={'Divine Adventure Special Tour Packages'}/>
+          <TourPackage category={3} title={'Divine Adventure New Tour Packages'}/>
           <Blogs />
           <HolidayBanner />
           <Countries/>

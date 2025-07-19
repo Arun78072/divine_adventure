@@ -7,11 +7,9 @@ import Loader from "../Loader";
 import { toast } from "react-toastify";
 import { MdCurrencyRupee } from "react-icons/md";
 
-export default function TourPackage({category}) {
+export default function TourPackage({ category,title }) {
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState([]);
-
-
 
   const settings = {
     infinite: true,
@@ -31,9 +29,7 @@ export default function TourPackage({category}) {
           slidesToShow: 2,
         },
       },
-      
     ],
-
   };
 
   const getTourDetailsApi = async () => {
@@ -44,7 +40,7 @@ export default function TourPackage({category}) {
       );
       if (response.status == 200) {
         const data = response.data.data;
-        setPostData([...data,...data,...data,...data]);
+        setPostData([...data, ...data, ...data, ...data]);
       }
     } catch (e) {
       toast.error("Something went wrong");
@@ -62,27 +58,31 @@ export default function TourPackage({category}) {
         <Loader loading={loading} />
       ) : (
         <TourPackageStyle className="container">
-          <h2>SOTC Trending Tour Packages</h2>
+          <h2>{title}</h2>
           <p>
             Tired of browsing through travel agencies and trying to find the
             best package around your dream destination?
           </p>
           <div className="tour_slider">
-          {postData.length>0 &&<Slider {...settings}>
-              {postData?.map((item, index) => (
-                <Link href={`destination/view/${item._id}`}>
-                  <div key={index} className="slider_card">
-                    <img src={item.coverImage} alt={item.title} />
-                    <div className="card_content">
-                      <h3>{item.title}</h3>
-                      <span>Starting Price</span>
-                      <h4><MdCurrencyRupee />{item.price} /-</h4>
+            {postData.length > 0 && (
+              <Slider {...settings}>
+                {postData?.map((item, index) => (
+                  <Link href={`destination/view/${item._id}`}>
+                    <div key={index} className="slider_card">
+                      <img src={item.coverImage} alt={item.title} />
+                      <div className="card_content">
+                        <h3>{item.title}</h3>
+                        <span>Starting Price</span>
+                        <h4>
+                          <MdCurrencyRupee />
+                          {item.price} /-
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </Slider> }
-            
+                  </Link>
+                ))}
+              </Slider>
+            )}
           </div>
         </TourPackageStyle>
       )}

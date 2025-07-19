@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const TourPackageStyle = styled.section`
-  margin-top: 40px;
+  margin-top: 80px;
   h2 {
     margin-top: 20px;
     font-size: 22px;
@@ -18,7 +18,7 @@ export const TourPackageStyle = styled.section`
       > img {
         width: 100%;
         border-radius: 6px;
-        height: 260px;
+        height: 350px;
         object-fit: cover;
       }
       .card_content {
@@ -45,6 +45,7 @@ export const TourPackageStyle = styled.section`
           font-size: 18px;
           text-transform: capitalize;
         }
+      
         > span {
           font-size: 18px;
         }
@@ -226,6 +227,7 @@ export const CountriesStyle = styled.section`
     line-height: 60px;
     font-weight: 600;
     margin-left: 10px;
+    margin-bottom:40px;
   }
   .slider_section {
     .link_url {
@@ -233,7 +235,7 @@ export const CountriesStyle = styled.section`
       text-decoration: none;
     }
     .slider_card {
-      height: 280px;
+      height: 320px;
       background: #fff;
 
       margin: 6px;
