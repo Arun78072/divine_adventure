@@ -162,8 +162,6 @@ export default function CreateEditTour({ data }) {
           image: galleryImages.img,
         },
       };
-      console.log("payload=========>", payload);
-      debugger;
       const response = editFormId
         ? await api.post("/api/tour/edit_tour", { id: editFormId, ...payload })
         : await api.post("/api/tour/add_tour", payload);

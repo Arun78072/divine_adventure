@@ -231,6 +231,7 @@ export const CountriesStyle = styled.section`
     text-align:center;
   }
   .slider_section {
+    margin-bottom:80px;
     .link_url {
       color: #000;
       text-decoration: none;
