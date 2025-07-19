@@ -219,7 +219,7 @@ export const ServiceCard = styled.section`
 `;
 
 export const CountriesStyle = styled.section`
-  background-color: #df6951;
+  background-color: rgb(19, 90, 85);
   color: #fff;
   padding: 30px 0px;
 
@@ -228,6 +228,7 @@ export const CountriesStyle = styled.section`
     font-weight: 600;
     margin-left: 10px;
     margin-bottom:40px;
+    text-align:center;
   }
   .slider_section {
     .link_url {
@@ -235,10 +236,9 @@ export const CountriesStyle = styled.section`
       text-decoration: none;
     }
     .slider_card {
-      height: 320px;
+      height: 330px;
       background: #fff;
-
-      margin: 6px;
+      margin: 8px;
       border-radius: 5px;
       overflow: hidden;
       .card_content h3 {
