@@ -2,6 +2,7 @@ import BannerSection from "@/components/Home/Banner";
 import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
 import Countries from "@/components/Home/Countries";
+import GridBlog from "@/components/Home/GridBLog";
 import HolidayBanner from "@/components/Home/HolidayBanner";
 import InstagramGallery from "@/components/Home/InstagramGallery";
 import Review from "@/components/Home/Review";
@@ -27,6 +28,7 @@ export default function Home() {
           <TourPackage category={2} title={'Divine Adventure Special Tour Packages'}/>
           <TourPackage category={3} title={'Divine Adventure New Tour Packages'}/>
           <Blogs />
+          <GridBlog />
           <HolidayBanner />
           <Countries/>
           <ExploreSection>

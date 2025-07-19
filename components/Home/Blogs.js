@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   BlogSectionWrapper,
   Heading,
@@ -32,6 +33,8 @@ export default function Blogs() {
           <BlogCard key={index}>
             <BlogImage src={blog.image} alt={blog.title} />
             <BlogTitle>{blog.title}</BlogTitle>
+            <Link href={"/"}> 
+            <button> See More</button></Link>
           </BlogCard>
         ))}
       </BlogGrid>
