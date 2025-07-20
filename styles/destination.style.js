@@ -31,6 +31,7 @@ export const DestinationStyle = styled.section`
       border-radius: 10px;
       .tour_title {
         font-size: 32px;
+        text-transform: capitalize;
       }
       .price {
         display: flex;

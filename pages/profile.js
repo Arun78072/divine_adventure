@@ -1,4 +1,5 @@
 import Loader from "@/components/Loader";
+import MyBlog from "@/components/Profile/MyBlog";
 import MyTours from "@/components/Profile/MyTours";
 import ProfileStyle from "@/styles/profile.style";
 import api from "@/utils";
@@ -11,7 +12,7 @@ export default function Profile() {
   const [userData, setUserData] = useState({});
   const [storeData, setStoreData] = useState({});
   const [headline, setHeadline] = useState("");
-
+  const [activeScreen, setActiveScreen] = useState("blog");
   const router = useRouter();
 
   const getHeadlineApi = async () => {
@@ -33,6 +34,7 @@ export default function Profile() {
       toast.error("Invalid Headling");
       return;
     }
+
     try {
       const response = await api.post("/api/webdata/update_headline", {
         id: storeData._id,
@@ -91,7 +93,36 @@ export default function Profile() {
           </div>
 
           {/* All Tour Section */}
-          <MyTours />
+          <div className="tab_button">
+            <button
+              onClick={() => {
+                setActiveScreen("tour");
+              }}
+              className={
+                activeScreen == "tour" ? "primary_button" : "secandary_button"
+              }
+            >
+              Tours{" "}
+            </button>
+            <button
+              onClick={() => {
+                setActiveScreen("blog");
+              }}
+              className={
+                activeScreen == "blog" ? "primary_button" : "secandary_button"
+              }
+            >
+              Blogs{" "}
+            </button>
+          </div>
+
+          {activeScreen == "tour" ? (
+            <MyTours />
+          ) : activeScreen == "blog" ? (
+            <MyBlog />
+          ) : (
+            ""
+          )}
         </ProfileStyle>
       )}
     </main>

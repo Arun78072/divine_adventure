@@ -12,7 +12,7 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import ConfirmationBox from "../ConfirmationBox";
 import { TourGrid } from "@/styles/destination.style";
 
-export default function MyTours() {
+export default function MyBlog() {
   const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -26,7 +26,7 @@ export default function MyTours() {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const response = await api.get("/api/tour/all_tour");
+      const response = await api.get("/api/blog/all_blog");
       if (response.status == 200) {
         const data = response.data;
         setAllTours(data.data.reverse());
@@ -47,10 +47,10 @@ export default function MyTours() {
   const handleDeleteTour = async (id) => {
     setLoading(true);
     try {
-      const response = await api.post(`/api/tour/delete_tour?tour_id=${id}`);
+      const response = await api.post(`/api/blog/delete_blog?blog_id=${id}`);
       if (response.status == 200) {
         setAllTours((item) => item.filter((i) => i._id != id));
-        toast.success('Successfully Delete Tour')
+        toast.success('Successfully Delete Blog')
       } else {
         toast.error("Something went wrong");
       }
@@ -73,9 +73,9 @@ export default function MyTours() {
       ) : (
         <div>
           <div className="top_bar">
-            <h1>All Tours</h1>
-            <Link href={`/destination/edit/create`} className="primary_button">
-              Create New Tour
+            <h1>All Blog</h1>
+            <Link href={`/blog/edit/create`} className="primary_button">
+              Create New Blog
             </Link>
           </div>
           <TourGrid>
@@ -94,45 +94,28 @@ export default function MyTours() {
                     </button>
                     <div className="image_wrapper">
                       <Image
-                        src={item.tourInfo.coverImage}
+                        src={item?.coverImage}
                         alt={"title"}
                         width={300}
                         height={300}
                         className="post_image"
                       />
                     </div>
-                    <div className="info-row">
-                      <span className="icon">
-                        <CiCalendarDate /> {item.tourInfo.travelDays} Days
-                      </span>
-                      <span className="icon">
-                        <IoLocationOutline /> {item.tourInfo.travelCity}{" "}
-                        Locations
-                      </span>
-                    </div>
-                    <h3 className="card_title"> {item.tourInfo.title}</h3>
-                    <div className="location_row">
-                      <IoLocationOutline />
-                      India
-                    </div>
                     <h3 className="price">
-                      <FaRupeeSign /> {item.tourInfo.price}
+                     {item?.title}
                     </h3>
-                    <p className="post_description">
-                      {item.tourInfo.description}
-                    </p>
                     <div className="action_buttons">
                       <Link
-                        href={`/destination/view/${item._id}`}
+                        href={`/blog/view/${item._id}`}
                         className="post_title secandary_button"
                       >
-                        View Tour
+                        View Blog
                       </Link>
                       <Link
-                        href={`/destination/edit/${item._id}`}
+                        href={`/blog/edit/${item._id}`}
                         className="post_title primary_button"
                       >
-                        Edit Tour
+                        Edit Blog
                       </Link>
                     </div>
                   </div>
@@ -145,7 +128,7 @@ export default function MyTours() {
 
       <ConfirmationBox
         open={confirmationBox}
-        title={"Are you sure to delete this Spark"}
+        title={"Are you sure to delete this Blog"}
         handleClick={() => {
           handleDeleteTour(deleteId);
         }}

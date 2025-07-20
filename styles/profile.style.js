@@ -9,6 +9,13 @@ const ProfileStyle = styled.section`
     overflow: hidden;
     border-radius: 10px;
   }
+  .tab_button{
+    margin-top:60px;
+    >button{
+      padding: 8px 22px;
+    margin: 0px 6px;
+    }
+  }
   .tab_section {
     display: flex;
     align-items: center;

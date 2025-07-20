@@ -1,21 +1,23 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Loader from "@/components/Loader";
 import { DestinationStyle } from "@/styles/destination.style";
 import { RiDeleteBinFill } from "react-icons/ri";
 import api from "@/utils";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 /* Using dynamic import of Jodit component as it can't render in server side*/
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function CreatEditBlog({ data }) {
   const [loading, setLoading] = useState(false);
-
+  const [editFormId, setEditFormId] = useState();
   const [formData, setFormData] = useState({
     title: "",
     coverImage: "",
     description: "",
   });
-
+  const router = useRouter();
   const editor = useRef(null);
   const [content, setContent] = useState("");
 
@@ -71,11 +73,34 @@ export default function CreatEditBlog({ data }) {
   };
 
   const SubmitTour = async () => {
-    console.log("content", content);
+    try {
+      setLoading(true);
+      const payload = {
+        title: formData?.title ,
+        coverImage: formData?.coverImage,
+        description: content,
+      };
+      const response = editFormId
+        ? await api.post("/api/blog/edit_blog", { id: editFormId, ...payload })
+        : await api.post("/api/blog/add_blog", payload);
+      if (response.status == 201) {
+        toast.success("Blog saved successfully");
+        router.push("/profile");
+      } else {
+        toast.error("Something went wrong");
+      }
+      setLoading(false);
+    } catch (e) {
+      console.log("error ====>", e);
+      setLoading(false);
+      toast.error("Error while saving Blog");
+    }
   };
+
 
   const handleUploadImage = async (file) => {
     setLoading(true);
+    debugger
     try {
       if (!file) return;
       const formData = new FormData();
@@ -100,6 +125,12 @@ export default function CreatEditBlog({ data }) {
   };
 
 
+  useEffect(() => {
+    if (data._id) {
+      setFormData(data);
+      setEditFormId(data?._id);
+    }
+  }, [data]);
 
   return (
     <DestinationStyle>

@@ -89,7 +89,7 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: "User not authenticated" });
       }
      
-      const deletedBlog= await Blog.findByIdAndDelete(tour_id);
+      const deletedBlog= await Blog.findByIdAndDelete(blog_id);
 
       if (!deletedBlog) {
         return res.status(404).json({ error: "Blog not found" });
