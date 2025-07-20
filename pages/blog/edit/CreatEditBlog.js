@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Loader from "@/components/Loader";
 import { DestinationStyle } from "@/styles/destination.style";
 import { RiDeleteBinFill } from "react-icons/ri";
+import api from "@/utils";
 /* Using dynamic import of Jodit component as it can't render in server side*/
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
@@ -73,6 +74,33 @@ export default function CreatEditBlog({ data }) {
     console.log("content", content);
   };
 
+  const handleUploadImage = async (file) => {
+    setLoading(true);
+    try {
+      if (!file) return;
+      const formData = new FormData();
+      formData.append("image", file);
+      const response = await api.post("/api/media/upload_image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("data =upload imhg =====>", response);
+      setFormData((prev) => ({
+        ...prev,
+        coverImage: response.data.url,
+      }));
+      toast.success("Successful Upload Image");
+    } catch (e) {
+      console.log("error", e);
+      toast.error("Oops! Something went wrong. Please re-upload the image.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
   return (
     <DestinationStyle>
       <div className="form_box">
@@ -121,7 +149,7 @@ export default function CreatEditBlog({ data }) {
                       <input
                         type="file"
                         onChange={(e) =>
-                          handleUploadImage(e.target.files?.[0], "coverImage")
+                          handleUploadImage(e.target.files?.[0])
                         }
                       />
                       <span>Select Cover Image For Your Tour</span>
