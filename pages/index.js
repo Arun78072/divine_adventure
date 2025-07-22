@@ -31,7 +31,7 @@ export default function Home() {
           <GridBlog />
           <HolidayBanner />
           <Countries/>
-          <ExploreSection>
+          {/* <ExploreSection>
           <div className="explore_section">
             <div>
               <Image
@@ -59,10 +59,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          </ExploreSection>
+          </ExploreSection> */}
          
           <Review />
-          <InstagramGallery />
+          {/* <InstagramGallery />  */}
         </>
       )}
       {/*  Hero */}

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { tourTypeOption } from '../../utils';
 
 
-const selectedTourIds = [101, 103, 105, 107, 110, 112, 114, 117, 201];
+const selectedTourIds = [101, 103, 105, 107, 110, 112, 114, 117];
 const allTours = tourTypeOption
   .flatMap(option => option.category)
   .flatMap(category => category.tours);
