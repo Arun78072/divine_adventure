@@ -5,7 +5,7 @@ import api from "@/utils";
 import Image from "next/image";
 import { LuIndianRupee } from "react-icons/lu";
 import Loader from "@/components/Loader";
-import { DestinationStyle } from "@/styles/destination.style";
+import { BlogSection, DestinationStyle } from "@/styles/destination.style";
 import TourBookForm from "@/pages/destination/view/TourBookForm";
 
 export default function ViewBlog() {
@@ -42,10 +42,9 @@ export default function ViewBlog() {
     <>
       <Loader loading={loading} />
       <DestinationStyle>
-       
-
         <div className="container view_section">
           <div className="left_section">
+            <BlogSection>
             <h1 className="tour_title">{postData?.title}</h1>
             <Image
               src={postData?.coverImage}
@@ -58,8 +57,9 @@ export default function ViewBlog() {
 
             <div
               dangerouslySetInnerHTML={{ __html: postData?.description }}
-              className="removed_default_css"
+              className="JoditEditorCss"
             ></div>
+            </BlogSection>
           </div>
 
           <div className="right_section">

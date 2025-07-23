@@ -25,48 +25,39 @@ export default function CreatEditBlog({ data }) {
     () => ({
       uploader: {
         insertImageAsBase64URI: true,
-        imagesExtensions: ["jpg", "png", "jpeg", "gif", "svg", "webp"],
+        imagesExtensions: ["jpg", "png", "jpeg"],
       },
       buttons: [
         "source",
         "|",
         "bold",
-        "strikethrough",
         "underline",
         "italic",
         "|",
         "ul",
         "ol",
         "|",
-        "outdent",
-        "indent",
-        "|",
-        "font",
+        "paragraph", // <-- Add this
         "fontsize",
-        "brush",
-        "paragraph",
-        "|",
         "image",
-        // "video",
-        // "table",
         "link",
         "|",
         "align",
-        "undo",
-        "redo",
-        "|",
-        "hr",
-        "eraser",
-        "copyformat",
-        "|",
-        // "symbol",
         "fullsize",
-        // "print",
-        // "about",
       ],
+      paragraph: {
+        blocks: {
+          h1: "Heading 1",
+          h2: "Heading 2",
+          h3: "Heading 3",
+          h4: "Heading 4",
+          p: "Normal",
+        },
+      },
     }),
     []
   );
+  
 
   const handleChange = (value) => {
     setContent(value);
@@ -128,6 +119,7 @@ export default function CreatEditBlog({ data }) {
   useEffect(() => {
     if (data._id) {
       setFormData(data);
+      setContent(data?.description)
       setEditFormId(data?._id);
     }
   }, [data]);

@@ -612,3 +612,32 @@ export const TourGrid = styled.section`
     }
   }
 `;
+
+export const BlogSection = styled.section`
+
+.JoditEditorCss{
+  h1{
+    font-size:34px;
+  }
+  h2{
+    font-size:30px;
+  }
+  h3{
+    font-size:24px;
+  }
+  h4{
+    font-size:20px;
+  }
+  p{
+    font-size:18px;
+  }
+  img{
+    width: 100%;
+    margin: 18px 0px;
+    border-radius: 6px;
+  }
+  ul , ol {
+    margin-left: 16px;
+  }
+}
+`

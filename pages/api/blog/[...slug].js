@@ -60,7 +60,7 @@ export default async function handler(req, res) {
         error: "Something went wrong while creating the tour",
       });
     }
-  } else if (slug[0] === "edit_tour") {
+  } else if (slug[0] === "edit_blog") {
     try {
       if (!req.user || !req.user.id) {
         return res.status(401).json({ error: "User not authenticated" });

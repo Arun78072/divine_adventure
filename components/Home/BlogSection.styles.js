@@ -16,6 +16,9 @@ export const BlogGrid = styled.div`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  a{
+    text-decoration:none;
+  }
   @media (max-width:600px){
     flex-direction:column;
   }
