@@ -1,8 +1,8 @@
 import axios from "axios";
 import Router from "next/router";
 
-// export const baseUrl = "https://divine-adventure.vercel.app/";
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://divine-adventure.vercel.app/";
+// export const baseUrl = "http://localhost:3000";
 
 export const tourTypeOption = [
   {
