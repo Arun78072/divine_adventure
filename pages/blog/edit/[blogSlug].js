@@ -9,12 +9,12 @@ export default function EditBlog() {
   const [postData, setPostData] = useState({});
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { destinationBlog } = router.query;
+  const { blogSlug } = router.query;
 
   const getTourDetailsApi = async (url) => {
     setLoading(true);
     try {
-      const response = await api.get(`/api/tour/tour_get_by_id?tourId=${url}`);
+      const response = await api.get(`/api/blog/blog_get_by_id?blogId=${url}`);
       if (response.status == 200) {
         const data = response.data.data;
         setPostData(data);
@@ -35,14 +35,14 @@ export default function EditBlog() {
     if(!localStorage.getItem('token')){
       return
     }
-    if (destinationBlog) {
-      if(destinationBlog == 'create'){
+    if (blogSlug) {
+      if(blogSlug == 'create'){
         return
       }else{
-        // getTourDetailsApi(destinationBlog);
+        getTourDetailsApi(blogSlug);
       }
     }
-  }, [destinationBlog]);
+  }, [blogSlug]);
 
   return (
     <div>
