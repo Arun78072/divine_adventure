@@ -2,13 +2,13 @@ import BannerSection from "@/components/Home/Banner";
 import Blogs from "@/components/Home/Blogs";
 import Category from "@/components/Home/Category";
 import Countries from "@/components/Home/Countries";
+import ExploreSection from "@/components/Home/ExploreSection";
 import GridBlog from "@/components/Home/GridBLog";
 import HolidayBanner from "@/components/Home/HolidayBanner";
 import InstagramGallery from "@/components/Home/InstagramGallery";
 import Review from "@/components/Home/Review";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
-import { ExploreSection } from "@/styles/home.style";
 import Image from "next/image";
 
 import { useState } from "react";
@@ -60,9 +60,10 @@ export default function Home() {
             </div>
           </div>
           </ExploreSection> */}
-         
-          <Review />
+          <ExploreSection />
+          {/* <Review /> */}
           {/* <InstagramGallery />  */}
+         
         </>
       )}
       {/*  Hero */}
