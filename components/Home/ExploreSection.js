@@ -11,7 +11,7 @@ const exploreData = [
     description:
       "Explore serene beaches, peaceful hill stations, and cozy resorts for unforgettable moments with your partner. Book now for a perfect romantic getaway!",
     buttonText: "View Honeymoon Packages",
-    link: "/honeymoon-packages",
+    link: "indian-tour/201-honeymoon-packages",
     coverImage: "/assets/honeymoon.jpg",
   },
   {
@@ -20,8 +20,8 @@ const exploreData = [
     description:
       "Explore hill stations, sunny beaches, and thrilling adventures. Book now for a refreshing getaway!",
     buttonText: "View Summer Packages",
-    link: "/summer-packages",
-   coverImage: "/assets/india-tour.jpg.jpg",
+    link: "indian-tour/103-jammu-and-kashmir-tour-packages",
+    coverImage: "/assets/india-tour.jpg.jpg",
   },
 ];
 
@@ -45,9 +45,9 @@ function ExploreSection() {
               <Title>{item.title}</Title>
               <Desc>{item.description}</Desc>
             </div>
-            <StyledLink href={item.link}>
+            <Link href={item.link} className="link">
               {item.buttonText} →
-            </StyledLink>
+            </Link>
           </CardContent>
         </Card>
       ))}
@@ -93,6 +93,21 @@ const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  .link {
+    background: white;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    width: fit-content;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
 `;
 
 const Title = styled.h3`
@@ -104,20 +119,4 @@ const Title = styled.h3`
 const Desc = styled.p`
   font-size: 14px;
   line-height: 1.5;
-`;
-
-const StyledLink = styled(Link)`
-  background: white;
-  color: black;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 14px;
-  text-decoration: none;
-  width: fit-content;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #f0f0f0;
-  }
 `;
