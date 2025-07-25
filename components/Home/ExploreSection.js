@@ -21,7 +21,7 @@ const exploreData = [
       "Explore hill stations, sunny beaches, and thrilling adventures. Book now for a refreshing getaway!",
     buttonText: "View Summer Packages",
     link: "indian-tour/103-jammu-and-kashmir-tour-packages",
-    coverImage: "/assets/india-tour.jpg.jpg",
+    coverImage: "/assets/summer.jpg",
   },
 ];
 
