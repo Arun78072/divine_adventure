@@ -25,25 +25,7 @@ export default function Header() {
     getHeadlineApi();
   }, []);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const isMobile = window.innerWidth < 1050;
-  //     if (!isMobile) {
-  //       setActiveMegaMenu('');
-  //       setToggel(false);
-  //       document.body.style.overflow = 'auto';
-  //     }
-  //   };
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener('resize', handleResize);
-  //   }
-  //   handleResize();
-  //   return () => {
-  //     if (typeof window !== 'undefined') {
-  //       window.removeEventListener('resize', handleResize);
-  //     }
-  //   };
-  // }, []);
+ 
 
   console.log("activeMegaMenu =>", tourTypeOption[0]?.category[0].tours);
   return (
@@ -58,14 +40,16 @@ export default function Header() {
         <nav className="nav_bar">
           <Link className="" href="/">
             <Image
-              src="/assets/logo3.png"
+              src="/site_logo.png"
               alt={"Logo"}
-              width={100}
-              height={50}
+              width={0}
+              height={0}
+              sizes="100vw"
+            
               className="logo_img"
             />
           </Link>
-
+           
           <div className={`${toggel ? "mobile_navbar " : ""}navigation`}>
             <Link className="" href="/">
               Home

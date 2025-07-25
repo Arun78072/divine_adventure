@@ -3,21 +3,25 @@ import { styled } from "styled-components";
 export const HederStyle = styled.section`
   position: sticky;
   top: 0px;
-  background: #000000cf;
-  backdrop-filter: blur(5px);
+  background: #fff;
   padding: 10px 0px;
   z-index: 999;
-
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   .title_line_wrapper {
     overflow: hidden;
     white-space: nowrap;
   }
 
   .title_line {
-    color: #fff;
+    color: #000;
     display: inline-block;
     padding-left: 100%;
     animation: scroll-left 30s linear infinite;
+  }
+  .logo_img{
+    width: 100%;
+    height: 30px;
+             
   }
 
   @keyframes scroll-left {
@@ -43,7 +47,7 @@ export const HederStyle = styled.section`
     align-items: center;
 
     a {
-      color: #fff;
+      color: #000;
       text-decoration: none;
       font-size: 16px;
     }
@@ -53,7 +57,7 @@ export const HederStyle = styled.section`
       padding: 20px 0px;
       z-index: 9;
       a {
-        color: #fff;
+        color: #000;
         text-decoration: none;
         align-items: center;
         display: flex;
@@ -145,12 +149,11 @@ export const HederStyle = styled.section`
   .mobile_navbar.navigation {
     position: absolute;
     display: flex;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
     overflow: scroll;
-    background: #000000cf;
-    backdrop-filter: blur(5px);
-    top: 100px;
+    background: #fff;
+    top: 80px;
     left: 0px;
     flex-direction: column;
     align-items: start;
@@ -172,7 +175,7 @@ export const HederStyle = styled.section`
           grid-template-columns: 1fr;
         }
         a ,svg{
-          color: #ffffff;
+          color: #000;
         }
         a:hover {
           background: transparent;
@@ -189,7 +192,7 @@ export const HederStyle = styled.section`
     border: none;
     svg {
       font-size: 30px;
-      color: #fff;
+      color: #000;
     }
     @media (max-width: 1050px) {
       display: block;
@@ -202,10 +205,16 @@ export const LayoutStyle = styled.section`
   button.slick-arrow.slick-prev {
     left: -12px;
     z-index: 9;
+    @media (max-width:500px) {
+      left: 4px;
+    }
   }
   button.slick-arrow.slick-next {
     right: -12px;
     z-index: 9;
+    @media (max-width:500px) {
+      right: 4px;
+    }
   }
   button.slick-arrow {
     background: #000;
