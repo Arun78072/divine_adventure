@@ -84,7 +84,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         /* position: absolute; */
         position: fixed;
         transform: translateX(-50%);
-        top: 100%;
+        /* top: 100%; */
         width: fit-content;
         left: 50%;
         background: #ffffff;

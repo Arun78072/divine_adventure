@@ -1,5 +1,6 @@
 import { CountriesStyle } from "@/styles/home.style";
-import { tourTypeOption } from "@/utils";
+import tourTypeOption from "@/components/JsonData/TourType.json"
+
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";

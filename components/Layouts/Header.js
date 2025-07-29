@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import api, { tourTypeOption } from "@/utils";
+import api from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import tourTypeOption from "@/components/JsonData/TourType.json"
 export default function Header() {
   const [toggel, setToggel] = useState();
   const [headline, setHeadline] = useState("");
@@ -20,14 +21,10 @@ export default function Header() {
       // toast.error("Something went wrong");
     }
   };
-
+  
   useEffect(() => {
     getHeadlineApi();
   }, []);
-
- 
-
-  console.log("activeMegaMenu =>", tourTypeOption[0]?.category[0].tours);
   return (
     <HederStyle>
       <div className="title_line_wrapper">

@@ -3,7 +3,6 @@
 import connectMongoDB from "@/lib/mongodb";
 import User from "@/models/user";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 
 
 const JWT_SECRET = process.env.JWT_SECRET;

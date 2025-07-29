@@ -1,12 +1,10 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
-import api, { tourTypeOption } from "@/utils";
+import api from "@/utils";
+import tourTypeOption from "@/components/JsonData/TourType.json"
 import Image from "next/image";
 import { TourList } from "@/styles/destination.style";
-import { CiCalendarDate } from "react-icons/ci";
-import { IoLocationOutline } from "react-icons/io5";
-import { FaRupeeSign } from "react-icons/fa";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { TourPackageStyle } from "@/styles/home.style";
@@ -62,7 +60,6 @@ export default function CategoryTour({ type }) {
       setPageData(data);
     }
   }, [categoryId]);
-  console.log("categoryId-====>", categoryId.split("")[0]);
   return (
     <>
       <Loader loading={loading} />
