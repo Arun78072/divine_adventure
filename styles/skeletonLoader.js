@@ -5,7 +5,7 @@ export const SkeletonLoaderStyle = styled.section`
     height: 350px;
     border-radius: 10px;
     margin: 6px;
-    background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
+  
     background-size: 200% 100%;
     animation: shimmer 1.2s infinite;
     position: relative;
@@ -34,15 +34,36 @@ export const SkeletonLoaderStyle = styled.section`
       animation: shimmer 1.2s infinite;
       position: relative;
     }
-    .left_section{
-        height:300px;
-        background: linear-gradient(90deg, #dcdcdc, #e8e8e8, #dcdcdc);
+    .left_section {
+      height: 300px;
+      background: linear-gradient(90deg, #dcdcdc, #e8e8e8, #dcdcdc);
       background-size: 200% 100%;
       animation: shimmerTitle 1.2s infinite;
     }
-    .right_section{
-        height:300px;
-        background: linear-gradient(90deg, #dcdcdc, #e8e8e8, #dcdcdc);
+    .right_section {
+      height: 300px;
+      background: linear-gradient(90deg, #dcdcdc, #e8e8e8, #dcdcdc);
+      background-size: 200% 100%;
+      animation: shimmerTitle 1.2s infinite;
+    }
+  }
+  .tour_page {
+    height:100%;
+    .img {
+      height: 350px;
+      position: relative;
+      padding: 6px;
+      border-radius: 6px;
+      margin-top: 6px;
+      background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
+      background-size: 200% 100%;
+      animation: shimmerTitle 1.2s infinite;
+    }
+    .button{
+        height:40px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
       background-size: 200% 100%;
       animation: shimmerTitle 1.2s infinite;
     }
