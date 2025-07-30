@@ -15,7 +15,7 @@ export const TourPackageStyle = styled.section`
     .slider_card {
       position: relative;
       padding: 6px;
-      > img {
+      > img  {
         width: 100%;
         border-radius: 6px;
         height: 350px;

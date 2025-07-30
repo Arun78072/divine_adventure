@@ -6,9 +6,10 @@ import Slider from "react-slick";
 import Loader from "../Loader";
 import { toast } from "react-toastify";
 import { MdCurrencyRupee } from "react-icons/md";
+import { SkeletonLoaderStyle } from "@/styles/skeletonLoader";
 
-export default function TourPackage({ category,title }) {
-  const [loading, setLoading] = useState(false);
+export default function TourPackage({ category, title }) {
+  const [loading, setLoading] = useState(true);
   const [postData, setPostData] = useState([]);
 
   const settings = {
@@ -54,38 +55,43 @@ export default function TourPackage({ category,title }) {
   }, []);
   return (
     <>
-      {loading ? (
-        <Loader loading={loading} />
-      ) : (
-        <TourPackageStyle className="container">
-          <h2>{title}</h2>
-          <p>
-            Tired of browsing through travel agencies and trying to find the
-            best package around your dream destination?
-          </p>
-          <div className="tour_slider">
-            {postData.length > 0 && (
-              <Slider {...settings}>
-                {postData?.map((item, index) => (
-                  <Link href={`destination/view/${item._id}`}>
-                    <div key={index} className="slider_card">
-                      <img src={item.coverImage} alt={item.title} />
-                      <div className="card_content">
-                        <h3>{item.title}</h3>
-                        <span>Starting Price</span>
-                        <h4>
-                          <MdCurrencyRupee />
-                          {item.price} /-
-                        </h4>
+      <TourPackageStyle className="container">
+        <h2>{title}</h2>
+        <p>
+          Tired of browsing through travel agencies and trying to find the best
+          package around your dream destination?
+        </p>
+        <div className="tour_slider">
+          {
+            <Slider {...settings}>
+              {loading
+                ? [1, 1, 1, 1, 1, 1, 1, 1, 1].map((_) => (
+                    <SkeletonLoaderStyle>
+                      <div className="slider_loader">
+                        <span className="title"></span>
+                        <span className="title two"></span>
                       </div>
-                    </div>
-                  </Link>
-                ))}
-              </Slider>
-            )}
-          </div>
-        </TourPackageStyle>
-      )}
+                    </SkeletonLoaderStyle>
+                  ))
+                : postData?.map((item, index) => (
+                    <Link href={`destination/view/${item._id}`}>
+                      <div key={index} className="slider_card">
+                        <img src={item.coverImage} alt={item.title} />
+                        <div className="card_content">
+                          <h3>{item.title}</h3>
+                          <span>Starting Price</span>
+                          <h4>
+                            <MdCurrencyRupee />
+                            {item.price} /-
+                          </h4>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+            </Slider>
+          }
+        </div>
+      </TourPackageStyle>
     </>
   );
 }
