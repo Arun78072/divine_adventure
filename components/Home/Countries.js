@@ -35,7 +35,6 @@ export default function Countries() {
       setData(update);
     }
   }, [tourTypeOption]);
-  console.log("data====>", data);
   return (
     <CountriesStyle>
       <div className="container">

@@ -25,6 +25,7 @@ export default function Header() {
   useEffect(() => {
     getHeadlineApi();
   }, []);
+
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -139,6 +140,7 @@ export default function Header() {
                 </div>
               </div>
             </div>
+
             <div
               className={`mega_menu ${
                 activeMegaMenu === "international" ? "active_mega_menu" : ""
@@ -161,7 +163,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Indian Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.category[0].tours.map((item) => {
+                      {tourTypeOption[1]?.category[0].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -183,7 +185,7 @@ export default function Header() {
                   <div>
                     <h4 className="tour_heading">Honeymoon Tour</h4>
                     <ul>
-                      {tourTypeOption[0]?.category[1].tours.map((item) => {
+                      {tourTypeOption[1]?.category[1].tours.map((item) => {
                         const slug = item.value
                           .toLowerCase()
                           .replace(/[^a-z0-9]+/g, "-")
@@ -202,36 +204,12 @@ export default function Header() {
                       })}
                     </ul>
                   </div>
-                  <div>
-                    <h4 className="tour_heading">Indian Special </h4>
-                    <ul>
-                      {tourTypeOption[0]?.category[2].tours.map((item) => {
-                        const slug = item.value
-                          .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, "-")
-                          .replace(/^-+|-+$/g, "");
-                        return (
-                          <li key={item.id}>
-                            <FaAngleRight />
-                            <Link
-                              href={`/indian-tour/${item.id}-${slug}`}
-                              onClick={() => setActiveMegaMenu("")}
-                            >
-                              {item.value}
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                 
                 </div>
               </div>
             </div>
             <Link className="" href="/about">
               About
-            </Link>
-            <Link className="" href="/destination">
-              Ways To Go
             </Link>
             <Link className="" href="/gallery">
               Gallery

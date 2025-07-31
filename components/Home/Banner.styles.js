@@ -48,7 +48,7 @@ export const LeftContent = styled.div`
   }
 `;
 
-export const RightForm = styled.form`
+export const RightForm = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 8px;
@@ -57,13 +57,17 @@ export const RightForm = styled.form`
   @media (max-width : 768px){
     max-width: 100%;
   }
-
+  p.error {
+    color: red;
+    font-size: 10px;
+    height: 16px;    margin-left: 5px;
+}
   input[type="text"],
   input[type="email"],
   input[type="tel"] {
     width: 100%;
     padding: 12px;
-    margin-bottom: 12px;
+    margin-top: 12px;
     border: none;
     border-radius: 4px;
     font-size: 14px;
@@ -77,7 +81,7 @@ export const RightForm = styled.form`
     line-height: 1.4;
   }
 
-  .checkbox {
+  /* .checkbox {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -92,9 +96,10 @@ export const RightForm = styled.form`
   .checkbox a {
     color: #007bff;
     text-decoration: underline;
-  }
+  } */
 
   button {
+    margin-top:12px;
     background-color: red;
     color: white;
     padding: 10px 0;

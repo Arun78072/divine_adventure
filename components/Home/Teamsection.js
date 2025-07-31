@@ -26,7 +26,7 @@ const teamMembers = [
 
   {
     id: 4,
-    name: "Jaspreet",
+    name: "Nidhi Paul",
     title: "HR & Marketing Head",
     image: "/assets/HR.jpeg",
   },
