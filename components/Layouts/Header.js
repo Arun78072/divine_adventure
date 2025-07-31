@@ -268,7 +268,7 @@ export default function Header() {
             onClick={() => {
               if (!toggel) {
                 document.body.style.overflow = "hidden";
-              } else {
+              } else { 
                 document.body.style.overflow = "auto";
               }
               setToggel(!toggel);
