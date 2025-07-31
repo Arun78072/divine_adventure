@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
           <div className="map-column">
            <h2>Office Location</h2>
-           <p><strong>Devine Adventure Holidays Tour & Travels</strong></p>
+           <p><strong>Divine Adventure Holidays Tour & Travels</strong></p>
            <p>Main Square, Near Bus Stand Road,<br />Dharamshala, Himachal Pradesh 176215</p>
            <p><strong>Phone:</strong> +91 94595 75748</p>
            <p><strong>Email:</strong> divineadventureholidays35@gmail.com</p>

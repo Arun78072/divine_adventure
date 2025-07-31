@@ -1,12 +1,41 @@
 import { AboutStyle } from "@/styles/about.style";
 import React from "react";
+import Image from "next/image";
+import Teamsection from "@/components/Home/Teamsection";
 
 export default function About() {
   return (
     <AboutStyle className="container">
       <div className="about_container">
         <h1 className="about_title">About Divine Adventure Tours</h1>
-
+         <section className="about_section founder_section">
+          <h2 className="about_subtitle">Meet Our Founder</h2>
+          <div className="founder_container">
+            <Image
+              src="/assets/ceo2.jpeg" // add CEO image here in public/assets/ceo.jpg
+              alt="Rajesh Kumar - CEO Divine Adventure"
+              width={160}
+              height={160}
+              className="founder_image"
+            />
+            <div>
+              <h3 className="founder_name">Rajesh Kumar</h3>
+              <p className="about_text">
+                Rajesh Kumar, the visionary founder and CEO of Divine Adventure, 
+                started this journey more than <strong>10 years ago</strong> with 
+                a mission to make travel more meaningful, safe, and accessible. 
+                His passion for exploring the world and creating memorable 
+                experiences has been the driving force behind our growth and 
+                reputation as a trusted travel partner.
+              </p>
+              <p className="about_text">
+                Today, under his leadership, Divine Adventure has become a 
+                well-loved name in the industry, delivering countless unforgettable 
+                journeys across India and beyond.
+              </p>
+            </div>
+          </div>
+        </section>
         <p className="about_text">
           Welcome to <strong>Divine Adventure Tour & Travel</strong>, your
           trusted partner in creating unforgettable journeys. We specialize in
@@ -58,7 +87,12 @@ export default function About() {
             memories that last a lifetime.
           </p>
         </section>
+
+        {/* Founder Section */}
+        
       </div>
+    <Teamsection />
+
     </AboutStyle>
   );
 }

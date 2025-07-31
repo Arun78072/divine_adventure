@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const DestinationStyle = styled.section`
   .banner_img {
     width: 100%;
-    height: 800px;
+    height: 600px;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     @media (max-width: 1080px) {
-      height: 600px;
+      height: 400px;
     }
     @media (max-width: 786px) {
-      height: 400px;
+      height: 300px;
     }
     @media (max-width: 500px) {
       height: 200px;

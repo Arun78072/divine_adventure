@@ -43,5 +43,52 @@ export const AboutStyle = styled.section`
         }
       }
     }
+
+    /* Founder Section */
+    .founder_section {
+      margin-top: 50px;
+
+      .founder_container {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        background: #f9f9f9;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+        .founder_image {
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #ddd;
+        }
+
+        .founder_name {
+          font-size: 22px;
+          font-weight: 700;
+          color: #222;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 1.6;
+          margin-bottom: 10px;
+          color: #444;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .founder_container {
+          flex-direction: column;
+          text-align: center;
+
+          .founder_image {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
   }
 `;

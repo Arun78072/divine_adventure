@@ -9,7 +9,9 @@ import {
   CardTitle,
 } from "./GridBlog.styles";
 import Link from "next/link";
-import { tourTypeOption } from "../../utils";
+// import { tourTypeOption } from "../../utils";
+
+import tourTypeOption from "@/components/JsonData/TourType.json"
 
 const selectedTourIds = [101, 103, 105, 107, 110, 112, 114, 117];
 const allTours = tourTypeOption

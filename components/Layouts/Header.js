@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import api, { tourTypeOption } from "@/utils";
+import api from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import tourTypeOption from "@/components/JsonData/TourType.json"
 export default function Header() {
   const [toggel, setToggel] = useState();
   const [headline, setHeadline] = useState("");
@@ -20,32 +21,10 @@ export default function Header() {
       // toast.error("Something went wrong");
     }
   };
-
+  
   useEffect(() => {
     getHeadlineApi();
   }, []);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const isMobile = window.innerWidth < 1050;
-  //     if (!isMobile) {
-  //       setActiveMegaMenu('');
-  //       setToggel(false);
-  //       document.body.style.overflow = 'auto';
-  //     }
-  //   };
-  //   if (typeof window !== 'undefined') {
-  //     window.addEventListener('resize', handleResize);
-  //   }
-  //   handleResize();
-  //   return () => {
-  //     if (typeof window !== 'undefined') {
-  //       window.removeEventListener('resize', handleResize);
-  //     }
-  //   };
-  // }, []);
-
-  console.log("activeMegaMenu =>", tourTypeOption[0]?.category[0].tours);
   return (
     <HederStyle>
       <div className="title_line_wrapper">
@@ -58,14 +37,16 @@ export default function Header() {
         <nav className="nav_bar">
           <Link className="" href="/">
             <Image
-              src="/assets/logo3.png"
+              src="/site_logo.png"
               alt={"Logo"}
-              width={100}
-              height={50}
+              width={0}
+              height={0}
+              sizes="100vw"
+            
               className="logo_img"
             />
           </Link>
-
+           
           <div className={`${toggel ? "mobile_navbar " : ""}navigation`}>
             <Link className="" href="/">
               Home

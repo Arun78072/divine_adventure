@@ -4,9 +4,11 @@ import Category from "@/components/Home/Category";
 import Countries from "@/components/Home/Countries";
 import ExploreSection from "@/components/Home/ExploreSection";
 import GridBlog from "@/components/Home/GridBLog";
+import Guestpage from "@/components/Home/Guestpage";
 import HolidayBanner from "@/components/Home/HolidayBanner";
 import InstagramGallery from "@/components/Home/InstagramGallery";
 import Review from "@/components/Home/Review";
+import Teamsection from "@/components/Home/Teamsection";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
 import Image from "next/image";
@@ -23,7 +25,7 @@ export default function Home() {
       ) : (
         <>
           <BannerSection />
-          <Category />
+          {/* <Category /> */}
           <TourPackage category={1} title={'Divine Adventure Trending Tour Packages'}/>
           <TourPackage category={2} title={'Divine Adventure Special Tour Packages'}/>
           <TourPackage category={3} title={'Divine Adventure New Tour Packages'}/>
@@ -61,6 +63,8 @@ export default function Home() {
           </div>
           </ExploreSection> */}
           <ExploreSection />
+          <Guestpage />
+          <Teamsection />
           {/* <Review /> */}
           {/* <InstagramGallery />  */}
          

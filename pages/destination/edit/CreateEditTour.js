@@ -1,5 +1,5 @@
-import api, { baseUrl, tourTypeOption } from "@/utils";
-import axios from "axios";
+import api, { baseUrl} from "@/utils";
+import tourTypeOption from "@/components/JsonData/TourType.json"
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Loader from "../../../components/Loader";
