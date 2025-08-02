@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'react-phone-number-input/style.css'
 export default function App({ Component, pageProps }) {
   return (
     // <SessionProvider session={pageProps.session}>

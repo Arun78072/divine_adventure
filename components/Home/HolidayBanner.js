@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import {
-  BannerSection,
-  LeftContent,
-  RightForm,
-} from "./Banner.styles";
+import { BannerSection, LeftContent, RightForm } from "./Banner.styles";
 import { toast } from "react-toastify";
 import Loader from "../Loader";
 import api from "@/utils";
-
+import PhoneInput from "react-phone-number-input";
+import countryData from "../JsonData/AllCountry";
 export default function HolidayBanner() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phoneNumber: "",
+    country: "",
+    message: "",
   });
 
   const [formError, setFormError] = useState({});
@@ -22,6 +21,9 @@ export default function HolidayBanner() {
     let error = {};
     if (!formData.name || formData.name.trim().length < 3) {
       error.name = "Name must be at least 3 characters";
+    }
+    if (!formData.country || formData.country.trim().length < 2) {
+      error.country = "Country is Required";
     }
     if (!formData.email || formData.email.trim().length < 3) {
       error.email = "Email is required";
@@ -70,6 +72,9 @@ export default function HolidayBanner() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const setValue = (e) => {
+    setFormData({ ...formData, phoneNumber: e });
+  };
 
   return (
     <BannerSection className="container">
@@ -84,7 +89,7 @@ export default function HolidayBanner() {
         <hr />
       </LeftContent>
 
-      <RightForm >
+      <RightForm>
         <input
           type="text"
           name="name"
@@ -94,15 +99,15 @@ export default function HolidayBanner() {
         />
         {formError.name && <p className="error">{formError.name}</p>}
 
-        <input
-          type="tel"
+        <PhoneInput
           name="phoneNumber"
-          placeholder="Mobile *"
+          placeholder="Enter phone number *"
           value={formData.phoneNumber}
-          onChange={handleChange}
+          onChange={setValue}
         />
-        {formError.phoneNumber && <p className="error">{formError.phoneNumber}</p>}
-
+        {formError.phoneNumber && (
+          <p className="error">{formError.phoneNumber}</p>
+        )}
         <input
           type="email"
           name="email"
@@ -112,14 +117,29 @@ export default function HolidayBanner() {
         />
         {formError.email && <p className="error">{formError.email}</p>}
 
-        {/* <div className="checkbox">
-          <input type="checkbox" id="agree"  value={formData.checkBox}  onChange={handleChange}/>
-          <label htmlFor="agree">
-            I hereby accept the <a href="#">Privacy Policy</a> and I authorise the company to contact me.
-          </label>
-        </div> */}
+        <select name="country" onChange={handleChange} defaultValue="" placeholder="Select Country You are from">
+          <option disabled value="">
+          Select Country You are from
+          </option>
+          {countryData.map((i, idx) => (
+            <option key={idx} value={i.name}>
+              {i.name}
+            </option>
+          ))}
+        </select>
 
-        <button onClick={()=>handleOnSubmit()}>Submit</button>
+        {formError.country && <p className="error">{formError.country}</p>}
+      
+        <textarea
+          name="message"
+          placeholder="Any Message "
+          value={formData.message}
+          onChange={handleChange}
+          rows="4"
+          cols="50"
+        ></textarea>
+
+        <button onClick={() => handleOnSubmit()}>Submit</button>
       </RightForm>
     </BannerSection>
   );

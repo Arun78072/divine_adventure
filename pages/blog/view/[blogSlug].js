@@ -7,6 +7,7 @@ import { LuIndianRupee } from "react-icons/lu";
 import Loader from "@/components/Loader";
 import { BlogSection, DestinationStyle } from "@/styles/destination.style";
 import TourBookForm from "@/pages/destination/view/TourBookForm";
+import { SkeletonLoaderStyle } from "@/styles/skeletonLoader";
 
 export default function ViewBlog() {
   const [postData, setPostData] = useState({});
@@ -42,32 +43,45 @@ export default function ViewBlog() {
     <>
       <Loader loading={loading} />
       <DestinationStyle>
-        <div className="container view_section">
-          <div className="left_section">
-            <BlogSection>
-            <h1 className="tour_title">{postData?.title}</h1>
-            <Image
-              src={postData?.coverImage}
-              width={0}
-              height={0}
-              sizes="100vw"
-              alt="Banner"
-              className="tour_image"
-            />
+        {loading ? (
+          <SkeletonLoaderStyle>
+            <div className="destination_page">
+              <div className="banner_img"></div>
+              <div className="container view_section">
+                <div className="left_section"></div>
 
-            <div
-              dangerouslySetInnerHTML={{ __html: postData?.description }}
-              className="JoditEditorCss"
-            ></div>
-            </BlogSection>
-          </div>
+                <div className="right_section"></div>
+              </div>
+            </div>
+          </SkeletonLoaderStyle>
+        ) : (
+          <div className="container view_section">
+            <div className="left_section">
+              <BlogSection>
+                <h1 className="tour_title">{postData?.title}</h1>
+                <Image
+                  src={postData?.coverImage}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="Banner"
+                  className="tour_image"
+                />
 
-          <div className="right_section">
-            <div className="booking_form">
-              <TourBookForm />
+                <div
+                  dangerouslySetInnerHTML={{ __html: postData?.description }}
+                  className="JoditEditorCss"
+                ></div>
+              </BlogSection>
+            </div>
+
+            <div className="right_section">
+              <div className="booking_form">
+                <TourBookForm />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </DestinationStyle>
     </>
   );

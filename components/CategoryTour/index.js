@@ -123,7 +123,7 @@ export default function CategoryTour({ type }) {
                           <div className="card_content">
                             <h3>{item.tourInfo?.title}</h3>
                             <span>Starting Price</span>
-                            <h4>{item.tourInfo.price}</h4>
+                            <h4>{item.tourInfo?.price}</h4>
                           </div>
                         </div>
 

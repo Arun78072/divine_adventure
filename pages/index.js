@@ -1,17 +1,14 @@
 import BannerSection from "@/components/Home/Banner";
 import Blogs from "@/components/Home/Blogs";
-import Category from "@/components/Home/Category";
 import Countries from "@/components/Home/Countries";
 import ExploreSection from "@/components/Home/ExploreSection";
 import GridBlog from "@/components/Home/GridBLog";
 import Guestpage from "@/components/Home/Guestpage";
 import HolidayBanner from "@/components/Home/HolidayBanner";
 import InstagramGallery from "@/components/Home/InstagramGallery";
-import Review from "@/components/Home/Review";
 import Teamsection from "@/components/Home/Teamsection";
 import TourPackage from "@/components/Home/TourPackage";
 import Loader from "@/components/Loader";
-import Image from "next/image";
 
 import { useState } from "react";
 

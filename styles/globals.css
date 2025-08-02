@@ -495,3 +495,13 @@ p {
 
 
 /* =================   Skeleton Loader  ============== */
+
+
+.PhoneInputCountry{
+    background: #ffffff;
+    color: #000;
+    margin-top: 12px;
+    border-radius: 4px;
+    width: 45px;
+    justify-content: center;
+}

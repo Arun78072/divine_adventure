@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import axios from "axios";
 import { baseUrl } from "@/utils";
+import Loader from "@/components/Loader";
 
 const Login = () => {
     // const { data: session } = useSession();;
@@ -26,60 +26,55 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // let hasError = false;
+    let hasError = false;
 
-    // if (formData.email.trim().length < 2) {
-    //   setError((prevError) => ({
-    //     ...prevError,
-    //     email: "Email is required",
-    //   }));
-    //   hasError = true;
-    // }
-    // if (formData.password.trim().length < 2) {
-    //   setError((prevError) => ({
-    //     ...prevError,
-    //     password: "Password is required",
-    //   }));
-    //   hasError = true;
-    // }
-    // if (hasError) {
-    //   return;
-    // }
-    // setError({ email: "", password: "" });
-
+    if (formData.email.trim().length < 2) {
+      setError((prevError) => ({
+        ...prevError,
+        email: "Email is required",
+      }));
+      hasError = true;
+    }
+    if (formData.password.trim().length < 2) {
+      setError((prevError) => ({
+        ...prevError,
+        password: "Password is required",
+      }));
+      hasError = true;
+    }
+    if (hasError) {
+      return;
+    }
+    setError({ email: "", password: "" });
+    setLoading(true)
     try {
       const data = new FormData();
-      data.append("email", formData.email);
+      data.append("userId", formData.email);
       data.append("password", formData.password);
 
       const res = await axios.post(
         `${baseUrl}/api/auth/login_user`,
-        {
-          userId: 'arun@gmail.com',
-          password: 'password123',
-        },
+        data,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-
-      // email: data.get("email"),
-      // password: data.get("password"),
-      console.log("login res  =====>", res);
-
       if (res.status == 200) {
         localStorage.setItem('token',res.data.token)
         localStorage.setItem('user', JSON.stringify(res.data.user));
-
         toast.success("Successfully Login");
         router.push("/profile");
+        setLoading(false)
       } else {
         toast.error(res.error);
       }
     } catch (e) {
       console.log("error ===>", e);
+      toast.error(e.response.data.error);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -97,6 +92,7 @@ const Login = () => {
 
   return (
     <div className="container">
+     <Loader loading={loading} />
       <div className="login-box">
         <h2 className="login-title">Login</h2>
         <p className="login-subtitle">Enter your email and password</p>

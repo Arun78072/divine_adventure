@@ -3,12 +3,14 @@ import { DestinationStyle } from "@/styles/destination.style";
 import api from "@/utils";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-
+import PhoneInput from "react-phone-number-input";
+import countryData from "@/components/JsonData/AllCountry"
 export default function TourBookForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phoneNumber: "",
+    country: "",
     people: "",
     message: "",
   });
@@ -16,6 +18,7 @@ export default function TourBookForm() {
     name: "",
     email: "",
     phoneNumber: "",
+    country: "",
     people: "",
     message: "",
   });
@@ -25,6 +28,9 @@ export default function TourBookForm() {
     let error = {};
     if (!formData.name || formData.name.trim().length < 3) {
       error.name = "Name must be at least 3 characters";
+    }
+    if (!formData.country || formData.country.trim().length < 3) {
+      error.country = "Country is Required";
     }
 
     if (!formData.email || formData.email.trim().length < 3) {
@@ -49,44 +55,48 @@ export default function TourBookForm() {
     return Object.keys(error).length === 0;
   };
 
-  const handleOnSubmit = async() => {
-    setLoading(true)
-    if(!checkValidation()){
-      toast.error('Fill all the required fields')
-      setLoading(false)
-      return
+  const handleOnSubmit = async () => {
+    setLoading(true);
+    if (!checkValidation()) {
+      toast.error("Fill all the required fields");
+      setLoading(false);
+      return;
     }
-    try{
-      const response = await api.post("/api/form/tour_book", {...formData,formType : 'Query Regarding Tour',url : window.location.href},);
-      console.log('response=====>',response.data)
-      if(response.data.success){
-        toast.success('Query sent. We’ll get back to you shortly!');
+    try {
+      const response = await api.post("/api/form/tour_book", {
+        ...formData,
+        formType: "Query Regarding Tour",
+        url: window.location.href,
+      });
+      console.log("response=====>", response.data);
+      if (response.data.success) {
+        toast.success("Query sent. We’ll get back to you shortly!");
         setFormData({
           name: "",
           email: "",
           phoneNumber: "",
           people: "",
           message: "",
-        })
-        setFormError({})
+        });
+        setFormError({});
       }
-    }catch(e){
-      console.log('error=>',e)
-    }finally{
-      setLoading(false)
+    } catch (e) {
+      console.log("error=>", e);
+    } finally {
+      setLoading(false);
     }
   };
+  const setValue = (e) => {
+    setFormData({ ...formData, phoneNumber: e });
+  };
+
   return (
     <DestinationStyle>
-
-    <Loader loading={loading} />
+      <Loader loading={loading} />
 
       <div>
         <h2>Book This Tour</h2>
-        <p>
-          Ex optio sequi et quos praesentium in nostrum labore nam rerum iusto
-          aut magni nesciunt? Quo quidem neque iste expedita est dolo.
-        </p>
+        <p>Plan your journey, we’ll handle the rest.</p>
 
         {/* Name Field */}
         <input
@@ -110,16 +120,36 @@ export default function TourBookForm() {
         />
         {formError?.email && <span className="error">{formError.email}</span>}
 
-        {/* Phone Number Field */}
-        <input
-          type="number"
-          value={formData.phoneNumber}
+        <select
+          name="country"
           onChange={(e) =>
-            setFormData((prev) => ({ ...prev, phoneNumber: e.target.value }))
+            setFormData((prev) => ({ ...prev, country: e.target.value }))
           }
-          placeholder="Phone"
+          defaultValue=""
+          placeholder="Select Country You are from"
+        >
+          <option disabled value="">
+            Select Country You are from
+          </option>
+          {countryData.map((i, idx) => (
+            <option key={idx} value={i.name}>
+              {i.name}
+            </option>
+          ))}
+        </select>
+
+        {formError.country && <p className="error">{formError.country}</p>}
+
+        {/* Phone Number Field */}
+        <PhoneInput
+          name="phoneNumber"
+          placeholder="Enter phone number *"
+          value={formData.phoneNumber}
+          onChange={setValue}
         />
-        {formError?.phone && <span className="error">{formError.phone}</span>}
+        {formError.phoneNumber && (
+          <p className="error">{formError.phoneNumber}</p>
+        )}
 
         {/* People Count Field */}
         <input
@@ -144,7 +174,7 @@ export default function TourBookForm() {
           <span className="error">{formError.message}</span>
         )}
 
-        <button className="primary_button" onClick={()=>handleOnSubmit()}>
+        <button className="primary_button" onClick={() => handleOnSubmit()}>
           Book Now
         </button>
       </div>

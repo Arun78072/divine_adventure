@@ -168,7 +168,7 @@ export const DestinationStyle = styled.section`
           text-align: center;
         }
         input,
-        textarea {
+        textarea ,select{
           width: 100%;
           padding: 14px;
           margin-top: 12px;

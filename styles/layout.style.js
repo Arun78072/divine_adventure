@@ -19,8 +19,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation: scroll-left 30s linear infinite;
   }
   .logo_img{
-    width: 100%;
-    height: 30px;
+    width: 100px;
+    height: auto;
              
   }
 

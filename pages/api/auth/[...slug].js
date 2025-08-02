@@ -18,6 +18,7 @@ export default async function handler(req, res) {
   }
   try {
     const { userId, password } = req.body;
+    console.log('userId ======>',userId,password)
     if (!userId || !password) {
       return res.status(400).json({ error: "Missing userId or password" });
     }
@@ -25,16 +26,13 @@ export default async function handler(req, res) {
     if (!user) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
-
-  
-
     const token = jwt.sign(
       {
         id: user._id,
         email: user.email,
       },
       JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "1d" }
     );
 
     return res.status(200).json({

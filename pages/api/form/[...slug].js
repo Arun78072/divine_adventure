@@ -7,21 +7,21 @@ export default async function handler(req, res) {
   const { slug } = req.query;
   if (slug[0] === "tour_book") {
     try {
-      const { name, email, phoneNumber, message, people, formType, url } =
+      const { name, email, phoneNumber, message, people, formType, url ,country} =
         req.body;
 
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "uic.19mca8112@gmail.com",
+          user: "divineadventureholidays35@gmail.com",
           pass: process.env.PASSWORD,
         },
       });
-
+      console.log('======>auth check ', process.env.PASSWORD,process.env.USER)
       // 1️⃣ Email to Admin
       const adminMailOptions = {
         from: email,
-        to: "uic.19mca8112@gmail.com",
+        to: "divineadventureholidays35@gmail.com",
         subject: `New Tour Booking from ${name}`,
         html: `
           <p>Dear Admin,</p>
@@ -31,6 +31,7 @@ export default async function handler(req, res) {
             <li><strong>Email:</strong> ${email}</li>
             <li><strong>Phone Number:</strong> ${phoneNumber}</li>
             <li><strong>Number of People:</strong> ${people}</li>
+            <li><strong>Name of country:</strong> ${country}</li>
             <li><strong>Form Type:</strong> ${formType}</li>
             <li><strong>Tour Page:</strong> <a href="${url}" target="_blank">${url}</a></li>
           </ul>
@@ -43,7 +44,7 @@ export default async function handler(req, res) {
 
       // 2️⃣ Email to User (Confirmation)
       const userMailOptions = {
-        from: "uic.19mca8112@gmail.com",
+        from: "divineadventureholidays35@gmail.com",
         to: email,
         subject: `Your Tour Booking Request Has Been Received`,
         html: `
@@ -52,7 +53,7 @@ export default async function handler(req, res) {
           <p><strong>Summary of your submission:</strong></p>
           <ul>
             <li><strong>Phone Number:</strong> ${phoneNumber}</li>
-            <li><strong>Number of People:</strong> ${people}</li>
+            <li><strong>Name of country:</strong> ${country}</li>
           </ul>
           <p><strong>Your Message:</strong></p>
           <p>${message || "No message provided."}</p>

@@ -6,7 +6,7 @@ export const BannerSection = styled.section`
   background-image: url("/assets/holiday-bg.png");
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,7 +64,8 @@ export const RightForm = styled.div`
 }
   input[type="text"],
   input[type="email"],
-  input[type="tel"] {
+  input[type="tel"] ,
+  textArea , select{
     width: 100%;
     padding: 12px;
     margin-top: 12px;
