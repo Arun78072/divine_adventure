@@ -15,7 +15,7 @@ export default function Footer() {
     <FooterWrapper>
       <FooterContainer className='container'>
         <FooterBrand>
-          <h2>DEVINE ADVENTURE</h2>
+          <h2>DIVINE ADVENTURE</h2>
           <p>
             Empowering explorers with unforgettable tour & travel experiences. Trusted travel experts for your every destination.
           </p>

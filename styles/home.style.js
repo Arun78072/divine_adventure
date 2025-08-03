@@ -136,28 +136,7 @@ export const BannerSetion = styled.section`
       }
     }
   }
-  .collabration_logo_section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
-    background: #f7f7f7;
-    padding: 26px 10px;
-    @media (max-width: 500px) {
-      padding: 20px 10px;
-    }
-    img {
-      width: 100px;
-      height: auto;
-      object-fit: contain;
-      @media (max-width: 900px) {
-        width: 100px;
-      }
-      @media (max-width: 500px) {
-        width: 80px;
-      }
-    }
-  }
+
 `;
 
 export const ServiceCard = styled.section`

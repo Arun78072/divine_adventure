@@ -242,23 +242,6 @@ export default function Header() {
             )}
           </div>
 
-          <div className="contact_details">
-            <div>
-              <FaWhatsapp />
-              <a
-                href="https://wa.me/919459575748"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                9459575748
-              </a>
-            </div>
-            <div>
-              <FaPhoneAlt />
-              <a href="tel:+919459575748">9459575748</a>
-            </div>
-          </div>
-
           {activeMegaMenu.length > 0 && (
             <span
               onClick={() => setActiveMegaMenu("")}
@@ -279,6 +262,28 @@ export default function Header() {
           >
             {!toggel ? <GiHamburgerMenu /> : <IoClose />}
           </button>
+
+          <div className="contact_details">
+            <p>
+              Customer <br /> Agent
+            </p>
+          <div>
+          <div className="whatsapp">
+              <FaWhatsapp />
+              <a
+                href="https://wa.me/919459575748"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                9459575748
+              </a>
+            </div>
+            <div>
+              <FaPhoneAlt />
+              <a href="tel:+919056586553">9056586553</a>
+            </div>
+          </div>
+          </div>
         </nav>
       </header>
     </HederStyle>
