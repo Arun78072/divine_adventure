@@ -6,7 +6,7 @@ export const HederStyle = styled.section`
   background: #fff;
   padding: 10px 0px;
   z-index: 999;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   .title_line_wrapper {
     overflow: hidden;
     white-space: nowrap;
@@ -18,10 +18,9 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding-left: 100%;
     animation: scroll-left 30s linear infinite;
   }
-  .logo_img{
+  .logo_img {
     width: 100px;
     height: auto;
-             
   }
 
   @keyframes scroll-left {
@@ -38,7 +37,9 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     align-items: center;
   }
-
+  .logout_btn {
+    cursor: pointer;
+  }
   .navigation {
     flex: 1;
     justify-content: center;
@@ -67,17 +68,17 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         display: flex;
         gap: 10px;
         width: 100%;
-        >div{
-          width:fit-content;
+        > div {
+          width: fit-content;
         }
-       @media (max-width:800px){
-        display:grid;
-        grid-template-columns: 1fr 1fr ;
-       }
-       @media (max-width:500px){
-        display:grid;
-        grid-template-columns: 1fr ;
-       }
+        @media (max-width: 800px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 500px) {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
       }
       .sub_menu {
         display: none;
@@ -174,7 +175,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         ul {
           grid-template-columns: 1fr;
         }
-        a ,svg{
+        a,
+        svg {
           color: #000;
         }
         a:hover {
@@ -198,6 +200,23 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       display: block;
     }
   }
+  .contact_details {
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #0065ff;
+      }
+    }
+    @media (max-width: 500px) {
+      display:none;
+    }
+  }
 `;
 export const FooterStyle = styled.section``;
 
@@ -205,14 +224,14 @@ export const LayoutStyle = styled.section`
   button.slick-arrow.slick-prev {
     left: -12px;
     z-index: 9;
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       left: 4px;
     }
   }
   button.slick-arrow.slick-next {
     right: -12px;
     z-index: 9;
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       right: 4px;
     }
   }

@@ -142,12 +142,12 @@ export const BannerSetion = styled.section`
     align-items: center;
     gap: 10px;
     background: #f7f7f7;
-    padding: 36px 10px;
+    padding: 26px 10px;
     @media (max-width: 500px) {
       padding: 20px 10px;
     }
     img {
-      width: 180px;
+      width: 100px;
       height: auto;
       object-fit: contain;
       @media (max-width: 900px) {

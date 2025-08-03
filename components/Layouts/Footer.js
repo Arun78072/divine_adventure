@@ -8,6 +8,7 @@ import {
 } from "./Footer.styles";
 import { MapContainer } from './Footer.styles';
 import { FaXTwitter, FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -40,19 +41,29 @@ export default function Footer() {
               <li><a href="#">Contact Us</a></li>
             </ul>
           </div>
-          <div className="column">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Cancellation Policy</a></li>
-            </ul>
-          </div>
+
           <div className="map-column">
            <h2>Office Location</h2>
            <p><strong>Divine Adventure Holidays Tour & Travels</strong></p>
            <p>Main Square, Near Bus Stand Road,<br />Dharamshala, Himachal Pradesh 176215</p>
-           <p><strong>Phone:</strong> +91 94595 75748</p>
+           <p><strong>Contact:</strong> </p>
+           <div className="contact_details">
+            <div>
+              <FaWhatsapp />
+              <a
+                href="https://wa.me/919459575748"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                9459575748
+              </a>
+            </div>
+            <div>
+              <FaPhoneAlt />
+              <a href="tel:+919459575748">9459575748</a>
+            </div>
+          </div>
+
            <p><strong>Email:</strong> divineadventureholidays35@gmail.com</p>
            <p><strong>Working Hours:</strong> 24 - Hours</p>
             <iframe
@@ -65,7 +76,7 @@ export default function Footer() {
       </FooterContainer>
 
       <FooterBottom>
-        &copy; {new Date().getFullYear()} Devine Adventure Holidays Tour & Travels. All Rights Reserved.
+        &copy; {new Date().getFullYear()} Divine Adventure Holidays Tour & Travels. All Rights Reserved.
       </FooterBottom>
     </FooterWrapper>
   );

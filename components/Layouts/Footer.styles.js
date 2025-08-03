@@ -9,6 +9,22 @@ export const FooterWrapper = styled.footer`
  @media (max-width: 500px){
   padding: 28px 10px;
  }
+ .contact_details {
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #0065ff;
+      }
+    }
+   
+  }
+
 `;
 
 export const FooterContainer = styled.div`

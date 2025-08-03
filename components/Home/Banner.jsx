@@ -19,6 +19,7 @@ export default function BannerSection() {
     "/assets/banner/banner1.jpg",
     "/assets/banner/banner2.jpg",
     "/assets/banner/banner3.jpg",
+    "/assets/banner/Madurai_Meenakshi.png",
   ];
   return (
     <BannerSetion>

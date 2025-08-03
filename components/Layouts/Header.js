@@ -3,13 +3,21 @@ import Link from "next/link";
 import Image from "next/image";
 import api from "@/utils";
 import { HederStyle } from "@/styles/layout.style";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
+import {
+  FaAngleDown,
+  FaAngleRight,
+  FaPhoneAlt,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import tourTypeOption from "@/components/JsonData/TourType.json"
+import tourTypeOption from "@/components/JsonData/TourType.json";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 export default function Header() {
   const [toggel, setToggel] = useState();
   const [headline, setHeadline] = useState("");
+  const [showLogout, setShowLogout] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState("");
   const getHeadlineApi = async () => {
     try {
@@ -21,10 +29,23 @@ export default function Header() {
       // toast.error("Something went wrong");
     }
   };
-  
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setShowLogout(true);
+    }
+  }, []);
+
   useEffect(() => {
     getHeadlineApi();
   }, []);
+
+  const LogOutUser = () => {
+    localStorage.clear();
+    window.location.reload();
+    toast.success("Succesfully logout ");
+    router.push("/");
+  };
 
   return (
     <HederStyle>
@@ -43,11 +64,10 @@ export default function Header() {
               width={0}
               height={0}
               sizes="100vw"
-            
               className="logo_img"
             />
           </Link>
-           
+
           <div className={`${toggel ? "mobile_navbar " : ""}navigation`}>
             <Link className="" href="/">
               Home
@@ -204,7 +224,6 @@ export default function Header() {
                       })}
                     </ul>
                   </div>
-                 
                 </div>
               </div>
             </div>
@@ -214,7 +233,32 @@ export default function Header() {
             <Link className="" href="/gallery">
               Gallery
             </Link>
+            {showLogout ? (
+              <div onClick={LogOutUser} className="logout_btn">
+                Logout
+              </div>
+            ) : (
+              ""
+            )}
           </div>
+
+          <div className="contact_details">
+            <div>
+              <FaWhatsapp />
+              <a
+                href="https://wa.me/919459575748"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                9459575748
+              </a>
+            </div>
+            <div>
+              <FaPhoneAlt />
+              <a href="tel:+919459575748">9459575748</a>
+            </div>
+          </div>
+
           {activeMegaMenu.length > 0 && (
             <span
               onClick={() => setActiveMegaMenu("")}
@@ -227,7 +271,7 @@ export default function Header() {
             onClick={() => {
               if (!toggel) {
                 document.body.style.overflow = "hidden";
-              } else { 
+              } else {
                 document.body.style.overflow = "auto";
               }
               setToggel(!toggel);
