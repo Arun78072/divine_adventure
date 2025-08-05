@@ -36,7 +36,7 @@ export default function CategoryTour({ type }) {
         if(data.data.length > 0){
           setAllTours(data.data.reverse());
         }else{
-          setAllTours(['Null']);
+          setAllTours([]);
         }
       } else {
         toast.error("Something went wrong");
@@ -60,12 +60,13 @@ export default function CategoryTour({ type }) {
           ? tourTypeOption[0].category[id - 1].tours.filter(
               (i) => i.id == categoryId
             )[0]
-          : tourTypeOption[1].category[id - 1].tours.filter(
+          : tourTypeOption[1].category[id - 5]?.tours.filter(
               (i) => i.id == categoryId
             )[0];
       setPageData(data);
     }
   }, [categoryId]);
+  console.log('allTours =====>',allTours)
   return (
     <>
       {/* allTours */}

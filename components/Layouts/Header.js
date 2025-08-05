@@ -192,7 +192,7 @@ export default function Header() {
                           <li key={item.id}>
                             <FaAngleRight />
                             <Link
-                              href={`/international-tour/${item.id}-${slug}`}
+                              href={`/international/${item.id}-${slug}`}
                               onClick={() => setActiveMegaMenu("")}
                             >
                               {item.value}
@@ -214,7 +214,7 @@ export default function Header() {
                           <li key={item.id}>
                             <FaAngleRight />
                             <Link
-                              href={`/international-tour/${item.id}-${slug}`}
+                              href={`/international/${item.id}-${slug}`}
                               onClick={() => setActiveMegaMenu("")}
                             >
                               {item.value}
