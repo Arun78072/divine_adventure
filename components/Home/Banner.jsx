@@ -18,6 +18,7 @@ export default function BannerSection() {
   const bannerImages = [
     "/assets/banner/banner2.jpg",
     "/assets/banner/banner3.jpg",
+    
   ];
   return (
     <BannerSetion>

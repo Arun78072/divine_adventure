@@ -40,7 +40,7 @@ export const HederStyle = styled.section`
   .logout_btn {
     cursor: pointer;
     border: 1px solid;
-    padding: 10px;
+    padding: 4px 12px 4px 12px;
     border-radius: 30px;
   }
   .navigation {
@@ -55,7 +55,7 @@ export const HederStyle = styled.section`
       text-decoration: none;
       font-size: 16px;
       border: 1px solid;
-      padding: 10px;
+      padding: 4px 12px 4px 12px;
       border-radius: 30px;
     }
 

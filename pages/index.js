@@ -8,6 +8,7 @@ import HolidayBanner from "@/components/Home/HolidayBanner";
 import InstagramGallery from "@/components/Home/InstagramGallery";
 import Teamsection from "@/components/Home/Teamsection";
 import TourPackage from "@/components/Home/TourPackage";
+import VideoTour from "@/components/Home/Videotour";
 import Loader from "@/components/Loader";
 
 import { useState } from "react";
@@ -22,6 +23,7 @@ export default function Home() {
       ) : (
         <>
           <BannerSection />
+           <VideoTour />
           {/* <Category /> */}
           <TourPackage category={1} title={'Divine Adventure Trending Tour Packages'}/>
           <TourPackage category={2} title={'Divine Adventure Special Tour Packages'}/>

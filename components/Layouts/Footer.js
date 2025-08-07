@@ -45,7 +45,7 @@ export default function Footer() {
           <div className="map-column">
            <h2>Office Location</h2>
            <p><strong>Divine Adventure Holidays Tour & Travels</strong></p>
-           <p>Main Square, Near Bus Stand Road,<br />Dharamshala, Himachal Pradesh 176215</p>
+           <p>Dharamshala Airport<br />Dharamshala, Himachal Pradesh 176215</p>
            <p><strong>Contact:</strong> </p>
            <div className="contact_details">
             <div>
@@ -55,12 +55,12 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                9459575748
+                +919459575748
               </a>
             </div>
             <div>
               <FaPhoneAlt />
-              <a href="tel:+919459575748">9459575748</a>
+              <a href="tel:+919459575748">+919056586553</a>
             </div>
           </div>
 

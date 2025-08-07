@@ -275,12 +275,12 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                9459575748
+                +919459575748
               </a>
             </div>
             <div>
               <FaPhoneAlt />
-              <a href="tel:+919056586553">9056586553</a>
+              <a href="tel:+919056586553">+919056586553</a>
             </div>
           </div>
           </div>
