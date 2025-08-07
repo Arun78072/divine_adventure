@@ -181,7 +181,7 @@ export default function Header() {
               <div className="sub_menu container">
                 <div className="megamenu">
                   <div>
-                    <h4 className="tour_heading">Indian Tour</h4>
+                    <h4 className="tour_heading">International Tour</h4>
                     <ul>
                       {tourTypeOption[1]?.category[0].tours.map((item) => {
                         const slug = item.value
@@ -275,12 +275,12 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                +919459575748
+                +91 9459575748
               </a>
             </div>
             <div>
               <FaPhoneAlt />
-              <a href="tel:+919056586553">+919056586553</a>
+              <a href="tel:+919056586553">+91 9056586553</a>
             </div>
           </div>
           </div>

@@ -257,54 +257,55 @@
     "key": "international",
     "value": "International",
     "category": [
+
       {
-        "key": "indianTour",
-        "value": "Indian Tour",
+        "key": "internationalTour",
+        "value": "International Tour",
         "tours": [
-          {
-            "id": 501,
-            "value": "Char Dham Yatra",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          },
-          {
-            "id": 502,
-            "value": "Honeymoon Tour",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          },
-          {
-            "id": 503,
-            "value": "Adventure Tour",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          },
-          {
-            "id": 504,
-            "value": "Pilgrimage Tour",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          }
+          { "id": 501, "value": "International Tour Packages", "description": "Explore top destinations across the world with our international tour packages.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 502, "value": "Europe Tour Packages", "description": "Discover the beauty of Europe with guided travel packages.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 503, "value": "Dubai Tour Packages", "description": "Experience luxury and adventure in Dubai.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 504, "value": "Vietnam Tour Packages", "description": "Cultural and scenic tour packages through Vietnam.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 505, "value": "Thailand Tour Packages", "description": "Beach, temples, and culture await in Thailand.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 506, "value": "Bali Tour Packages", "description": "Tropical paradise tours in Bali.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 507, "value": "America Tour Packages", "description": "Explore the USA’s top landmarks and cities.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 508, "value": "Singapore Tour Packages", "description": "Modern wonders and cultural charm in Singapore.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 509, "value": "Japan Tour Packages", "description": "Technology meets tradition in Japan.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 510, "value": "Switzerland Tour Packages", "description": "Lakes, Alps, and chocolate tours in Switzerland.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 511, "value": "New Zealand Tour Packages", "description": "Adventure and scenic beauty in New Zealand.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 512, "value": "Australia Tour Packages", "description": "Explore the land down under with our Australia tours.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 513, "value": "Egypt Tour Packages", "description": "Explore pyramids, temples, and ancient history in Egypt.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 514, "value": "South Africa Tour Packages", "description": "Wildlife safaris and scenic tours in South Africa.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 515, "value": "Greece Tour Packages", "description": "Ancient history and beautiful islands await in Greece.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 516, "value": "Canada Tour Packages", "description": "Explore vast landscapes and cities in Canada.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 517, "value": "Mauritius Tour Packages", "description": "Beach and luxury in tropical Mauritius.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" }
         ]
       },
       {
         "key": "honeyMoonTour",
-        "value": "Honey Moon Tour",
+        "value": "Honeymoon Tour",
         "tours": [
-          {
-            "id": 601,
-            "value": "Char Dham Yatra",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          },
-          {
-            "id":602,
-            "value": "Honeymoon Tour",
-            "description": "dummyA spiritual journey to the four sacred shrines in the Himalayas. description",
-            "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp"
-          }
+          { "id": 601, "value": "Honeymoon Packages", "description": "Romantic honeymoon getaways worldwide.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 602, "value": "International Honeymoon Packages", "description": "Plan your honeymoon to top international destinations.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 603, "value": "Switzerland Honeymoon Packages", "description": "Romance in the Alps – perfect Swiss honeymoon.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 604, "value": "Bali Honeymoon Packages", "description": "Tropical romantic holidays in Bali.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 605, "value": "Europe Honeymoon Packages", "description": "Charming cities and romantic scenery in Europe.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 606, "value": "Greece Honeymoon Packages", "description": "Idyllic Greek islands perfect for honeymooners.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 607, "value": "Dubai Honeymoon Packages", "description": "Luxury desert escapes in Dubai for couples.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 608, "value": "Thailand Honeymoon Packages", "description": "Beachside romance and culture in Thailand.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 609, "value": "Singapore Honeymoon Packages", "description": "Urban and tropical romantic getaway in Singapore.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 610, "value": "Seychelles Honeymoon Packages", "description": "Exotic island honeymoon in Seychelles.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 611, "value": "Mauritius Honeymoon Packages", "description": "Crystal-clear beaches and luxury in Mauritius.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 612, "value": "Paris Honeymoon Packages", "description": "City of Love – Paris honeymoon dream.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 613, "value": "Sri Lanka Honeymoon Packages", "description": "Cultural and coastal beauty of Sri Lanka.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 614, "value": "South Africa Honeymoon Packages", "description": "Nature and romance combined in South Africa.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 615, "value": "Italy Honeymoon Packages", "description": "Explore romance, culture, and cuisine in Italy.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 616, "value": "Australia Honeymoon Packages", "description": "Adventure and romance down under.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" },
+          { "id": 617, "value": "Maldives Honeymoon Packages", "description": "Private islands and overwater villas in Maldives.", "coverImage": "https://www.chardham-pilgrimage-tour.com/assets/images/banner-chardham-package.webp" }
         ]
       }
+      
+     
     ]
   }
 ]
