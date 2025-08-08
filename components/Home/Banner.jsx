@@ -16,11 +16,11 @@ export default function BannerSection() {
   };
 
   const bannerImages = [
-    "/assets/banner/banner2.jpg",
-    "/assets/banner/banner3.jpg",
-    // "/assets/banner/Chardham.jpg",
-    // "/assets/banner/Dharmshala.jpg",
-    // "/assets/banner/goaBeach.jpg",
+    // "/assets/banner/banner2.jpg",
+    // "/assets/banner/banner3.jpg",
+    "/assets/banner/Chardham.jpg",
+    "/assets/banner/Dharmshala.jpg",
+    "/assets/banner/goaBeach.jpg",
   ];
   return (
     <BannerSetion>
