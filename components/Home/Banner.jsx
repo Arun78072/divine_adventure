@@ -15,12 +15,18 @@ export default function BannerSection() {
     slidesToScroll: 1,
   };
 
+  // "/assets/banner/banner2.jpg",
+  // "/assets/banner/banner3.jpg",
+  // "/assets/banner/Chardham.jpg",
+  // "/assets/banner/Dharmshala.jpg",
+  // "/assets/banner/goaBeach.jpg",
+  // "/assets/banner/kashmir.png",
   const bannerImages = [
-    // "/assets/banner/banner2.jpg",
-    // "/assets/banner/banner3.jpg",
-    "/assets/banner/Chardham.jpg",
-    "/assets/banner/Dharmshala.jpg",
-    "/assets/banner/goaBeach.jpg",
+    "/assets/banner/Kedar.jpg",
+    "/assets/banner/mountain.jpg",
+    "/assets/banner/treking.jpg",
+    "/assets/banner/munnar.jpg",
+    "/assets/banner/kashmire.jpg",
   ];
   return (
     <BannerSetion>

@@ -39,9 +39,7 @@ export const HederStyle = styled.section`
   }
   .logout_btn {
     cursor: pointer;
-    border: 1px solid;
     padding: 4px 12px 4px 12px;
-    border-radius: 30px;
   }
   .navigation {
     flex: 1;
@@ -54,9 +52,7 @@ export const HederStyle = styled.section`
       color: #000;
       text-decoration: none;
       font-size: 16px;
-      border: 1px solid;
       padding: 4px 12px 4px 12px;
-      border-radius: 30px;
     }
 
     .mega_menu {
@@ -232,7 +228,7 @@ export const HederStyle = styled.section`
         }
       }
     }
-    @media (max-width: 500px) {
+    @media (max-width: 1050px) {
       display: none;
     }
   }
