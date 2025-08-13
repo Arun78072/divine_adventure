@@ -4,7 +4,6 @@ import Router from "next/router";
 export const baseUrl = "https://www.adventuredivine.com/";
 // export const baseUrl = "http://localhost:3000";
 
-
 const api = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -41,6 +40,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       console.warn("Unauthorized - maybe redirect to login");
+      localStorage.clear()
       Router.push("/login");
       // Optionally: logout user, clear token, redirect, etc.
     }

@@ -12,7 +12,7 @@ import {
 // Api for getting all blogs   : /api/blog/blog_get_by_id
 const blogs = [
   {
-    id: "687d0325d8d5c33d9a3ba157",
+    id: "689ccfc4abf38ec114c72ffc",
     title: "Amarnath Yatra 2025 – Route, Dates and All You Need to Know",
     image: "/assets/blog1.jpg",
   },
@@ -22,7 +22,7 @@ const blogs = [
     image: "/assets/blog2.jpg",
   },
   {
-    id: "687d0325d8d5c33d9a3ba157",
+    id: "689cd567abf38ec114c730b5",
     title: "10 Best Places for Shopping in Thailand in 2025",
     image: "/assets/blog3.jpg",
   },

@@ -5,7 +5,7 @@ export const SkeletonLoaderStyle = styled.section`
     height: 350px;
     border-radius: 10px;
     margin: 6px;
-  
+    background: linear-gradient(90deg, #eee, #f5f5f5, #eee);
     background-size: 200% 100%;
     animation: shimmer 1.2s infinite;
     position: relative;
