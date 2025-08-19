@@ -1,6 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import DialogBox from "../DialogBox";
+import ContactForm from "../Form/ContactUsForm";
 
 const tours = [
   {
@@ -22,43 +24,49 @@ const tours = [
   {
     id: 103,
     title: "Kedarnath Tour Packages",
-    locations: "Kedarnath Temple - Vasuki Tal - Shankaracharya Samadhi - Agastyamuni",
+    locations:
+      "Kedarnath Temple - Vasuki Tal - Shankaracharya Samadhi - Agastyamuni",
     price: "INR 49999/-",
     note: "Flights and Taxes are extra",
     video: "/videos/Kedarnath.mp4",
   },
-
 ];
 
 export default function VideoTour() {
+  const [formBox, setFormBox] = useState(false);
   return (
-    <Section className='container'>
-      <div className="grid">
-        {tours.map((tour) => (
-          <div className="card" key={tour.id}>
-            <video
-              className="video"
-              src={tour.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-            <div className="content">
-              <h2>{tour.title}</h2>
-              <p className="locations">{tour.locations}</p>
-              <div className="price-box">
-                <p className="from">Starting From</p>
-                <p className="price">{tour.price}</p>
-                <p className="per-head">Per Head</p>
+    <>
+      <Section className="container">
+        <div className="grid">
+          {tours.map((tour) => (
+            <div className="card" key={tour.id}>
+              <video
+                className="video"
+                src={tour.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              <div className="content">
+                <h2>{tour.title}</h2>
+                <p className="locations">{tour.locations}</p>
+                <div className="price-box">
+                  <p className="from">Starting From</p>
+                  <p className="price">{tour.price}</p>
+                  <p className="per-head">Per Head</p>
+                </div>
+                <p className="note">{tour.note}</p>
+                <button className="book-btn" onClick={()=>{setFormBox(true)}}>Query Now</button>
               </div>
-              <p className="note">{tour.note}</p>
-              <button className="book-btn">Book Now</button>
             </div>
-          </div>
-        ))}
-      </div>
-    </Section>
+          ))}
+        </div>
+      </Section>
+      <DialogBox open={formBox} onClose={()=>{setFormBox(!formBox)}}>
+        <ContactForm />
+      </DialogBox>
+    </>
   );
 }
 
