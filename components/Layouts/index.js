@@ -2,6 +2,7 @@ import Footer from "./Footer";
 import { Poppins } from "next/font/google";
 import Header from "./Header";
 import { LayoutStyle } from "@/styles/layout.style";
+import { useEffect } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,6 +11,17 @@ const poppins = Poppins({
 });
 
 export default function Layout({ children }) {
+  useEffect(() => {
+    const handleUnload = () => {
+      localStorage.clear();
+    };
+  
+    window.addEventListener("beforeunload", handleUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
   return (
     <LayoutStyle className={poppins.className}>
       <Header />

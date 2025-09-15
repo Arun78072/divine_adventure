@@ -2,7 +2,7 @@ import axios from "axios";
 import Router from "next/router";
 
 export const baseUrl = "https://www.adventuredivine.com/";
-// export const baseUrl = "http://localhost:3000";
+// export const baseUrl = "http://localhost:4000";
 
 const api = axios.create({
   baseURL: baseUrl,
@@ -49,3 +49,31 @@ api.interceptors.response.use(
 );
 
 export default api;
+
+
+export async function fetchWithCache(key, fetcher) {
+  const cachedData = localStorage.getItem(key);
+
+  if (cachedData) {
+    const { data, timestamp } = JSON.parse(cachedData);
+
+    // check if cache is older than 1 day (24h = 86400000ms)
+    if (Date.now() - timestamp < 86400000) {
+      return data; // ✅ return cached data
+    }
+  }
+
+  // fetch new data
+  const data = await fetcher();
+
+  // save to localStorage
+  localStorage.setItem(
+    key,
+    JSON.stringify({
+      data,
+      timestamp: Date.now(),
+    })
+  );
+
+  return data;
+}

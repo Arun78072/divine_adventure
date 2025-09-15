@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import api from "@/utils";
+import api, { fetchWithCache } from "@/utils";
 import Image from "next/image";
 import { LuIndianRupee } from "react-icons/lu";
 import Loader from "@/components/Loader";
@@ -35,11 +35,44 @@ export default function ViewPost() {
     }
   };
 
+   // useEffect(() => {
+  //   if (destinationSlug) {
+  //     getTourDetailsApi(destinationSlug);
+  //   }
+  // }, [destinationSlug]);
+
+  
   useEffect(() => {
-    if (destinationSlug) {
-      getTourDetailsApi(destinationSlug);
-    }
+    const loadData = async () => {
+      if (!destinationSlug) return;
+
+      setLoading(true);
+      try {
+        const data = await fetchWithCache(`tour_${destinationSlug}`, async () => {
+          const response = await api.get(`/api/tour/tour_get_by_id?tourId=${destinationSlug}`);
+          if (response.status === 200) {
+            return response.data.data; // ✅ return only data to cache
+          }
+          throw new Error("Failed to fetch data");
+        });
+
+        setPostData(data);
+      } catch (e) {
+        if (e?.response?.data?.error === "User not authenticated") {
+          toast.error("User not authenticated");
+        } else {
+          toast.error("Something went wrong");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
   }, [destinationSlug]);
+
+
+ 
 
   return (
     <>

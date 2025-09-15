@@ -66,7 +66,6 @@ export default function CategoryTour({ type }) {
       setPageData(data);
     }
   }, [categoryId]);
-  console.log('allTours =====>',allTours)
   return (
     <>
       {/* allTours */}
