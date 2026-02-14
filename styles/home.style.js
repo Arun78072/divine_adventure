@@ -65,7 +65,7 @@ export const TourPackageStyle = styled.section`
 
 export const BannerSetion = styled.section`
   /* margin-top: -130px; */
-
+position:relative;
   button.slick-arrow.slick-prev {
     left: 22px;
   }

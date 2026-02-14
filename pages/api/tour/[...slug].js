@@ -153,6 +153,31 @@ export default async function handler(req, res) {
         .status(500)
         .json({ error: "Something went wrong while deleting the post" });
     }
+  } else if (slug[0] === "search_tour") {
+    try {
+      const { query } = req.query;
+      if (!query) {
+        return res.status(400).json({
+          message: "Search query is required",
+        });
+      }
+      const result = await Tour.find({
+        "tourInfo.title": { $regex: query, $options: "i" },
+        deleted: false,
+        status: "PUBLIC",
+      })
+        .limit(10); // 👈 Maximum 10 results
+      res.status(200).json({
+        status: 200,
+        message: "Search Result",
+        data: result,
+      });
+    } catch (error) {
+      console.error("Error searching tour:", error);
+      res.status(500).json({
+        error: "Something went wrong while searching the tour",
+      });
+    }
   } else {
     res.status(405).json({ message: "Method Not Allowed" });
   }

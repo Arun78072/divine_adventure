@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Slider from "react-slick";
+import SearchBar from "./SearchBar";
 
 export default function BannerSection() {
   const settings = {
@@ -42,7 +43,7 @@ export default function BannerSection() {
       </div>
       </div>
       
-     
+      <SearchBar />
     </BannerSetion>
   );
 }

@@ -24,6 +24,7 @@ export default function Home() {
       ) : (
         <>
           <BannerSection />
+         
           <VideoTour />
           <TourPackage
             category={1}
