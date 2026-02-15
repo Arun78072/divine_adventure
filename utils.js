@@ -2,7 +2,7 @@ import axios from "axios";
 import Router from "next/router";
 
 export const baseUrl = "https://www.adventuredivine.com/";
-// export const baseUrl = "http://localhost:4000";
+// export const baseUrl = "http://localhost:3000";
 
 const api = axios.create({
   baseURL: baseUrl,

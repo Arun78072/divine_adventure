@@ -9,22 +9,11 @@ import InstagramGallery from "@/components/Home/InstagramGallery";
 import Teamsection from "@/components/Home/Teamsection";
 import TourPackage from "@/components/Home/TourPackage";
 import VideoTour from "@/components/Home/Videotour";
-import Loader from "@/components/Loader";
-
-import { useState } from "react";
-
 export default function Home() {
-  const [loading, setLoading] = useState(false);
-  
-  
   return (
     <main>
-      {loading ? (
-        <Loader loading={loading} />
-      ) : (
-        <>
+      <>
           <BannerSection />
-         
           <VideoTour />
           <TourPackage
             category={1}
@@ -47,7 +36,6 @@ export default function Home() {
           <Teamsection />
           {/* <InstagramGallery />  */}
         </>
-      )}
       {/*  Hero */}
     </main>
   );
